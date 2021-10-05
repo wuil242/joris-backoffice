@@ -187,7 +187,7 @@ Encore.enableSassLoader()
 Encore.enableVueLoader(() => {}, {
   version: 3,
   runtimeCompilerBuild: false,
-  useJsx: false
+  useJsx: false,
 })
 
 /*

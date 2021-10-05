@@ -1,7 +1,16 @@
-// import './main.scss'
+import {createApp} from 'vue'
+import Router from './router'
+import App from './App.vue'
+import {countStore} from './store'
 
-import { createApp } from "vue";
-import App from "./App.vue"
+// const App = require('./App.vue')
 
+const app = createApp(App)
 
-createApp(App).mount('#app')
+// app.config.devtools = true
+
+app.use(Router)
+
+app.use(countStore)
+
+app.mount('#app')
