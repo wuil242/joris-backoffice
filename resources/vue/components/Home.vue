@@ -14,10 +14,12 @@ import FetchApi from '../utils/FetchApi';
 const store = useStore()
 
 function logout() {
-  // FetchApi('/api/logout', 'POST', {
-    
-  // })
-  store.commit('logout')
+  FetchApi('/api/user/logout', 'POST', {}).then(res => {
+    if(res.sucess) {
+      store.commit('alert', res.sucess)
+      store.commit('logout')
+    }
+  })
 }
 </script>
 

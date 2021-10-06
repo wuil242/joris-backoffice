@@ -19,27 +19,9 @@
 */
 
 import Route from '@ioc:Adonis/Core/Route'
-import {schema, rules} from '@ioc:Adonis/Core/Validator'
 
-Route.group(() => {
-  Route.get('/', async () => {
-    return { hello: 'API' }
-  })
+import 'App/routes/user'
 
-  Route.post('/login', async ({auth, request}) => {
-    const validation = await schema.create({
-      email: schema.string({ trim: true }, [rules.email()]),
-      password: schema.string({ trim: true })
-    })
-
-    const payload = await request.validate({schema: validation})
-    await auth.attempt(payload.email, payload.password)
-    
-    return {user: auth.user}
-      
-  }).as('post_login')
-
-}).prefix('/api')
 
 //SPA render
 Route.on('*').render('index')
