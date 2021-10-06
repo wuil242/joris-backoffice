@@ -3,7 +3,7 @@ import { csrf } from "../main"
 /**
  * 
  * @param {string} route
- * @param {'GET'|'POST'} method 
+ * @param {'GET'|'POST'|'PUT'|'DELETE'} method 
  * @param {any} body 
  * @returns {Promise<any>}
  */

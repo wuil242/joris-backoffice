@@ -1,9 +1,25 @@
 import Route from '@ioc:Adonis/Core/Route'
 import {schema, rules} from '@ioc:Adonis/Core/Validator'
+import User from 'App/Models/User'
 
 Route.group(() => {
-  Route.get('/', async () => {
-    return { hello: 'API' }
+ 
+  Route.post('/sign-up', async ({request}) => {
+    const validation = await schema.create({
+      name: schema.string({ trim: true }),
+      email: schema.string({ trim: true }, [rules.email()]),
+      password: schema.string({ trim: true }, [rules.confirmed('password_confirm')])
+    })
+
+    const payload = await request.validate({schema: validation})
+    const user = await User.create(payload)
+    
+    return {
+      type: 'success',
+      message: 'User Created',
+      user: user?.serialize({fields: ['name', 'email']})
+    }
+      
   })
 
   Route.post('/login', async ({auth, request}) => {
@@ -37,5 +53,7 @@ Route.group(() => {
       }
     }
   })
+
+  
 
 }).prefix('/api/user')
