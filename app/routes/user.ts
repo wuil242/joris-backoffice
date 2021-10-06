@@ -3,6 +3,10 @@ import {schema, rules} from '@ioc:Adonis/Core/Validator'
 import User from 'App/Models/User'
 
 Route.group(() => {
+  Route.get('/', async ({}) => {
+    const users =  await User.query().limit(20).orderBy('name', 'asc')
+    return users.map(user => user.serialize({fields: ['id', 'name', 'email']}))
+  })
  
   Route.post('/sign-up', async ({request}) => {
     const validation = await schema.create({
@@ -53,7 +57,5 @@ Route.group(() => {
       }
     }
   })
-
-  
 
 }).prefix('/api/user')

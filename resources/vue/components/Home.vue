@@ -4,6 +4,13 @@
     <div>{{store.state}}</div>
     <button v-if="store.state" @click="logout">Logout</button>
      <h2>Add User</h2>
+     <h3>All Users</h3>
+     <ul>
+       <li v-for="user in data.users" :key="user.name">
+       {{user.name}} | {{user.email}}
+       <button @click="delete_user(user.id)">X({{user.id}})</button>
+       </li>
+     </ul>
      <div>{{ data.res }}</div>
     <form @submit.prevent="sign_up">
       <label for="name">Name</label>
@@ -32,7 +39,12 @@ const data = reactive({
   name: '',
   password: '',
   password_confirm: '',
-  res: null
+  res: null,
+  users: []
+})
+
+FetchApi('/api/user').then(res => {
+  data.users = res
 })
 
 function sign_up() {
@@ -49,6 +61,18 @@ function logout() {
         message: res.message
       })
       store.commit('logout')
+  })
+}
+
+/**
+ * @param {number} id
+ */
+function delete_user(id) {
+  FetchApi('/api/user/delete', 'POST', {id})
+  .then(res => {
+    data.users.filter(user => user.id !== id)
+    data.res = res
+    store.commit('alert', res)
   })
 }
 </script>
