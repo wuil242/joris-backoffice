@@ -18,7 +18,7 @@ Route.group(() => {
     return {
       type: 'success',
       message: 'Login Successfull',
-      user: auth.user
+      user: auth.user?.serialize({fields: ['name', 'email']})
     }
       
   })
