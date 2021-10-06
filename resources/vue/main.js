@@ -7,10 +7,14 @@ import {countStore} from './store'
 
 const app = createApp(App)
 
-// app.config.devtools = true
 
+app.provide('csrf', {value: document.cookie.replace('XSRF-TOKEN=', '')})
+
+// app.config.devtools = true
 app.use(Router)
 
 app.use(countStore)
 
 app.mount('#app')
+
+

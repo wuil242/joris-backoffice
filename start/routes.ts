@@ -18,13 +18,27 @@
 |
 */
 
-import {HttpContextContract} from '@ioc:Adonis/Core/HttpContext'
 import Route from '@ioc:Adonis/Core/Route'
+import {schema, rules} from '@ioc:Adonis/Core/Validator'
 
-Route.get('/hello', async () => {
-  return { hello: 'world' }
-})
+Route.group(() => {
+  Route.get('/', async () => {
+    return { hello: 'API' }
+  })
 
-Route.get('*', async ({view}: HttpContextContract) => {
-  return view.render('index')
-}).as('not_found')
+  Route.post('/api/login', async ({auth, request, response}) => {
+    const validation = await schema.create({
+      email: schema.string({ trim: true }, [rules.email()]),
+      password: schema.string({ trim: true })
+    })
+  
+    const payload = await request.validate({schema: validation})
+    await auth.attempt(payload.email, payload.password)
+  
+    return await response.redirect('/')
+  }).as('post_login')
+
+}).prefix('/api')
+
+//SPA render
+Route.on('*').render('index')

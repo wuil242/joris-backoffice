@@ -48,7 +48,7 @@ Encore.setPublicPath('/assets')
 // Encore.addEntry('app', './resources/js/app.js')
 
 Encore.addEntry('app', './resources/vue/main.js')
-Encore.enableTypeScriptLoader()
+// Encore.enableTypeScriptLoader()
 /*
 |--------------------------------------------------------------------------
 | Copy assets
@@ -189,6 +189,14 @@ Encore.enableVueLoader(() => {}, {
   runtimeCompilerBuild: false,
   useJsx: false,
 })
+
+// Encore
+//   .addLoader({
+//       test: /\.vue\.ts$/,
+//       loader: 'vue-loader',
+//   })
+
+
 
 /*
 |--------------------------------------------------------------------------

@@ -1,19 +1,10 @@
 <template>
   <div>
-      {{store.state.count}}
     <h1>Home</h1>
-    <button @click="store.state.count++">++</button>
-    
   </div>
 </template>
 
-<script lang="ts" setup>
-
-import { inject } from "vue";
-
-
-
-const store = inject('store')
+<script setup>
 
 </script>
 
