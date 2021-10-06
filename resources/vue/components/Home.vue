@@ -15,10 +15,11 @@ const store = useStore()
 
 function logout() {
   FetchApi('/api/user/logout', 'POST', {}).then(res => {
-    if(res.sucess) {
-      store.commit('alert', res.sucess)
+      store.commit('alert', {
+        type: res.type,
+        message: res.message
+      })
       store.commit('logout')
-    }
   })
 }
 </script>

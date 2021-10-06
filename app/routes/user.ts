@@ -15,16 +15,26 @@ Route.group(() => {
     const payload = await request.validate({schema: validation})
     await auth.attempt(payload.email, payload.password)
     
-    return {user: auth.user}
+    return {
+      type: 'success',
+      message: 'Login Successfull',
+      user: auth.user
+    }
       
   })
 
   Route.post('/logout', async ({auth}) => {
     try {
       await auth.logout()
-      return {success: 'Logout successfull'}
+      return {
+        type: 'success',
+        message: 'Logout successfull'
+      }
     } catch (error) {
-      return {error}
+      return {
+        type: 'error',
+        message: error
+      }
     }
   })
 

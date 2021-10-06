@@ -1,7 +1,5 @@
 <template>
-  <div class="errors-message" v-show="data.errors.message">
-    <p>{{data.errors.message}}</p>
-  </div>
+ 
   <div>
     {{ store.state }}
   </div>
@@ -28,7 +26,7 @@
   const data = reactive({
     email: 'admin@admin.com', 
     password: 'admin', 
-    errors:{email: '', password: '', message: ''},
+    errors:{email: '', password: ''},
     loading: false,
   })
 
@@ -44,8 +42,10 @@
 
      if(res.errors) {
        if(!res.errors[0].field) {
-         data.errors.message = res.errors[0].message
-
+         store.commit('alert', {
+           type: 'error',
+           message: res.errors[0].message
+         })
          data.loading = false
          return
        }
@@ -60,6 +60,10 @@
 
      
       store.commit('login', res.user)
+      store.commit('alert', {
+        type: res.type,
+        message: res.message
+      })
      data.loading = false
      
     })
@@ -78,12 +82,5 @@
     }
   }
 
-  .errors-message {
-    background-color: red;
-    padding: .5rem .3rem;
-    position: fixed;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-  }
+
 </style>
