@@ -1,20 +1,17 @@
 import {createApp} from 'vue'
 import Router from './router'
 import App from './App.vue'
-import {countStore} from './store'
+import {userStore} from './store'
 
 // const App = require('./App.vue')
 
 const app = createApp(App)
 
-
-app.provide('csrf', {value: document.cookie.replace('XSRF-TOKEN=', '')})
-
 // app.config.devtools = true
 app.use(Router)
 
-app.use(countStore)
+app.use(userStore)
 
 app.mount('#app')
 
-
+export const csrf = document.cookie.replace('XSRF-TOKEN=', '')

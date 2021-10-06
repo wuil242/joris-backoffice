@@ -1,4 +1,5 @@
 {
+  "taget": "es6",
   "allowJs": true,
   // "compilerOptions": {
   //   "moduleResolution": "node",

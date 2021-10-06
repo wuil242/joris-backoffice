@@ -1,11 +1,24 @@
 <template>
   <div>
     <h1>Home</h1>
+    <div>{{store.state}}</div>
+    <button v-if="store.state" @click="logout">Logout</button>
   </div>
 </template>
 
 <script setup>
 
+import { useStore } from 'vuex';
+import FetchApi from '../utils/FetchApi';
+
+const store = useStore()
+
+function logout() {
+  // FetchApi('/api/logout', 'POST', {
+    
+  // })
+  store.commit('logout')
+}
 </script>
 
 

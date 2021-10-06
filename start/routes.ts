@@ -26,16 +26,17 @@ Route.group(() => {
     return { hello: 'API' }
   })
 
-  Route.post('/api/login', async ({auth, request, response}) => {
+  Route.post('/login', async ({auth, request}) => {
     const validation = await schema.create({
       email: schema.string({ trim: true }, [rules.email()]),
       password: schema.string({ trim: true })
     })
-  
+
     const payload = await request.validate({schema: validation})
     await auth.attempt(payload.email, payload.password)
-  
-    return await response.redirect('/')
+    
+    return {user: auth.user}
+      
   }).as('post_login')
 
 }).prefix('/api')

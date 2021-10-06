@@ -1,15 +1,19 @@
 import { createStore } from 'vuex'
 
 // Create a new store instance.
-export const countStore = createStore({
+export const userStore = createStore({
   state () {
     return {
-      count: 0
+      user: null
     }
   },
   mutations: {
-    increment (state) {
-      state.count++
+    login (state, user) {
+      state.user = user
+    },
+
+    logout(state) {
+      state.user = null
     }
   }
 })
