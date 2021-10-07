@@ -9,7 +9,6 @@
       @select="$emit('select', $event)"
       @delete="$emit('delete', $event)"
     >
-    <p>{{quaters}}</p>
       <h2 slot="title">Ajouter Un arrondissement</h2>
       <!-- <h2 slot="location-title">Toutes les Villes</h2> -->
       <!-- <p slot="empty-message">Aucune Ville</p> -->

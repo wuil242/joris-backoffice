@@ -64,6 +64,34 @@ Route.group(() => {
     return await city.related('arrondissents').create(payload)
   }).where('id', Route.matchers.number())
 
+
+  Route.delete('/:cityId/arrondissements', async ({params, request}) => {
+    const validation = schema.create({
+      arrondissementId: schema.number()
+    })
+    
+    const payload = await request.validate({schema: validation})
+    
+    const city = await City.query().where('id', params.cityId)
+      .preload('arrondissents', q => q.where('id', payload.arrondissementId))
+
+      
+      const arr = city[0]?.arrondissents[0]
+      if(!arr) {
+        return {
+          type: 'error',
+          message: `Aucun Arrondissement correspend a cette enregistrement`
+        }
+      }
+      
+    await arr?.delete()
+
+    return {
+      type: 'success',
+      message: `l'arrodissement ${arr.name} a bien ete suprimer`
+    }
+  }).where('cityId', Route.matchers.number())
+
   Route.get('/:cityId/arrondissements/:arrondissementId/quaters', async ({params}) => {
    try {
     const city = await City.query().where('id', params.cityId).preload('arrondissents', q => {
@@ -76,7 +104,7 @@ Route.group(() => {
     if(quaters.length > 0) {
       return quaters
     }
-    
+
     return {
       type: 'infos',
       message: 'Aucun Quartier Trouver'
@@ -88,6 +116,43 @@ Route.group(() => {
       message: error
     }
    }
+  }).where('cityId', Route.matchers.number())
+    .where('arrondissementId', Route.matchers.number())
+
+  Route.post('/:cityId/arrondissements/:arrondissementId/quaters', async ({params, request}) => {
+    try {
+      const validation = schema.create({
+        name: schema.string({ trim: true })
+      })
+      
+      const payload = await request.validate({schema: validation})
+
+     
+
+      const city = await City.query().where('id', params.cityId).preload('arrondissents', q => {
+        q.where('id', params.arrondissementId)
+      })
+
+     
+  
+      const quater = await city[0]?.arrondissents[0]?.related('quaters').create({
+        cityId: params.cityId,
+        ...payload
+      })
+      
+  
+      return {
+        type: 'success',
+        message: `le quartier ${quater.name} a bien ete creer`,
+        quaters: [quater]
+      }
+      
+    } catch (error) {
+      return {
+        type: 'error',
+        message: error
+      }
+    }
   }).where('cityId', Route.matchers.number())
     .where('arrondissementId', Route.matchers.number())
 

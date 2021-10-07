@@ -18,6 +18,8 @@
       
       <quaters
         :quaters="data.quaters"
+        @add="add_quater"
+        @select="data.quaters.current = $event"
       >
       </quaters>
     </section>
@@ -70,17 +72,33 @@ onMounted(() => {
 })
 
 /**
- * @param {number} arrondissementId
+ * @param {string} name
  */
-function get_quaters(arrondissementId) {
-  console.log(data.cities.current, arrondissementId)
+function add_quater(name) {
+  FetchApi(
+    `/api/cities/${data.cities.current}/arrondissements/${data.arrondissements.current}/quaters`, 
+    'POST',
+    {name}
+  ).then(res => {
+    if(res.quaters) {
+      data.quaters.elements = res.quaters
+      data.quaters.current = res.quaters[0].id
+      get_quaters(data.arrondissements.current, data.quaters.current)
+    }
+  })
+}
+
+/**
+ * @param {number} arrondissementId
+ * @param {null|number} id
+ */
+function get_quaters(arrondissementId, id = null) {
    FetchApi(`/api/cities/${data.cities.current}/arrondissements/${arrondissementId}/quaters`)
     .then(res => {
-      console.log(res)
       data.quaters.elements = res
       data.arrondissements.current = arrondissementId
        if(res.length > 0) {
-         data.quaters.current = res[0].id
+         data.quaters.current = id || res[0].id
        }
     })
 }
@@ -90,7 +108,16 @@ function get_quaters(arrondissementId) {
  * @param {number} arrondissementId
  */
 function remove_arrondissement(arrondissementId) {
-  console.log('Remove Arr', arrondissementId)
+  FetchApi(`/api/cities/${data.cities.current}/arrondissements`, 'DELETE', {arrondissementId})
+    .then(res => {
+
+     if(res.type === 'success') {
+        data.arrondissements.elements = data.arrondissements.elements.filter(arr => arr.id !== arrondissementId)
+        if(data.arrondissements.elements.length > 0) {
+          get_quaters(data.arrondissements.elements[0].id)
+        }
+      }
+    })
 }
 
 /**
@@ -101,22 +128,23 @@ function add_arrondissement(name) {
     .then(res => {
       data.arrondissements.elements = res
       data.arrondissements.current = res.id
-      get_arrondissemets(data.cities.current)
+      get_arrondissemets(data.cities.current, res.id)
       get_quaters(res.id)
     })
 }
 
 /**
  * @param {number} cityId
+ * @param {null|number} id
  */
-function get_arrondissemets(cityId) {
+function get_arrondissemets(cityId, id = null) {
   FetchApi(`/api/cities/${cityId}/arrondissements`)
     .then(res => {
       data.arrondissements.elements = res
       data.cities.current = cityId
        if(res.length > 0) {
          data.arrondissements.current = res[0].id
-         get_quaters(data.arrondissements.current)
+         get_quaters(id || data.arrondissements.current)
        }
     })
 }
@@ -127,21 +155,26 @@ function get_arrondissemets(cityId) {
 function remove_city(cityId) {
   FetchApi('/api/cities', 'DELETE', {cityId})
     .then(res => {
-      store.commit('alert', res)
+      // store.commit('alert', res)
       if(res.type === 'success') {
         data.cities.elements = data.cities.elements.filter(city => city.id !== cityId)
-        get_arrondissemets(data.cities.elements[0].id)
+        if(data.cities.elements.length > 0) {
+          get_arrondissemets(data.cities.elements[0].id)
+        }
       }
     })
 }
 
-function get_cities() {
+/**
+ * @param {null|number} id
+ */
+function get_cities(id = null) {
   FetchApi('/api/cities')
     .then(res => {
       data.cities.elements = res    
       if(res.length > 0) {
         data.cities.current = res[0].id 
-        get_arrondissemets(res[0].id)
+        get_arrondissemets(id || res[0].id)
       }
     })
 }
@@ -150,13 +183,14 @@ function add_city(name) {
   FetchApi('/api/cities', 'POST', {name})
     .then(res => {
       if(res.type) {
-        store.commit('alert', res)
+        // store.commit('alert', res)
         return
       }
 
-      data.cities.elements.push(res)
-      get_cities()
-      store.commit('alert', {type:'success', message: `la ville "${res.name}" a bien ete ajouter`})
+      // data.cities.elements.push(res)
+      // console.log(res)
+      get_cities(res.id)
+      // store.commit('alert', {type:'success', message: `la ville "${res.name}" a bien ete ajouter`})
     })
 }
 
