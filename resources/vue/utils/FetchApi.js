@@ -1,4 +1,4 @@
-import { csrf } from "../main"
+import { csrf, appStore } from "../main"
 
 /**
  * 
@@ -20,4 +20,14 @@ export default function (route, method = 'GET', body = null, headers = {}) {
     body,
     headers
   }).then(r => r.json())
+    .then(data => {
+      if(data.type) {
+        appStore.commit('alert', {
+          type: data.type,
+          message: data.message
+        })
+      }
+
+      return Promise.resolve(data)
+    })
 }

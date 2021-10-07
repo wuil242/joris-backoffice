@@ -8,10 +8,18 @@
         @select="get_arrondissemets"
         @delete="remove_city"
       ></cities>
+
       <arrondissements 
         :arrondissements="data.arrondissements"
+        @add="add_arrondissement" 
+        @select="get_quaters"
+        @delete="remove_arrondissement"
       ></arrondissements>
-      <quaters></quaters>
+      
+      <quaters
+        :quaters="data.quaters"
+      >
+      </quaters>
     </section>
   </div>
   <!-- <nav>
@@ -48,6 +56,10 @@ const data = reactive({
   arrondissements: {
     current: 0,
     elements: []
+  },
+  quaters: {
+    current: 0,
+    elements: []
   }
 })
 
@@ -58,14 +70,39 @@ onMounted(() => {
 })
 
 /**
- * @param {number} cityId
+ * @param {number} arrondissementId
  */
-function add_arrondissement(cityId) {
-  FetchApi(`/api/cities/${cityId}/arrondissements`, 'POST')
+function get_quaters(arrondissementId) {
+  console.log(data.cities.current, arrondissementId)
+   FetchApi(`/api/cities/${data.cities.current}/arrondissements/${arrondissementId}/quaters`)
+    .then(res => {
+      console.log(res)
+      data.quaters.elements = res
+      data.arrondissements.current = arrondissementId
+       if(res.length > 0) {
+         data.quaters.current = res[0].id
+       }
+    })
+}
+
+
+/**
+ * @param {number} arrondissementId
+ */
+function remove_arrondissement(arrondissementId) {
+  console.log('Remove Arr', arrondissementId)
+}
+
+/**
+ * @param {string} name
+ */
+function add_arrondissement(name) {
+  FetchApi(`/api/cities/${data.cities.current}/arrondissements`, 'POST', {name})
     .then(res => {
       data.arrondissements.elements = res
-      data.cities.current = cityId
-      data.arrondissements.current = res[0].id
+      data.arrondissements.current = res.id
+      get_arrondissemets(data.cities.current)
+      get_quaters(res.id)
     })
 }
 
@@ -79,6 +116,7 @@ function get_arrondissemets(cityId) {
       data.cities.current = cityId
        if(res.length > 0) {
          data.arrondissements.current = res[0].id
+         get_quaters(data.arrondissements.current)
        }
     })
 }
@@ -100,8 +138,11 @@ function remove_city(cityId) {
 function get_cities() {
   FetchApi('/api/cities')
     .then(res => {
-      data.cities.elements = res     
-      get_arrondissemets(res[0].id)
+      data.cities.elements = res    
+      if(res.length > 0) {
+        data.cities.current = res[0].id 
+        get_arrondissemets(res[0].id)
+      }
     })
 }
 

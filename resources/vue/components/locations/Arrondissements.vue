@@ -7,6 +7,7 @@
       border-color="teal"
       @add="$emit('add', $event)"
       @select="$emit('select', $event)"
+      @delete="$emit('delete', $event)"
     >
       <h2 slot="title">Ajouter Un arrondissement</h2>
       <!-- <h2 slot="location-title">Toutes les Villes</h2> -->
@@ -23,7 +24,7 @@ defineProps({
   arrondissements: {type: Object, required: true}
 })
 
-defineEmits(['add', 'select'])
+defineEmits(['add', 'select', 'delete'])
   
 </script>
 

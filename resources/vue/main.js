@@ -17,4 +17,6 @@ app.mount('#app')
 const csrfName = 'XSRF-TOKEN='
 const cookies = document.cookie.split(';').map(c => c.trim())
 const myCookie = cookies.filter(c => c.startsWith(csrfName))
+
 export const csrf = myCookie[0].replace(csrfName, '')
+export {appStore}

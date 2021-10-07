@@ -1,6 +1,8 @@
 import Route from '@ioc:Adonis/Core/Route'
 import {schema, rules} from '@ioc:Adonis/Core/Validator'
+import Arrondissement from 'App/Models/Arrondissement'
 import City from 'App/Models/City'
+import Quater from 'App/Models/Quater'
 
 Route.group(() => {
 
@@ -50,5 +52,43 @@ Route.group(() => {
     const city = await City.findOrFail(params.id)
     return await city.related('arrondissents').query().orderBy('name', 'asc')
   }).where('id', Route.matchers.number())
+
+  Route.post('/:id/arrondissements', async ({params, request}) => {
+    const validation = schema.create({
+      name: schema.string({ trim: true })
+    })
+    
+    const payload = await request.validate({schema: validation})
+    
+    const city = await City.findOrFail(params.id)
+    return await city.related('arrondissents').create(payload)
+  }).where('id', Route.matchers.number())
+
+  Route.get('/:cityId/arrondissements/:arrondissementId/quaters', async ({params}) => {
+   try {
+    const city = await City.query().where('id', params.cityId).preload('arrondissents', q => {
+      q.where('id', params.arrondissementId)
+    })
+
+    const quaters = await city[0]?.arrondissents[0]?.related('quaters').query()
+      .orderBy('name', 'asc')
+
+    if(quaters.length > 0) {
+      return quaters
+    }
+    
+    return {
+      type: 'infos',
+      message: 'Aucun Quartier Trouver'
+    }
+    
+   } catch (error) {
+    return {
+      type: 'error',
+      message: error
+    }
+   }
+  }).where('cityId', Route.matchers.number())
+    .where('arrondissementId', Route.matchers.number())
 
 }).prefix('/api/cities')
