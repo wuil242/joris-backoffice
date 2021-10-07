@@ -22,6 +22,7 @@ const store = useStore()
     left: 50%;
     transform: translateX(-50%);
     animation: showAlert .5s ease .01s;
+    z-index: 100;
 
     &.success {
       background-color: green;

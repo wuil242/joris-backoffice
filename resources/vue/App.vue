@@ -1,9 +1,9 @@
 <template>
-<div>
+<div class="app">
   <alert></alert>
-  <h1>APP</h1>
-    <login v-if="!store.state.user"></login>
-    <home v-else></home>
+  <!-- <login v-if="!store.state.user"></login> -->
+  <!-- <home v-else></home> -->
+  <home></home>
 </div>
 </template>
 
@@ -18,6 +18,14 @@ const store = useStore()
 </script>
 
 <style lang="scss">
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  // .app {
+  //   padding: 1rem;
+  // }
 </style>
 
 
