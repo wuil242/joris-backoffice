@@ -8,8 +8,8 @@ export const appStore = createStore({
       alert: {
         type: '',
         message: '',
-      },
-      alertTimer: null
+        timer: null
+      }
     }
   },
   mutations: {
@@ -22,14 +22,15 @@ export const appStore = createStore({
     },
 
     alert(state, alert) {
-      state.alert = alert
+      state.alert.type = alert.type
+      state.alert.message = alert.message
 
-      if(state.alertTimer !== null){
-        clearTimeout(state.alertTimer)
-        state.alertTimer = null
+      if(state.alert.timer !== null){
+        clearTimeout(state.alert.timer)
+        state.alert.timer = null
       }
       
-      state.alertTimer = setTimeout(() => {
+      state.alert.timer = setTimeout(() => {
         state.alert.message = ''
       }, 2500)
     }
