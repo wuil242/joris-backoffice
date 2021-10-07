@@ -9,6 +9,8 @@
         <ul>
           <li><router-link to="/">Acceuil</router-link></li>
           <li><router-link to="/admin">Page Admin</router-link></li>
+          <li><router-link to="/prestataire">Prestataire</router-link></li>
+          <li><router-link to="/location">Locations</router-link></li>
         </ul>
       </nav>
     </header>
@@ -27,7 +29,7 @@ import FetchApi from '../utils/FetchApi';
 const store = useStore()
 
 function logout() {
-  FetchApi('/api/user/logout', 'POST', {}).then(res => {
+  FetchApi('/api/users/logout', 'POST', {}).then(res => {
       store.commit('alert', {
         type: res.type,
         message: res.message

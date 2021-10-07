@@ -83,4 +83,4 @@ Route.group(() => {
    }
   })
 
-}).prefix('/api/user')
+}).prefix('/api/users')

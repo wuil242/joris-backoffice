@@ -35,7 +35,7 @@
     for (const key in data.errors) {
       data.errors[key] = ''
     }
-    FetchApi('/api/user/login', 'POST', {
+    FetchApi('/api/users/login', 'POST', {
       email: data.email,
       password: data.password
     }).then(res => {

@@ -18,7 +18,7 @@ const data = reactive({
 })
 
 onMounted(() => {
-  FetchApi('/api/user').then(res => {
+  FetchApi('/api/users').then(res => {
     data.users = res
   })
 })
@@ -29,7 +29,7 @@ onMounted(() => {
  */
 
 function delete_user(id) {
-  FetchApi('/api/user/delete', 'DELETE', {id})
+  FetchApi('/api/users/delete', 'DELETE', {id})
   .then(res => {
     data.users.filter(user => user.id !== id)
     data.res = res
