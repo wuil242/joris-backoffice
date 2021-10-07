@@ -1,6 +1,6 @@
 <template>
     <button @click="props.getDatas()">Recharger</button>
-    <!-- <pre >{{data.cities}}</pre> -->
+<div v-if="props.elements.length > 0">
      <table>
        <thead>
         <tr>
@@ -9,18 +9,22 @@
        </thead>
        <tbody>
         <tr v-for="element in props.elements" :key="element.name">
-          <td v-for="key in keys" :key="key">{{element[key]}}</td>
+          <td v-for="key in keys" :key="key">
+          {{typeof key === 'string' ? element[key] : element[key[0]][key[1]]}}
+          </td>
           <td>
             <button @click="$emit('delete')">Suprimer</button>
           </td>
         </tr>
        </tbody>
      </table>
+</div>
+<p v-else>Tableau Vide</p>  
 </template>
 
 
 <script setup>
-import {defineProps, defineEmits, onMounted} from 'vue'
+import {onMounted} from 'vue'
   
 const props = defineProps({
   getDatas:{type: Function, required: true},

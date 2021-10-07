@@ -32,6 +32,10 @@ const store = useStore()
       background-color: red;
     }
 
+    &.infos {
+      background-color: steelblue;
+    }
+
   }
 
   @keyframes showAlert {

@@ -1,30 +1,7 @@
 <template>
   <div class="city">
     <h1>Toute les Villes</h1>
-    <button @click="get_cities()">Recharger</button>
-    <!-- <pre >{{data.cities}}</pre> -->
-     <table>
-       <thead>
-        <tr>
-          <td>id</td>
-          <td>nom</td>
-          <td>date de creation</td>
-          <td>date de mise a jour</td>
-          <td>actions</td>
-        </tr>
-       </thead>
-       <tbody>
-        <tr v-for="city in data.cities" :key="city.id">
-          <td>{{city.id}}</td>
-          <td>{{city.name}}</td>
-          <td>{{city.created_at}}</td>
-          <td>{{city.updated_at}}</td>
-          <td>
-            <button>Suprimer</button>
-          </td>
-        </tr>
-       </tbody>
-     </table>
+    <my-table :headers="headers" :keys="keys" :elements="data.cities" :get-datas="get_cities"></my-table>
     <hr>
     <h2>Ajouter une ville</h2>
     <form @submit.prevent="add_city">
@@ -42,22 +19,20 @@
 
 import {reactive, onMounted} from 'vue'
 import FetchApi from '../../utils/FetchApi';
+import MyTable from '../MyTable.vue'
   
+const headers = ['id', 'nom', 'date de creation', 'date de mise a jour', 'actions']
+const keys = ['id', 'name', 'created_at', 'updated_at']
 const data = reactive({
   name: '',
   cities: [],
   res: null
 })
 
-onMounted(() => {
-  get_cities()
-})
-
 function get_cities() {
   FetchApi('/api/cities')
     .then(res => {
       data.cities = res
-      get_cities()
     })
 }
 
@@ -65,8 +40,11 @@ function add_city() {
   FetchApi('/api/cities', 'POST', {name: data.name})
     .then(res => {
       data.res = res
+      get_cities()
     })
 }
+
+
 
 </script>
 
@@ -78,20 +56,6 @@ function add_city() {
     input {
       margin: .5rem 0;
       padding: .3rem .7rem;
-    }
-
-    table  {
-      border-collapse: collapse;
-
-      td {
-        padding: .5rem;
-        border: 1px solid black;
-      }
-
-      tbody tr:nth-child(2n) {
-        background-color: grey;
-        color: white;
-      }
     }
   }
 </style>
