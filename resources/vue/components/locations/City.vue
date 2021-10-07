@@ -1,25 +1,28 @@
 <template>
   <div class="city">
     <h1>Toute les Villes</h1>
-    <pre >{{data.cities}}</pre>
+    <!-- <pre >{{data.cities}}</pre> -->
      <table>
        <thead>
-         <td>
-           <tr>id</tr>
-        </td>
-        <td>
-          <tr>Nom</tr>
-        </td>
-        <td>
-          <tr>date de creattion</tr>
-        </td>
-        <td>
-          <tr>date de mise a jour</tr>
-        </td>
-        <td>
-          <tr>Actions</tr>
-        </td>
+        <tr>
+          <td>id</td>
+          <td>nom</td>
+          <td>date de creation</td>
+          <td>date de mise a jour</td>
+          <td>actions</td>
+        </tr>
        </thead>
+       <tbody>
+        <tr v-for="city in data.cities" :key="city.id">
+          <td>{{city.id}}</td>
+          <td>{{city.name}}</td>
+          <td>{{city.created_at}}</td>
+          <td>{{city.updated_at}}</td>
+          <td>
+            <button>Suprimer</button>
+          </td>
+        </tr>
+       </tbody>
      </table>
     <hr>
     <h2>Ajouter une ville</h2>
@@ -76,8 +79,18 @@ function add_city() {
       padding: .3rem .7rem;
     }
 
-    table {
+    table  {
       border-collapse: collapse;
+
+      td {
+        padding: .5rem;
+        border: 1px solid black;
+      }
+
+      tbody tr:nth-child(2n) {
+        background-color: grey;
+        color: white;
+      }
     }
   }
 </style>
