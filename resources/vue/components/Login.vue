@@ -42,10 +42,10 @@
 
      if(res.errors) {
        if(!res.errors[0].field) {
-         store.commit('alert', {
-           type: 'error',
-           message: res.errors[0].message
-         })
+        //  store.commit('alert', {
+        //    type: 'error',
+        //    message: res.errors[0].message
+        //  })
          data.loading = false
          return
        }
@@ -60,10 +60,10 @@
 
      
       store.commit('login', res.user)
-      store.commit('alert', {
-        type: res.type,
-        message: res.message
-      })
+      // store.commit('alert', {
+      //   type: res.type,
+      //   message: res.message
+      // })
      data.loading = false
      
     })

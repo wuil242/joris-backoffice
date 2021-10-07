@@ -31,7 +31,7 @@ const data = reactive({
 function sign_up() {
   FetchApi('/api/users/sign-up', 'POST', data)
     .then(res => {
-       store.commit('alert', res)
+      //  store.commit('alert', res)
     })
 }
 </script>

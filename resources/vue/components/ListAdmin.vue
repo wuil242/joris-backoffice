@@ -33,7 +33,7 @@ function delete_user(id) {
   .then(res => {
     data.users.filter(user => user.id !== id)
     data.res = res
-    store.commit('alert', res)
+    // store.commit('alert', res)
   })
 }
   

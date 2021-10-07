@@ -1,28 +1,37 @@
 <template>
-  <div class="alert" :class="store.state.alert.type" v-if="store.state.alert.message">
-   <p>{{store.state.alert.message}}</p>
+  <div class="alert" :class="alert.type" v-if="alert.message">
+   <p>{{alert.message}}</p>
+   <button class="alert-close" @click="$emit('close', alert.timer || 0)">X</button>
  </div>
 </template>
 
 
 <script setup>
 
-import { useStore } from 'vuex';
+defineProps({
+  alert: Object
+})
 
-const store = useStore()
+defineEmits(['close'])
 
 </script>
 
 <style lang="scss">
+
   .alert {
-    color: white;
+    position: relative;
+    width: 80%;
     padding: .5rem .3rem;
-    position: fixed;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    // position: fixed;
+    // transform: translateY(-100%);
+    margin: 5px auto;
+
+    color: white;
+    text-align: center;
+
+    cursor: pointer;
+    
     animation: showAlert .5s ease .01s;
-    z-index: 100;
 
     &.success {
       background-color: green;
@@ -36,6 +45,23 @@ const store = useStore()
       background-color: steelblue;
     }
 
+    &-close {
+
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      padding: .5em;
+      border: none;
+
+      transform: translateX(50%);
+
+      &:hover {
+        background-color: #F25;
+        color: white;
+      }
+    }
   }
 
   @keyframes showAlert {
@@ -44,7 +70,7 @@ const store = useStore()
     }
 
     100% {
-      tansform: translateY(100%);
+      tansform: translateY(0%);
     }
   }
 </style>

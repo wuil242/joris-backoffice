@@ -49,7 +49,7 @@ function get_arrondissements() {
   FetchApi('/api/arrondissements')
     .then(res => {
       if(res.type) {
-        store.commit('alert', res)
+        // store.commit('alert', res)
         return
       }
       data.arrondissements = res

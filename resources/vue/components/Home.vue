@@ -30,10 +30,10 @@ const store = useStore()
 
 function logout() {
   FetchApi('/api/users/logout', 'POST', {}).then(res => {
-      store.commit('alert', {
-        type: res.type,
-        message: res.message
-      })
+      // store.commit('alert', {
+      //   type: res.type,
+      //   message: res.message
+      // })
       store.commit('logout')
   })
 }

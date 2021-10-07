@@ -1,7 +1,8 @@
 <template>
   <div class="loaction">
     <h1>Villes|Arrondissements|Quartiers</h1>
-    <section class="location-section">
+   <keep-alive>
+      <section class="location-section">
       <cities 
         :cities="data.cities" 
         @add="add_city" 
@@ -23,6 +24,7 @@
       >
       </quaters>
     </section>
+   </keep-alive>
   </div>
   <!-- <nav>
     <ul>
