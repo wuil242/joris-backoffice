@@ -22,7 +22,28 @@ Route.group(() => {
         message: error
       }
     }
+  })
 
+  
+  Route.delete('/', async ({request}) => {
+    const validation = schema.create({
+      cityId: schema.number()
+    })
+    
+    try {
+      const payload = await request.validate({schema: validation})
+      const city = await City.findByOrFail('id', payload.cityId)
+      await city.delete()
+      return {
+        type: 'success',
+        message: `${city.name} has been deleted`
+      }
+    } catch (error) {
+      return {
+        type: 'error',
+        message: error
+      }
+    }
   })
 
   Route.get('/:id/arrondissements', async ({params}) => {

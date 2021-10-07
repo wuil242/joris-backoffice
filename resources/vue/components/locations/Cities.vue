@@ -4,9 +4,10 @@
       label="Nom de la ville" 
       submitMessage="ajouter une ville"
       :locations="cities"
-      border-color="green"
+      border-color="navy"
       @add="$emit('add', $event)"
       @select="$emit('select', $event)"
+      @delete="$emit('delete', $event)"
     >
       <h2 slot="title">Ajouter Une Ville</h2>
       <!-- <h2 slot="location-title">Toutes les Villes</h2> -->
@@ -23,7 +24,7 @@ defineProps({
   cities: {type: Object, required: true}
 })
 
-defineEmits(['add', 'select'])
+defineEmits(['add', 'select', 'delete'])
   
 </script>
 

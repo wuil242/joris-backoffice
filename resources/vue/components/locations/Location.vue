@@ -2,8 +2,15 @@
   <div class="loaction">
     <h1>Villes|Arrondissements|Quartiers</h1>
     <section class="location-section">
-      <cities :cities="data.cities" @add="add_city" @select="get_arrondissemets"></cities>
-      <arrondissements :arrondissements="data.arrondissements"></arrondissements>
+      <cities 
+        :cities="data.cities" 
+        @add="add_city" 
+        @select="get_arrondissemets"
+        @delete="remove_city"
+      ></cities>
+      <arrondissements 
+        :arrondissements="data.arrondissements"
+      ></arrondissements>
       <quaters></quaters>
     </section>
   </div>
@@ -76,6 +83,20 @@ function get_arrondissemets(cityId) {
     })
 }
 
+/**
+ * @param {number} cityId
+ */
+function remove_city(cityId) {
+  FetchApi('/api/cities', 'DELETE', {cityId})
+    .then(res => {
+      store.commit('alert', res)
+      if(res.type === 'success') {
+        data.cities.elements = data.cities.elements.filter(city => city.id !== cityId)
+        get_arrondissemets(data.cities.elements[0].id)
+      }
+    })
+}
+
 function get_cities() {
   FetchApi('/api/cities')
     .then(res => {
@@ -114,6 +135,7 @@ function goto(route) {
     &-section {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
+      gap: 5px;
     }
   }
 </style>
