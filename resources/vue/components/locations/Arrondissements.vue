@@ -20,7 +20,7 @@
 import LocationLayout from './LocationLayout.vue';
 
 defineProps({
-  arrondissements: {type: Array, required: true}
+  arrondissements: {type: Object, required: true}
 })
 
 defineEmits(['add', 'select'])

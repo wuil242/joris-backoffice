@@ -20,7 +20,7 @@
 import LocationLayout from './LocationLayout.vue';
 
 defineProps({
-  cities: {type: Array, required: true}
+  cities: {type: Object, required: true}
 })
 
 defineEmits(['add', 'select'])

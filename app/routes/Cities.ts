@@ -18,4 +18,9 @@ Route.group(() => {
     return await City.create(payload)
   })
 
+  Route.get('/:id/arrondissements', async ({params}) => {
+    const city = await City.findOrFail(params.id)
+    return await city.related('arrondissents').query().orderBy('name', 'asc')
+  }).where('id', Route.matchers.number())
+
 }).prefix('/api/cities')

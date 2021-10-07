@@ -3,7 +3,7 @@
     <h1>Villes|Arrondissements|Quartiers</h1>
     <section class="location-section">
       <cities :cities="data.cities" @add="add_city" @select="get_arrondissemets"></cities>
-      <arrondissements></arrondissements>
+      <arrondissements :arrondissements="data.arrondissements"></arrondissements>
       <quaters></quaters>
     </section>
   </div>
@@ -33,21 +33,48 @@ import Quaters from './Quaters.vue'
 
 const data = reactive({
   route: 'city',
-  cities: []
+  cities: {
+    current: 0,
+    elements: []
+  },
+  arrondissements: {
+    current: 0,
+    elements: []
+  }
 })
 
 onMounted(() => {
   get_cities()
 })
 
-function get_arrondissemets(id) {
-  console.log(id)
+/**
+ * @param {number} cityId
+ */
+function add_arrondissement(cityId) {
+  FetchApi(`/api/cities/${cityId}/arrondissements`, 'POST')
+    .then(res => {
+      data.arrondissements.elements = res
+      data.cities.current = cityId
+      data.arrondissements.current = res[0].id
+    })
+}
+
+/**
+ * @param {number} cityId
+ */
+function get_arrondissemets(cityId) {
+  FetchApi(`/api/cities/${cityId}/arrondissements`)
+    .then(res => {
+      data.arrondissements.elements = res
+      data.cities.current = cityId
+      data.arrondissements.current = res[0].id
+    })
 }
 
 function get_cities() {
   FetchApi('/api/cities')
     .then(res => {
-      data.cities = res
+      data.cities.elements = res
       get_arrondissemets(res[0].id)
     })
 }
@@ -55,8 +82,7 @@ function get_cities() {
 function add_city() {
   FetchApi('/api/cities', 'POST', {name: data.name})
     .then(res => {
-      data.res = res
-      get_cities()
+      data.cities.elements = res
       get_arrondissemets(res.id)
     })
 }
