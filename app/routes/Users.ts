@@ -58,4 +58,29 @@ Route.group(() => {
     }
   })
 
+  Route.delete('/delete', async ({auth, request}) => {
+   try {
+    const validation = await schema.create({
+      email: schema.string({ trim: true }, [rules.email()]),
+      password: schema.string({ trim: true })
+    })
+
+    const payload = await request.validate({schema: validation})
+    await auth.attempt(payload.email, payload.password)
+
+    const user = await User.findOrFail(request.input('id'))
+    await user.delete()
+    return {
+      type: 'success',
+      message: 'User Deleted Succeffull'
+    }
+   
+   } catch (error) {
+    return {
+      type: 'error',
+      message: error
+    }
+   }
+  })
+
 }).prefix('/api/user')

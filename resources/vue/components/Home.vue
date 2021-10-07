@@ -11,7 +11,6 @@
        <button @click="delete_user(user.id)">X({{user.id}})</button>
        </li>
      </ul>
-     <div>{{ data.res }}</div>
     <form @submit.prevent="sign_up">
       <label for="name">Name</label>
       <input type="name" v-model="data.name">
@@ -68,7 +67,7 @@ function logout() {
  * @param {number} id
  */
 function delete_user(id) {
-  FetchApi('/api/user/delete', 'POST', {id})
+  FetchApi('/api/user/delete', 'DELETE', {id})
   .then(res => {
     data.users.filter(user => user.id !== id)
     data.res = res

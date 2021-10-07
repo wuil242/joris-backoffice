@@ -20,7 +20,7 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
-import 'App/routes/user'
+import 'App/routes/Users'
 
 
 //SPA render
