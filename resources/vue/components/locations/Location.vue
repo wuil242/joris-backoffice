@@ -30,6 +30,7 @@ import FetchApi from '../../utils/FetchApi';
 import Cities from './Cities.vue'
 import Arrondissements from './Arrondissements.vue'
 import Quaters from './Quaters.vue'
+import { useStore } from 'vuex';
 
 const data = reactive({
   route: 'city',
@@ -42,6 +43,8 @@ const data = reactive({
     elements: []
   }
 })
+
+const store = useStore()
 
 onMounted(() => {
   get_cities()
@@ -67,23 +70,31 @@ function get_arrondissemets(cityId) {
     .then(res => {
       data.arrondissements.elements = res
       data.cities.current = cityId
-      data.arrondissements.current = res[0].id
+       if(res.length > 0) {
+         data.arrondissements.current = res[0].id
+       }
     })
 }
 
 function get_cities() {
   FetchApi('/api/cities')
     .then(res => {
-      data.cities.elements = res
+      data.cities.elements = res     
       get_arrondissemets(res[0].id)
     })
 }
 
-function add_city() {
-  FetchApi('/api/cities', 'POST', {name: data.name})
+function add_city(name) {
+  FetchApi('/api/cities', 'POST', {name})
     .then(res => {
-      data.cities.elements = res
-      get_arrondissemets(res.id)
+      if(res.type) {
+        store.commit('alert', res)
+        return
+      }
+
+      data.cities.elements.push(res)
+      get_cities()
+      store.commit('alert', {type:'success', message: `la ville "${res.name}" a bien ete ajouter`})
     })
 }
 

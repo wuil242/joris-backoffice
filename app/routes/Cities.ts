@@ -13,9 +13,16 @@ Route.group(() => {
       name: schema.string({ trim: true })
     })
 
-    const payload = await request.validate({schema: validation})
+    try {
+      const payload = await request.validate({schema: validation})
+      return await City.create(payload)
+    } catch (error) {
+      return {
+        type: 'error',
+        message: error
+      }
+    }
 
-    return await City.create(payload)
   })
 
   Route.get('/:id/arrondissements', async ({params}) => {
