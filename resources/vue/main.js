@@ -15,3 +15,5 @@ app.use(appStore)
 app.mount('#app')
 
 export const csrf = document.cookie.replace('XSRF-TOKEN=', '')
+
+console.log(csrf)

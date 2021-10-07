@@ -1,6 +1,7 @@
 <template>
   <div class="city">
     <h1>Toute les Villes</h1>
+    <button @click="get_cities()">Recharger</button>
     <!-- <pre >{{data.cities}}</pre> -->
      <table>
        <thead>
