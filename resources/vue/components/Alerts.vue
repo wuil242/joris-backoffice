@@ -1,11 +1,11 @@
 <template>
-<div class="alerts" v-if="alerts.size > 0">
-  <button class="alerts-close" @click="close">Close All</button>
+<div class="alerts" v-if="alerts.length > 0">
+  <button class="alerts-close" @click="$emit('closeAll')">Close All</button>
   <alert-vue 
-    v-for="alert in alerts.values()" 
-    :key="alert.timer || alert.type"
+    v-for="(alert, key) in alerts" 
+    :key="key"
     :alert="alert"
-    @close="$emit('closeOne', [$event])"
+    @close="$emit('closeOne', key)"
   ></alert-vue>
 </div>
 </template>
@@ -14,32 +14,19 @@
 <script setup>
 import AlertVue from './Alert.vue';
 
-const props = defineProps({
-  alerts: {type: Map, required: true}
+defineProps({
+  alerts: {type: Array, required: true}
 })
 
-const emit = defineEmits(['closeOne', 'closeAll'])
-
-function close() {
-  const tab = []
-  for (const key of props.alerts.keys()) {
-    tab.push(key)
-  }
-  emit('closeAll', tab)
-}
+defineEmits(['closeOne', 'closeAll'])
 
 </script>
 
 <style lang="scss" scoped>
   .alerts {
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: center;
-    // align-items: center;
     position: fixed;
     top: 0;
     left: 50%;
-    gap: 5px;
     transform: translateX(-50%);
     z-index: 100;
     background-color: grey;

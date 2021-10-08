@@ -5,7 +5,7 @@ export const appStore = createStore({
   state () {
     return {
       user: null,
-      alerts: new Map()
+      alerts: []
     }
   },
   mutations: {
@@ -21,14 +21,9 @@ export const appStore = createStore({
       const alert = {
         type: newAlert.type,
         message: newAlert.message,
-        timer: null
       }
 
-      alert.timer = setTimeout(() => {
-        state.alerts.delete(alert.timer)
-      }, 2500)
-
-      state.alerts.set(alert.timer, alert)
+      state.alerts.push(alert)
     }
   }
 })

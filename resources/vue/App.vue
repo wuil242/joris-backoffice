@@ -32,13 +32,15 @@ function deleteMAny(tab) {
 }
 
 /**
- * @param {number[]} keys
+ * @param {number|undefined} key
  */
-function close(keys) {
-  keys.forEach(key => {
-    clearTimeout(store.state.alerts.get(key).timer)
-    store.state.alerts.delete(key)
-  })
+function close(key) {
+  if(typeof key === 'undefined' ) {
+    store.state.alerts = []
+  }
+  else if(typeof key === 'number') {
+    store.state.alerts = store.state.alerts.filter((v, k) => k !== key)
+  }
 }
 
 </script>

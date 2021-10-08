@@ -1,18 +1,38 @@
 <template>
   <div class="alert" :class="alert.type" v-if="alert.message">
    <p>{{alert.message}}</p>
-   <button class="alert-close" @click="$emit('close', alert.timer || 0)">X</button>
+   <button class="alert-close" @click="$emit('close')">X</button>
  </div>
 </template>
 
 
 <script setup>
 
-defineProps({
-  alert: Object
+import { onMounted } from 'vue';
+
+
+const props = defineProps({
+  alert: {type: Object, required: true},
+  time: {type: Number, default: 1000}
 })
 
-defineEmits(['close'])
+let timer = null
+
+const emit = defineEmits(['close'])
+
+// function close() {
+//   clearInterval(timer)
+
+//   emit('close')
+// }
+
+//FIXME: ajouter un timer pour fermer automatiquement l'alert
+// onMounted(() => {
+//   timer = setTimeout(() => {
+//     emit('close')
+//     console.log('IN')
+//   }, props.time)
+// })
 
 </script>
 
