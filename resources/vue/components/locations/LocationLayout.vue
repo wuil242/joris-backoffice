@@ -1,7 +1,7 @@
 <template>
   <div class="location-layout">
     <slot/>
-    <form @submit.prevent="$emit('add', data.name); data.name = ''">
+    <form @submit.prevent="$emit('add', data.name); data.name = ''" class="location-layout-form">
       <label for="name">{{label}}</label>
       <input type="text" v-model="data.name">
 
@@ -48,7 +48,10 @@ const data = reactive({
 <style lang="scss" scoped>
   .location-layout {
     border: 2px solid v-bind(borderColor);
-    padding: 1rem;
+    // padding: 1rem;
+    overflow: scroll;
+    height: 90vh;
+    position: relative;
 
     input {
       margin: .5rem 0;
@@ -69,6 +72,15 @@ const data = reactive({
 
     .active {
       background-color: lawngreen;
+    }
+
+    &-form {
+      position: sticky;
+      top: 0;
+      right: 0;
+      left: 0;
+      margin: 0;
+      background-color: #BBB;
     }
   }
 </style>

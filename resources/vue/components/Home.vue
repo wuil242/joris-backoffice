@@ -15,7 +15,7 @@
       </nav>
     </header>
     <section class="home-main">
-      <div>{{store.state}}</div>
+      <!-- <div>{{store.state}}</div> -->
       <router-view></router-view>
     </section>
   </div>
