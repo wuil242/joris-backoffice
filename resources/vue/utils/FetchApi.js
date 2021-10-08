@@ -10,7 +10,7 @@ import { csrf, appStore } from "../main"
  * 
  * @returns {Promise<any>}
  */
-export default function (route, method = 'GET', body = null, alert = false, headers = {}) {
+export default function (route, method = 'GET', body = null, alert = true, headers = {}) {
   headers['X-XSRF-TOKEN'] = csrf
   
   if(body) {
@@ -24,7 +24,7 @@ export default function (route, method = 'GET', body = null, alert = false, head
     headers
   }).then(r => r.json())
     .then(data => {
-      if(data.type) {
+      if(data.type && alert) {
         appStore.commit('alert', {
           type: data.type,
           message: data.message
