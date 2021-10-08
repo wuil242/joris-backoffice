@@ -57,8 +57,17 @@ Route.group(() => {
     const validation = schema.create({
       name: schema.string({ trim: true })
     })
+
     
     const payload = await request.validate({schema: validation})
+    const arrYet  = await Arrondissement.query().where('city_id', params.id).where('name', payload.name)
+
+    if(arrYet.length > 0 && arrYet[0]?.name === payload.name) {
+      return {
+        type: 'error',
+        message: 'Cet arrondissement existe deja'
+      }
+    } 
     
     const city = await City.findOrFail(params.id)
     return await city.related('arrondissents').create(payload)

@@ -5,9 +5,12 @@ import { csrf, appStore } from "../main"
  * @param {string} route
  * @param {'GET'|'POST'|'PUT'|'DELETE'} method 
  * @param {any} body 
+ * @param {boolean} alert
+ * @param {{}} headers
+ * 
  * @returns {Promise<any>}
  */
-export default function (route, method = 'GET', body = null, headers = {}) {
+export default function (route, method = 'GET', body = null, alert = false, headers = {}) {
   headers['X-XSRF-TOKEN'] = csrf
   
   if(body) {
