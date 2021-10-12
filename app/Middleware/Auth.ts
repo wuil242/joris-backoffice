@@ -60,13 +60,21 @@ export default class AuthMiddleware {
   /**
    * Handle request
    */
-  public async handle ({ auth }: HttpContextContract, next: () => Promise<void>, customGuards: (keyof GuardsList)[]) {
+  public async handle ({ auth, response }: HttpContextContract, next: () => Promise<void>, customGuards: (keyof GuardsList)[]) {
     /**
      * Uses the user defined guards or the default guard mentioned in
      * the config file
      */
-    const guards = customGuards.length ? customGuards : [auth.name]
-    await this.authenticate(auth, guards)
-    await next()
+    try {
+      const guards = customGuards.length ? customGuards : [auth.name]
+      await this.authenticate(auth, guards)
+      await next()
+    } catch (error) {
+      return response.status(404).json({
+        type: 'error',
+        typeCode: 0,
+        message: 'Erreur d\'authentification',
+      })
+    }
   }
 }
