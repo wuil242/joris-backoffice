@@ -4,5 +4,9 @@
   "assets/resources_vue_components_Home_vue.css": "http://localhost:8080/assets/resources_vue_components_Home_vue.css",
   "assets/resources_vue_components_Home_vue.js": "http://localhost:8080/assets/resources_vue_components_Home_vue.js",
   "assets/resources_vue_components_Login_vue.css": "http://localhost:8080/assets/resources_vue_components_Login_vue.css",
-  "assets/resources_vue_components_Login_vue.js": "http://localhost:8080/assets/resources_vue_components_Login_vue.js"
+  "assets/resources_vue_components_Login_vue.js": "http://localhost:8080/assets/resources_vue_components_Login_vue.js",
+  "assets/resources_vue_components_locations_Location_vue.css": "http://localhost:8080/assets/resources_vue_components_locations_Location_vue.css",
+  "assets/resources_vue_components_locations_Location_vue.js": "http://localhost:8080/assets/resources_vue_components_locations_Location_vue.js",
+  "assets/resources_vue_components_service_providers_ServiceProvider_vue.css": "http://localhost:8080/assets/resources_vue_components_service_providers_ServiceProvider_vue.css",
+  "assets/resources_vue_components_service_providers_ServiceProvider_vue.js": "http://localhost:8080/assets/resources_vue_components_service_providers_ServiceProvider_vue.js"
 }

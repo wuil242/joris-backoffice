@@ -39,14 +39,14 @@ const store = useStore()
 
 
 onMounted(() => {
-  FetchApi('/api/cities').then(res => {
+  FetchApi('/cities').then(res => {
     data.cities = res
     data.cityId = res[0].id
   })
 })
 
 function get_arrondissements() {
-  FetchApi('/api/arrondissements')
+  FetchApi('/arrondissements')
     .then(res => {
       if(res.type) {
         // store.commit('alert', res)
@@ -58,7 +58,7 @@ function get_arrondissements() {
 }
 
 function add_arrondissement() {
-  FetchApi('/api/arrondissements', 'POST', {name: data.name, cityId: data.cityId})
+  FetchApi('/arrondissements', 'POST', {name: data.name, cityId: data.cityId})
     .then(res => {
       data.res = res
       get_arrondissements()

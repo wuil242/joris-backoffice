@@ -78,7 +78,7 @@ onMounted(() => {
  */
 function add_quater(name) {
   FetchApi(
-    `/api/cities/${data.cities.current}/arrondissements/${data.arrondissements.current}/quaters`, 
+    `/cities/${data.cities.current}/arrondissements/${data.arrondissements.current}/quaters`, 
     'POST',
     {name},
     false
@@ -96,7 +96,7 @@ function add_quater(name) {
  * @param {null|number} id
  */
 function get_quaters(arrondissementId, id = null) {
-   FetchApi(`/api/cities/${data.cities.current}/arrondissements/${arrondissementId}/quaters`)
+   FetchApi(`/cities/${data.cities.current}/arrondissements/${arrondissementId}/quaters`)
     .then(res => {
       data.quaters.elements = res
       data.arrondissements.current = arrondissementId
@@ -111,7 +111,7 @@ function get_quaters(arrondissementId, id = null) {
  * @param {number} arrondissementId
  */
 function remove_arrondissement(arrondissementId) {
-  FetchApi(`/api/cities/${data.cities.current}/arrondissements`, 'DELETE', {arrondissementId})
+  FetchApi(`/cities/${data.cities.current}/arrondissements`, 'DELETE', {arrondissementId})
     .then(res => {
 
      if(res.type === 'success') {
@@ -127,7 +127,7 @@ function remove_arrondissement(arrondissementId) {
  * @param {string} name
  */
 function add_arrondissement(name) {
-  FetchApi(`/api/cities/${data.cities.current}/arrondissements`, 'POST', {name})
+  FetchApi(`/cities/${data.cities.current}/arrondissements`, 'POST', {name})
     .then(res => {
       data.arrondissements.elements = res
       data.arrondissements.current = res.id
@@ -141,7 +141,7 @@ function add_arrondissement(name) {
  * @param {null|number} id
  */
 function get_arrondissemets(cityId, id = null) {
-  FetchApi(`/api/cities/${cityId}/arrondissements`)
+  FetchApi(`/cities/${cityId}/arrondissements`)
     .then(res => {
       data.arrondissements.elements = res
       data.cities.current = cityId
@@ -156,7 +156,7 @@ function get_arrondissemets(cityId, id = null) {
  * @param {number} cityId
  */
 function remove_city(cityId) {
-  FetchApi('/api/cities', 'DELETE', {cityId})
+  FetchApi('/cities', 'DELETE', {cityId})
     .then(res => {
       // store.commit('alert', res)
       if(res.type === 'success') {
@@ -172,7 +172,7 @@ function remove_city(cityId) {
  * @param {null|number} id
  */
 function get_cities(id = null) {
-  FetchApi('/api/cities')
+  FetchApi('/cities')
     .then(res => {
       data.cities.elements = res    
       if(res.length > 0) {
@@ -183,7 +183,7 @@ function get_cities(id = null) {
 }
 
 function add_city(name) {
-  FetchApi('/api/cities', 'POST', {name})
+  FetchApi('/cities', 'POST', {name})
     .then(res => {
       if(res.type) {
         // store.commit('alert', res)

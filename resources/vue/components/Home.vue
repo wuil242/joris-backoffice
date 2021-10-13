@@ -7,16 +7,16 @@
       </router-link>
       <nav>
         <ul>
-          <!-- <li><router-link to="/">Acceuil</router-link></li>
-          <li><router-link to="/admin">Page Admin</router-link></li>
-          <li><router-link to="/prestataire">Prestataire</router-link></li>
-          <li><router-link to="/location">Locations</router-link></li> -->
+          <!-- <li><router-link to="/">Acceuil</router-link></li> -->
+          <!-- <li><router-link to="/admin">Page Admin</router-link></li> -->
+          <li><router-link :to="{name: 'service_provider'}">Prestataire</router-link></li>
+          <li><router-link :to="{name: 'location'}">Locations</router-link></li>
         </ul>
       </nav>
     </header>
     <section class="home-main">
       <div>{{store.state}}</div>
-      <!-- <router-view></router-view> -->
+      <router-view></router-view>
     </section>
   </div>
 </template>
@@ -98,6 +98,10 @@ function logout() {
 
      &-main {
       padding: 1rem;
+    }
+
+    .router-link-active {
+      color: lightpink;
     }
   }
 </style>

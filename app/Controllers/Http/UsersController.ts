@@ -2,9 +2,11 @@ import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import {schema, rules} from '@ioc:Adonis/Core/Validator'
 import Database from '@ioc:Adonis/Lucid/Database'
 
+
 export default class UsersController {
   private TOKEN_TABLE = 'api_tokens'
 
+  //TODO: conexion sans regeneration de token
   async login({request, auth, response}:HttpContextContract) {
     try {
       const validation = await schema.create({

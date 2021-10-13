@@ -30,14 +30,14 @@ const data = reactive({
 })
 
 function get_cities() {
-  FetchApi('/api/cities')
+  FetchApi('/cities')
     .then(res => {
       data.cities = res
     })
 }
 
 function add_city() {
-  FetchApi('/api/cities', 'POST', {name: data.name})
+  FetchApi('/cities', 'POST', {name: data.name})
     .then(res => {
       data.res = res
       get_cities()
