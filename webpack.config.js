@@ -30,7 +30,7 @@ Encore.setOutputPath('./public/assets')
 | relative from the "public" directory.
 |
 */
-Encore.setPublicPath('/assets/backoffice')
+Encore.setPublicPath('/assets')
 
 /*
 |--------------------------------------------------------------------------

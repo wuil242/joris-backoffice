@@ -1,10 +1,12 @@
 <template>
   <div class="home">
     <header class="home-header">
-      <button @click="logout" class="button home-header-logout">Logout</button>
-      <router-link to="/">
-        <img src="#" alt="photo de profil" class="home-header-image">
-      </router-link>
+      <h1>Joris <br> Backoffice</h1>
+      <!-- <div class="home-header-profil"> -->
+        <router-link to="/" class="home-header-image">
+          <img src="../../images/default.jpeg" alt="photo de profil">
+        </router-link>
+      <!-- </div> -->
       <nav>
         <ul>
           <!-- <li><router-link to="/">Acceuil</router-link></li> -->
@@ -13,6 +15,7 @@
           <li><router-link :to="{name: 'location'}">Locations</router-link></li>
         </ul>
       </nav>
+      <button @click="logout" class="button home-header-logout">Logout</button>
     </header>
     <section class="home-main">
       <div>{{store.state}}</div>
@@ -51,24 +54,16 @@ function logout() {
       position: sticky;
       top: 0;
       left: 0;
-      background-color: #DDD;
-      display: flex;
-      flex-direction: column;
       height: 100vh;
-      resize: horizontal;
-      justify-content: flex-start;
-      align-items: center;
-      // padding: 1rem 0;
-      gap: 1rem;
-
-      &:last-child {
-        margin-bottom: 1rem;
-      }
+      display: grid;
+      grid-template-columns: 100%;
+      grid-template-rows: 15fr 25fr 50fr 10fr;
+      background-color: #DDD;
 
     }
 
     &-header-logout {
-      margin-top: 1rem;
+      // margin-top: 1rem;
       padding: .4em .7em;
       cursor: pointer;
       background-color: rgb(243, 39, 39);
@@ -76,6 +71,10 @@ function logout() {
       border: none;
       box-shadow: 0 0 1px 0 black;
       border-radius: 4px;
+
+      place-self: center;
+      // flex: none;
+      // grid: none;
 
       &:hover {
         background-color: rgb(151, 12, 12);
@@ -87,14 +86,23 @@ function logout() {
     }
 
     &-header-image {
-      width: 50%;
-      height: auto;
       background-color: gray;
-      object-fit: cover;
-      border-radius: 50%;
       display: block;
-      text-align: center;
-      margin: auto;
+      position: relative;
+      
+      img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        border-radius: 50%;
+        object-fit: cover;
+        text-align: center;
+        width: 80%;
+        height: 80%;
+        margin: auto;
+
+        transform: translate(-50%, -50%);
+      }
     }
 
      &-main {
