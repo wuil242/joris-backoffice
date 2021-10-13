@@ -9,10 +9,13 @@
       <!-- </div> -->
       <nav>
         <ul>
-          <!-- <li><router-link to="/">Acceuil</router-link></li> -->
-          <!-- <li><router-link to="/admin">Page Admin</router-link></li> -->
+          <li><router-link :to="{name: 'stat'}">Statistique</router-link></li>
+          <li><router-link :to="{name: 'admin'}">Administration</router-link></li>
           <li><router-link :to="{name: 'service_provider'}">Prestataire</router-link></li>
           <li><router-link :to="{name: 'location'}">Locations</router-link></li>
+          <li><router-link :to="{name: 'entreprise'}">Entreprise</router-link></li>
+          <li><router-link :to="{name: 'devis'}">Devis</router-link></li>
+          <li><router-link :to="{name: 'temoignage'}">Temoignage</router-link></li>
         </ul>
       </nav>
       <button @click="logout" class="button home-header-logout">Logout</button>
@@ -110,7 +113,7 @@ function logout() {
     }
 
     .router-link-active {
-      color: lightpink;
+      color: rgb(3, 138, 115);
     }
   }
 
