@@ -34,10 +34,10 @@ function deleteMAny(tab) {
  */
 function close(key) {
   if(typeof key === 'undefined' ) {
-    store.state.alerts = []
+    store.dispatch('alert_clean_all')
   }
   else if(typeof key === 'number') {
-    store.state.alerts = store.state.alerts.filter((v, k) => k !== key)
+    store.dispatch('alert_clean', key)
   }
 }
 

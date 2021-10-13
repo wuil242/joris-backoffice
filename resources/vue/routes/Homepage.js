@@ -18,7 +18,6 @@ const route = {
     path: '/',
     component: Home,
     beforeEnter(to, from) {
-      console.log(to)
       if(to.name === 'home') {
         return '/statistique'
       }
