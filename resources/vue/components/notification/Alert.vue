@@ -75,7 +75,7 @@ const emit = defineEmits(['close'])
       padding: .5em;
       border: none;
 
-      transform: translateX(50%);
+      transform: translateX(100%);
 
       &:hover {
         background-color: #F25;

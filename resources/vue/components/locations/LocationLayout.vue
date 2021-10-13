@@ -1,6 +1,6 @@
 <template>
   <div class="location-layout">
-    <slot/>
+    <!-- <slot/> -->
     <form @submit.prevent="$emit('add', data.name); data.name = ''" class="location-layout-form">
       <label for="name">{{label}}</label>
       <input type="text" v-model="data.name">
@@ -11,16 +11,19 @@
     <ul v-if="locations.elements.length > 0">
       <li v-for="location in locations.elements" 
         :key="location.id" 
-        :class="{active: locations.current === location.id}"
+        :class="{active: current === location.id}"
         @click.prevent="$emit('select', location.id)"
       >
+        <pre>
+          {{current + ' / ' + location.id}}
+        </pre>
         <a href="#" :title="location.name" >{{location.name}}</a>
         <button @click="$emit('delete', location.id)">Sup</button>
       </li>
     </ul>
-    <div v-else>
-      <!-- <slot name="empty-message"></slot> -->
-    </div>
+    <template>
+
+    </template>
   </div>
 </template>
 
@@ -32,7 +35,8 @@ defineProps({
   label: {type: String, required: true},
   submitMessage: {type: String, required: true},
   locations: {type: Object, required: true},
-  borderColor: {type: String, required: true}
+  borderColor: {type: String, required: true},
+  current: {type:Number, default: 0}
 })
 
 defineEmits(['add', 'select', 'delete'])
@@ -49,7 +53,7 @@ const data = reactive({
   .location-layout {
     border: 2px solid v-bind(borderColor);
     // padding: 1rem;
-    overflow: scroll;
+    overflow-y: scroll;
     height: 90vh;
     position: relative;
 

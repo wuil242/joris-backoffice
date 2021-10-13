@@ -1,14 +1,8 @@
 <template>
   <div class="loaction">
     <h1>Villes|Arrondissements|Quartiers</h1>
-   <keep-alive>
       <section class="location-section">
-      <cities 
-        :cities="data.cities" 
-        @add="add_city" 
-        @select="get_arrondissemets"
-        @delete="remove_city"
-      ></cities>
+      <cities @select="get_arrondissements" :current="data.currentCity"></cities>
 
       <arrondissements 
         :arrondissements="data.arrondissements"
@@ -24,7 +18,6 @@
       >
       </quaters>
     </section>
-   </keep-alive>
   </div>
   <!-- <nav>
     <ul>
@@ -53,10 +46,7 @@ import { useStore } from 'vuex';
 
 const data = reactive({
   route: 'city',
-  cities: {
-    current: 0,
-    elements: []
-  },
+  currentCity: 0,
   arrondissements: {
     current: 0,
     elements: []
@@ -68,10 +58,6 @@ const data = reactive({
 })
 
 const store = useStore()
-
-onMounted(() => {
-  get_cities()
-})
 
 /**
  * @param {string} name
@@ -111,7 +97,7 @@ function get_quaters(arrondissementId, id = null) {
  * @param {number} arrondissementId
  */
 function remove_arrondissement(arrondissementId) {
-  FetchApi(`/cities/${data.cities.current}/arrondissements`, 'DELETE', {arrondissementId})
+  FetchApi(`/cities/${data.currentCity}/arrondissements`, 'DELETE', {arrondissementId})
     .then(res => {
 
      if(res.type === 'success') {
@@ -140,69 +126,17 @@ function add_arrondissement(name) {
  * @param {number} cityId
  * @param {null|number} id
  */
-function get_arrondissemets(cityId, id = null) {
+function get_arrondissements(cityId, id = null) {
+  console.log(cityId)
   FetchApi(`/cities/${cityId}/arrondissements`)
     .then(res => {
       data.arrondissements.elements = res
-      data.cities.current = cityId
+      data.currentCity = cityId
        if(res.length > 0) {
          data.arrondissements.current = res[0].id
          get_quaters(id || data.arrondissements.current)
        }
     })
-}
-
-/**
- * @param {number} cityId
- */
-function remove_city(cityId) {
-  FetchApi('/cities', 'DELETE', {cityId})
-    .then(res => {
-      // store.commit('alert', res)
-      if(res.type === 'success') {
-        data.cities.elements = data.cities.elements.filter(city => city.id !== cityId)
-        if(data.cities.elements.length > 0) {
-          get_arrondissemets(data.cities.elements[0].id)
-        }
-      }
-    })
-}
-
-/**
- * @param {null|number} id
- */
-function get_cities(id = null) {
-  FetchApi('/cities')
-    .then(res => {
-      data.cities.elements = res    
-      if(res.length > 0) {
-        data.cities.current = res[0].id 
-        get_arrondissemets(id || res[0].id)
-      }
-    })
-}
-
-function add_city(name) {
-  FetchApi('/cities', 'POST', {name})
-    .then(res => {
-      if(res.type) {
-        // store.commit('alert', res)
-        return
-      }
-
-      // data.cities.elements.push(res)
-      // console.log(res)
-      get_cities(res.id)
-      // store.commit('alert', {type:'success', message: `la ville "${res.name}" a bien ete ajouter`})
-    })
-}
-
-
-/**
- * @param {string} route
- */
-function goto(route) {
-  data.route = route
 }
   
 </script>
