@@ -7,15 +7,13 @@
     @close-one="close"
     @close-all="close"
   ></alerts>
-  <home></home>
+  <router-view></router-view>
 </div>
 </template>
 
 <script setup>
 import { useStore } from 'vuex';
-import Login from './components/Login.vue'
-import Home from './components/Home.vue'
-import Alerts from './components/Alerts.vue'
+import Alerts from './components/notification/Alerts.vue'
 
 const store = useStore()
 
@@ -49,6 +47,10 @@ function close(key) {
   * {
     margin: 0;
     padding: 0;
+  }
+
+  .app {
+    background: linear-gradient(-30deg, red 25%, yellow, green 50%)
   }
 
   // .app {

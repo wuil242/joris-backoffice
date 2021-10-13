@@ -18,14 +18,18 @@ export default function (route, method = 'GET', body = null, alert = true, heade
     headers['Content-Type'] = 'application/json'
   }
 
-  return fetch(route, {
+  if(appStore.state.user) {
+    headers['Authorization'] = 'Bearer ' + appStore.state.user.token
+  }
+
+  return fetch('/api' + route, {
     method,
     body,
     headers
   }).then(r => r.json())
     .then(data => {
       if(data.type && alert) {
-        appStore.commit('alert', {
+        appStore.dispatch('alert', {
           type: data.type,
           message: data.message
         })

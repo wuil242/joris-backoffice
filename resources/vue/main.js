@@ -1,16 +1,18 @@
 import {createApp} from 'vue'
 import Router from './router'
-import App from './App.vue'
 import {appStore} from './store'
+import App from './App.vue'
 
 // const App = require('./App.vue')
 
 const app = createApp(App)
 
-// app.config.devtools = true
-app.use(Router)
 
 app.use(appStore)
+
+app.use(Router)
+
+
 
 app.mount('#app')
 

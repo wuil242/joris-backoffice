@@ -1,22 +1,22 @@
 <template>
   <div class="home">
     <header class="home-header">
-      <button v-if="!store.state.user" @click="logout" class="button home-header-logout">Logout</button>
-      <router-link to="/profil">
+      <button @click="logout" class="button home-header-logout">Logout</button>
+      <router-link to="/">
         <img src="#" alt="photo de profil" class="home-header-image">
       </router-link>
       <nav>
         <ul>
-          <li><router-link to="/">Acceuil</router-link></li>
+          <!-- <li><router-link to="/">Acceuil</router-link></li>
           <li><router-link to="/admin">Page Admin</router-link></li>
           <li><router-link to="/prestataire">Prestataire</router-link></li>
-          <li><router-link to="/location">Locations</router-link></li>
+          <li><router-link to="/location">Locations</router-link></li> -->
         </ul>
       </nav>
     </header>
     <section class="home-main">
       <div>{{store.state}}</div>
-      <router-view></router-view>
+      <!-- <router-view></router-view> -->
     </section>
   </div>
 </template>
@@ -29,13 +29,7 @@ import FetchApi from '../utils/FetchApi';
 const store = useStore()
 
 function logout() {
-  FetchApi('/api/users/logout', 'POST', {}).then(res => {
-      // store.commit('alert', {
-      //   type: res.type,
-      //   message: res.message
-      // })
-      store.commit('logout')
-  })
+  store.dispatch('logout')
 }
 
 </script>

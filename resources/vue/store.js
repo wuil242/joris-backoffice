@@ -1,4 +1,6 @@
 import { createStore } from 'vuex'
+import FetchApi from './utils/FetchApi'
+import Router from './router'
 
 // Create a new store instance.
 export const appStore = createStore({
@@ -9,21 +11,28 @@ export const appStore = createStore({
     }
   },
   mutations: {
-    login (state, user) {
+    LOGIN (state, user) {
       state.user = user
+      Router.push('/')
     },
 
-    logout(state) {
-      state.user = null
+    LOGOUT(state) {
+      FetchApi('/users/logout', 'POST')
+      .then(res => {
+        if(res.typeCode === 1) {
+          state.user = null
+          Router.push('/login')
+        }
+      })
     },
 
-    alert(state, newAlert) {
-      const alert = {
-        type: newAlert.type,
-        message: newAlert.message,
-      }
-
-      state.alerts.push(alert)
+    ALERT(state, {type, message}) {
+      state.alerts.push({type, message})
     }
+  },
+  actions: {
+    login({commit}, payload) { commit('LOGIN', payload) },
+    logout({commit}) { commit('LOGOUT') },
+    alert({commit}, payload) { commit('ALERT', payload) }
   }
 })

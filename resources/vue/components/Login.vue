@@ -1,86 +1,76 @@
 <template>
- 
-  <div>
-    {{ store.state }}
-  </div>
-  <h1>Login</h1>
-  <form @submit.prevent="login" >
-    <label for="email">Email</label>
-    <input type="email" name="email" v-model="data.email" :disabled="data.loading">
-    <span class="errors">{{data.errors.email}}</span>
-    <label for="password">Password</label>
-    <input type="password" name="password" v-model="data.password" :disabled="data.loading">
-    <span class="errors">{{data.errors.password}}</span>
-    
-    <input type="submit" value="login">
-  </form>
+ <h1>Login Page</h1>
+ <form-custom @submition="login" :fields="data.fields">
+  <input type="submit" value="LOGIN">
+ </form-custom>
 </template>
 
 <script setup>
-  import {reactive} from 'vue'
+  import {reactive, ref} from 'vue'
   import {useStore} from 'vuex'
   import FetchApi from '../utils/FetchApi';
+  import FormCustom from './FormCustom.vue'
+
+  const loading = ref(false)
+
+  const fields = {
+    email: {
+      label: 'email',
+      name: 'email',
+      type: 'email',
+      value: '' && 'admin@admin.com',
+      error: '',
+      disabled: loading
+    },
+    password: {
+      label: 'password',
+      name: 'password',
+      type: 'password',
+      value: '' && 'admin',
+      error: '',
+      disabled: loading
+    }
+  }
 
   const store = useStore()
 
   const data = reactive({
-    email: 'admin@admin.com', 
-    password: 'admin', 
-    errors:{email: '', password: ''},
-    loading: false,
+    fields,
   })
 
   function login() {
-    data.loading = true
-    for (const key in data.errors) {
-      data.errors[key] = ''
-    }
-    FetchApi('/api/users/login', 'POST', {
-      email: data.email,
-      password: data.password
-    }).then(res => {
-
-     if(res.errors) {
-       if(!res.errors[0].field) {
-        //  store.commit('alert', {
-        //    type: 'error',
-        //    message: res.errors[0].message
-        //  })
-         data.loading = false
-         return
-       }
-
-       res.errors.forEach(({field, message}) => {
-         data.errors[field] = message
-      })
-
-      data.loading = false
-      return
-     }
-
-     
-      store.commit('login', res.user)
-      // store.commit('alert', {
-      //   type: res.type,
-      //   message: res.message
-      // })
-     data.loading = false
-     
+    loading.value = true
+    
+    FetchApi('/users/login', 'POST', {
+      email: email.value,
+      password: password.value
     })
+      .then(res => {
+        if(res.typeCode === 1) {
+          store.dispatch('login', res.user)
+          loading.value = false
+        }
+        else if(res.typeCode === 0 && res.errors) {
+          res.errors.forEach(error => {
+            data.fields[error.field].error = error.message
+            loading.value = false
+          })
+        }
+        else {
+          loading.value = false
+        }
+
+      })
   }
 </script>
 
 
-<style lang="scss">
-  form {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-
-    .errors {
-      color: red;
-    }
-  }
+<style lang="scss" scoped>
+ input[type=submit] {
+   color: red;
+   padding: .3em .7em;
+   align-self: flex-start;
+ }
 
 
 </style>

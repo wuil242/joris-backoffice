@@ -80,7 +80,8 @@ function add_quater(name) {
   FetchApi(
     `/api/cities/${data.cities.current}/arrondissements/${data.arrondissements.current}/quaters`, 
     'POST',
-    {name}
+    {name},
+    false
   ).then(res => {
     if(res.quaters) {
       data.quaters.elements = res.quaters

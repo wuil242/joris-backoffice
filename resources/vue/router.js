@@ -1,40 +1,26 @@
 import {createRouter, createWebHashHistory} from 'vue-router'
-import Stat from './components/Stat.vue'
-import Login from './components/Login.vue'
-import ListAdmin from './components/ListAdmin.vue'
-import Profil from './components/Profil.vue'
-import ServiceProvider from './components/service_providers/ServiceProvider.vue'
-import Location from './components/locations/Location.vue'
+import { loginGuard, logoutGuard } from './middlewares/Auth'
+
+const Home = () => import('./components/Home.vue')
+const Login = () => import('./components/Login.vue')
+
 
 const routes = [
   {
     path: '/',
-    component: Stat
+    component: Home,
+    beforeEnter: loginGuard
   },
   {
     path: '/login',
-    component: Login
-  },
-  {
-    path: '/admin',
-    component: ListAdmin
-  },
-  {
-    path: '/profil',
-    component: Profil
-  },
-  {
-    path: '/prestataire',
-    component: ServiceProvider
-  },
-  {
-    path: '/location',
-    component: Location
-  },
-  
+    component: Login,
+    beforeEnter: logoutGuard
+  }
 ]
 
-export default createRouter({
+const router = createRouter({
   history: createWebHashHistory(),
   routes
 })
+
+export default router
