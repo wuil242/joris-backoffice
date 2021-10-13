@@ -16,6 +16,7 @@
     </header>
     <section class="home-main">
       <div>{{store.state}}</div>
+      <i class="fa fa-user"></i>
       <router-view></router-view>
     </section>
   </div>
@@ -44,7 +45,7 @@ function logout() {
   .home {
     display: grid;
     position: relative;
-    grid-template-columns: 10fr 90fr;
+    grid-template-columns: 180px 1fr;
 
     &-header {
       position: sticky;
@@ -104,4 +105,5 @@ function logout() {
       color: lightpink;
     }
   }
+
 </style>

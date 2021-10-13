@@ -8,5 +8,8 @@
   "assets/resources_vue_components_locations_Location_vue.css": "http://localhost:8080/assets/resources_vue_components_locations_Location_vue.css",
   "assets/resources_vue_components_locations_Location_vue.js": "http://localhost:8080/assets/resources_vue_components_locations_Location_vue.js",
   "assets/resources_vue_components_service_providers_ServiceProvider_vue.css": "http://localhost:8080/assets/resources_vue_components_service_providers_ServiceProvider_vue.css",
-  "assets/resources_vue_components_service_providers_ServiceProvider_vue.js": "http://localhost:8080/assets/resources_vue_components_service_providers_ServiceProvider_vue.js"
+  "assets/resources_vue_components_service_providers_ServiceProvider_vue.js": "http://localhost:8080/assets/resources_vue_components_service_providers_ServiceProvider_vue.js",
+  "assets/fonts/fa-solid-900.ttf": "http://localhost:8080/assets/fonts/fa-solid-900.be9ee23c.ttf",
+  "assets/fonts/fa-brands-400.ttf": "http://localhost:8080/assets/fonts/fa-brands-400.527940b1.ttf",
+  "assets/fonts/fa-regular-400.ttf": "http://localhost:8080/assets/fonts/fa-regular-400.491974d1.ttf"
 }

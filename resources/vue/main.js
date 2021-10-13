@@ -3,6 +3,8 @@ import Router from './router'
 import {appStore} from './store'
 import App from './App.vue'
 
+import '../scss/fonts/all.css'
+
 // const App = require('./App.vue')
 
 const app = createApp(App)
