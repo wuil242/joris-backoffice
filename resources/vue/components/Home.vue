@@ -13,10 +13,12 @@
             <i v-if="route.icon" :class="route.icon"></i>
             <router-link :to="{name: route.name}">{{route.text || format_route(route.path)}}</router-link>
             <ul v-if="route.children && route.children.length > 0">
-              <li v-for="subRoute in route.children">
-                <i v-if="subRoute.icon" :class="subRoute.icon"></i>
-                <router-link :to="{name: subRoute.name}">{{subRoute.text || format_route(subRoute.path)}}</router-link>
-              </li>
+              <template v-for="subRoute in route.children" >
+                <li v-if="subRoute.name !== ''">
+                  <i v-if="subRoute.icon" :class="subRoute.icon"></i>
+                  <router-link :to="{name: subRoute.name}">{{subRoute.text || format_route(subRoute.path)}}</router-link>
+                </li>
+              </template>
             </ul>
           </li>
         </ul>
@@ -43,8 +45,19 @@
 
 import { useStore } from 'vuex';
 import FetchApi from '../utils/FetchApi';
+import { onBeforeRouteUpdate } from 'vue-router';
 
 const store = useStore()
+
+
+onBeforeRouteUpdate((to, from, next) => {
+  if(to.name === 'home') {
+    next('/statistique')
+  }
+  else {
+    next()
+  }
+})
 
 function logout() {
   FetchApi('/users/logout', 'POST')
@@ -132,11 +145,12 @@ function format_route(path) {
     }
 
     .router-link-active {
-      color: rgb(102, 54, 8);
-    }
-
-    .router-link-exact-active {
+      // color: rgb(102, 54, 8);
       color: rgb(5, 177, 125);
+      
+    }
+    .router-link-exact-active {
+      color: rgb(177, 31, 5);
     }
 
     ul {
