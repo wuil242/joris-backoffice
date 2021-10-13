@@ -25,4 +25,6 @@ import 'App/routes/Locations'
 
 
 //SPA render
-Route.on('*').render('index')
+Route.on('/').render('index')
+Route.on('*').redirect('/')
+

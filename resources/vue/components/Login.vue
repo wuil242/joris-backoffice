@@ -1,12 +1,12 @@
 <template>
  <h1>Login Page</h1>
  <form-custom @submition="login" :fields="data.fields">
-  <input type="submit" value="LOGIN">
+  <input type="submit" value="LOGIN" :disabled="loading">
  </form-custom>
 </template>
 
 <script setup>
-  import {reactive, ref} from 'vue'
+  import {reactive, ref, onMounted} from 'vue'
   import {useStore} from 'vuex'
   import FetchApi from '../utils/FetchApi';
   import FormCustom from './FormCustom.vue'
@@ -18,7 +18,7 @@
       label: 'email',
       name: 'email',
       type: 'email',
-      value: '' && 'admin@admin.com',
+      value: 'admin@admin.com',
       error: '',
       disabled: loading
     },
@@ -26,7 +26,7 @@
       label: 'password',
       name: 'password',
       type: 'password',
-      value: '' && 'admin',
+      value: 'admin',
       error: '',
       disabled: loading
     }
@@ -36,6 +36,10 @@
 
   const data = reactive({
     fields,
+  })
+
+  onMounted(() => {
+    // login()
   })
 
   function login() {

@@ -29,7 +29,12 @@ import FetchApi from '../utils/FetchApi';
 const store = useStore()
 
 function logout() {
-  store.dispatch('logout')
+  FetchApi('/users/logout', 'POST')
+    .then(res => {
+      if(res.typeCode === 1) {
+        store.dispatch('logout')
+      }
+    })
 }
 
 </script>

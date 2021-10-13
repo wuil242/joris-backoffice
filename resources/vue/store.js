@@ -17,13 +17,8 @@ export const appStore = createStore({
     },
 
     LOGOUT(state) {
-      FetchApi('/users/logout', 'POST')
-      .then(res => {
-        if(res.typeCode === 1) {
-          state.user = null
-          Router.push('/login')
-        }
-      })
+      state.user = null
+      Router.push('/login')
     },
 
     ALERT(state, {type, message}) {
