@@ -39,6 +39,6 @@ function delete_user(id) {
   
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   
 </style>

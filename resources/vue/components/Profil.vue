@@ -15,6 +15,6 @@ import { useStore } from 'vuex';
 const store = useStore()
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   
 </style>

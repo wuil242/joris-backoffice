@@ -7,7 +7,8 @@ const HomeLocation = () => import('../components/locations/Location.vue')
 const HomeServiceProvider = () => import('../components/service_providers/ServiceProvider')
 const HomeAdmin = () => import('../components/Admin.vue')
 const HomeDevis = () => import('../components/Devis.vue')
-const HomeEntreprise = () => import('../components/Entreprise.vue')
+const HomeEntreprise = () => import('../components/entreprise/Entreprise.vue')
+const HomeEntrepriseMessage = () => import('../components/entreprise/Message.vue')
 const HomeTemoignage = () => import('../components/Temoignage.vue')
 
 
@@ -40,7 +41,14 @@ const route = {
       {
         name: 'entreprise',
         path: '/entreprise',
-        component: HomeEntreprise
+        component: HomeEntreprise,
+        children: [
+          {
+            name: 'entreprise-message',
+            path: '/entreprise/messages',
+            component: HomeEntrepriseMessage
+          }
+        ]
       },
       {
         name: 'devis',

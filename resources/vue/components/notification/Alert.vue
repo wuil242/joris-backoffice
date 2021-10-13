@@ -36,7 +36,7 @@ const emit = defineEmits(['close'])
 
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
   .alert {
     position: relative;

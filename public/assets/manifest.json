@@ -18,5 +18,7 @@
   "assets/resources_vue_components_Admin_vue.js": "http://localhost:8080/assets/resources_vue_components_Admin_vue.js",
   "assets/resources_vue_components_Devis_vue.js": "http://localhost:8080/assets/resources_vue_components_Devis_vue.js",
   "assets/resources_vue_components_Entreprise_vue.js": "http://localhost:8080/assets/resources_vue_components_Entreprise_vue.js",
-  "assets/resources_vue_components_Temoignage_vue.js": "http://localhost:8080/assets/resources_vue_components_Temoignage_vue.js"
+  "assets/resources_vue_components_Temoignage_vue.js": "http://localhost:8080/assets/resources_vue_components_Temoignage_vue.js",
+  "assets/resources_vue_components_entreprise_Entreprise_vue.js": "http://localhost:8080/assets/resources_vue_components_entreprise_Entreprise_vue.js",
+  "assets/resources_vue_components_entreprise_Message_vue.js": "http://localhost:8080/assets/resources_vue_components_entreprise_Message_vue.js"
 }

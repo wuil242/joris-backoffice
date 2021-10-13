@@ -36,6 +36,6 @@ function sign_up() {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   
 </style>

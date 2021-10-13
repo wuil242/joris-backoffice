@@ -9,6 +9,16 @@
       <!-- </div> -->
       <nav>
         <ul>
+          <li v-for="route in $route.matched[0].children">
+            <router-link :to="{name: route.name}">{{format_route(route.path)}}</router-link>
+            <ul v-if="route.children && route.children.length > 0">
+              <li v-for="subRoute in route.children">
+                <router-link :to="{name: subRoute.name}">{{format_route(subRoute.path)}}</router-link>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <!-- <ul>
           <li><router-link :to="{name: 'stat'}">Statistique</router-link></li>
           <li><router-link :to="{name: 'admin'}">Administration</router-link></li>
           <li><router-link :to="{name: 'service_provider'}">Prestataire</router-link></li>
@@ -16,13 +26,12 @@
           <li><router-link :to="{name: 'entreprise'}">Entreprise</router-link></li>
           <li><router-link :to="{name: 'devis'}">Devis</router-link></li>
           <li><router-link :to="{name: 'temoignage'}">Temoignage</router-link></li>
-        </ul>
+        </ul> -->
       </nav>
       <button @click="logout" class="button home-header-logout">Logout</button>
     </header>
     <section class="home-main">
-      <div>{{store.state}}</div>
-      <i class="fa fa-user"></i>
+      <pre>{{store.state}}</pre>
       <router-view></router-view>
     </section>
   </div>
@@ -42,6 +51,14 @@ function logout() {
         store.dispatch('logout')
       }
     })
+}
+
+/**
+ * @param {string} path
+ */
+function format_route(path) {
+  const fristLetter = path.replace('/', '')[0]
+  return path.replace('/' + fristLetter, fristLetter.toUpperCase())
 }
 
 </script>
@@ -113,7 +130,16 @@ function logout() {
     }
 
     .router-link-active {
-      color: rgb(3, 138, 115);
+      color: rgb(102, 54, 8);
+    }
+
+    .router-link-exact-active {
+      color: rgb(5, 177, 125);
+    }
+
+    ul {
+      list-style-type: disc;
+      margin-left: 20px;
     }
   }
 

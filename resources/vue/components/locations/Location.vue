@@ -207,7 +207,7 @@ function goto(route) {
   
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .location {
 
     &-section {
