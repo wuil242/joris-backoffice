@@ -10,10 +10,12 @@
       <nav>
         <ul>
           <li v-for="route in $route.matched[0].children">
-            <router-link :to="{name: route.name}">{{format_route(route.path)}}</router-link>
+            <i v-if="route.icon" :class="route.icon"></i>
+            <router-link :to="{name: route.name}">{{route.text || format_route(route.path)}}</router-link>
             <ul v-if="route.children && route.children.length > 0">
               <li v-for="subRoute in route.children">
-                <router-link :to="{name: subRoute.name}">{{format_route(subRoute.path)}}</router-link>
+                <i v-if="subRoute.icon" :class="subRoute.icon"></i>
+                <router-link :to="{name: subRoute.name}">{{subRoute.text || format_route(subRoute.path)}}</router-link>
               </li>
             </ul>
           </li>
