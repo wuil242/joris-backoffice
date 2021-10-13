@@ -14,9 +14,6 @@
         :class="{active: current === location.id}"
         @click.prevent="$emit('select', location.id)"
       >
-        <pre>
-          {{current + ' / ' + location.id}}
-        </pre>
         <a href="#" :title="location.name" >{{location.name}}</a>
         <button @click="$emit('delete', location.id)">Sup</button>
       </li>

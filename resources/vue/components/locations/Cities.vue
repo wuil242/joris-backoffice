@@ -69,7 +69,7 @@ function get_cities(id = null) {
     .then(res => {
       data.cities.elements = res    
       if(res.length > 0) {
-        data.current = res[0].id 
+        // $props.current = res[0].id 
         // get_arrondissemets(id || res[0].id)
         $emit('select', id || res[0].id)
       }

@@ -2,21 +2,20 @@
   <div class="loaction">
     <h1>Villes|Arrondissements|Quartiers</h1>
       <section class="location-section">
-      <cities @select="get_arrondissements" :current="data.currentCity"></cities>
+      <cities @select="data.currentCity = $event" :current="data.currentCity"></cities>
 
-      <arrondissements 
-        :arrondissements="data.arrondissements"
-        @add="add_arrondissement" 
-        @select="get_quaters"
-        @delete="remove_arrondissement"
+      <arrondissements
+        :current="data.currentArrondissement"
+        :cityId="data.currentCity"
+        @select="data.currentArrondissement = $event"
       ></arrondissements>
       
-      <quaters
+      <!-- <quaters
         :quaters="data.quaters"
         @add="add_quater"
         @select="data.quaters.current = $event"
       >
-      </quaters>
+      </quaters> -->
     </section>
   </div>
   <!-- <nav>
@@ -47,6 +46,7 @@ import { useStore } from 'vuex';
 const data = reactive({
   route: 'city',
   currentCity: 0,
+  currentArrondissement: 0,
   arrondissements: {
     current: 0,
     elements: []
@@ -82,10 +82,11 @@ function add_quater(name) {
  * @param {null|number} id
  */
 function get_quaters(arrondissementId, id = null) {
-   FetchApi(`/cities/${data.cities.current}/arrondissements/${arrondissementId}/quaters`)
+    console.log(arrondissementId)
+   FetchApi(`/cities/${data.currentCity}/arrondissements/${arrondissementId}/quaters`)
     .then(res => {
       data.quaters.elements = res
-      data.arrondissements.current = arrondissementId
+      data.currentArrondissement = arrondissementId
        if(res.length > 0) {
          data.quaters.current = id || res[0].id
        }
@@ -93,50 +94,23 @@ function get_quaters(arrondissementId, id = null) {
 }
 
 
-/**
- * @param {number} arrondissementId
- */
-function remove_arrondissement(arrondissementId) {
-  FetchApi(`/cities/${data.currentCity}/arrondissements`, 'DELETE', {arrondissementId})
-    .then(res => {
-
-     if(res.type === 'success') {
-        data.arrondissements.elements = data.arrondissements.elements.filter(arr => arr.id !== arrondissementId)
-        if(data.arrondissements.elements.length > 0) {
-          get_quaters(data.arrondissements.elements[0].id)
-        }
-      }
-    })
-}
-
-/**
- * @param {string} name
- */
-function add_arrondissement(name) {
-  FetchApi(`/cities/${data.cities.current}/arrondissements`, 'POST', {name})
-    .then(res => {
-      data.arrondissements.elements = res
-      data.arrondissements.current = res.id
-      get_arrondissemets(data.cities.current, res.id)
-      get_quaters(res.id)
-    })
-}
 
 /**
  * @param {number} cityId
  * @param {null|number} id
  */
 function get_arrondissements(cityId, id = null) {
-  console.log(cityId)
-  FetchApi(`/cities/${cityId}/arrondissements`)
-    .then(res => {
-      data.arrondissements.elements = res
-      data.currentCity = cityId
-       if(res.length > 0) {
-         data.arrondissements.current = res[0].id
-         get_quaters(id || data.arrondissements.current)
-       }
-    })
+  
+  console.log(data.currentCity)
+  // FetchApi(`/cities/${cityId}/arrondissements`)
+  //   .then(res => {
+  //     data.arrondissements.elements = res
+  //     data.currentCity = cityId
+  //      if(res.length > 0) {
+  //        data.arrondissements.current = res[0].id
+  //        get_quaters(id || data.arrondissements.current)
+  //      }
+  //   })
 }
   
 </script>
