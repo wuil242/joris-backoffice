@@ -104,11 +104,12 @@ Route.group(() => {
   Route.get('/:cityId/arrondissements/:arrondissementId/quaters', async ({params}) => {
    try {
     const city = await City.query().where('id', params.cityId).preload('arrondissents', q => {
-      q.where('id', params.arrondissementId)
+      q.where('id', params.arrondissementId).preload('quaters', q => {
+        q.orderBy('name', 'asc')
+      })
     })
 
-    const quaters = await city[0]?.arrondissents[0]?.related('quaters').query()
-      .orderBy('name', 'asc')
+    const quaters = city[0]?.arrondissents[0]?.quaters
 
     if(quaters.length > 0) {
       return quaters

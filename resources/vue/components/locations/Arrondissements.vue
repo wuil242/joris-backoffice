@@ -94,7 +94,7 @@ function get_arrondissements(cityId, id = null) {
         $emit('select', id || res[0].id)
        }
        else {
-          $emit('select', 0)         
+          $emit('select', $props.current)         
        }
     })
 }
