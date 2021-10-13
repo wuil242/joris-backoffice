@@ -71,11 +71,11 @@ function remove_arrondissement(arrondissementId) {
 function add_arrondissement(name) {
   FetchApi(`/cities/${data.lastCity}/arrondissements`, 'POST', {name})
     .then(res => {
-      data.arrondissements.elements = res
+      // data.arrondissements.elements = res
       // $props.current = res.id
-      // get_arrondissements($props.cityId, res.id)
       // get_quaters(res.id)
-      $emit('select', res.id)
+      get_arrondissements(data.lastCity, res.id)
+      // $emit('select', res.id)
     })
 }
 
@@ -91,7 +91,10 @@ function get_arrondissements(cityId, id = null) {
        if(res.length > 0) {
         //  $props.current = res[0].id
         //  get_quaters(id || $props.current)
-        $emit('select', res[0].id)
+        $emit('select', id || res[0].id)
+       }
+       else {
+          $emit('select', 0)         
        }
     })
 }

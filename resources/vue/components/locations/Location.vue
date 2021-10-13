@@ -40,7 +40,6 @@ import Arrondissements from './Arrondissements.vue'
 import Quaters from './Quaters.vue'
 
 const data = reactive({
-  route: 'city',
   currentCity: 0,
   currentArrondissement: 0
 })
