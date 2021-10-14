@@ -77,10 +77,11 @@ function get_cities(id = null) {
 }
 
 function add_city(name) {
+  data.errors = []
   FetchApi('/cities', 'POST', {name})
     .then(res => {
-      if(res.type) {
-        // store.commit('alert', res)
+      if(!res.type && res.typeCode === 0) {
+        data.errors = res.errors
         return
       }
 
@@ -88,7 +89,7 @@ function add_city(name) {
       // console.log(res)
       get_cities(res.id)
       // store.commit('alert', {type:'success', message: `la ville "${res.name}" a bien ete ajouter`})
-    })
+    }).catch(err => console.log(err)) 
 }
   
 </script>

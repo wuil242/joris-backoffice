@@ -4,7 +4,9 @@
     <form @submit.prevent="$emit('add', data.name); data.name = ''" class="location-layout-form">
       <label for="name">{{label}}</label>
       <input type="text" v-model="data.name">
-
+       <template v-for="error in errors">
+          <p style="color: red;">{{error.message}}</p>
+      </template>
       <input type="submit" :value="submitMessage">
     </form>
     <!-- <slot name="location-title"></slot> -->
@@ -18,9 +20,6 @@
         <button @click="$emit('delete', location.id)">Sup</button>
       </li>
     </ul>
-    <template>
-
-    </template>
   </div>
 </template>
 
@@ -33,7 +32,8 @@ defineProps({
   submitMessage: {type: String, required: true},
   locations: {type: Object, required: true},
   borderColor: {type: String, required: true},
-  current: {type:Number, default: 0}
+  current: {type:Number, default: 0},
+  errors: {type: Array, default: []}
 })
 
 defineEmits(['add', 'select', 'delete'])

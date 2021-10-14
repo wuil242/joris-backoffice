@@ -13,14 +13,11 @@
   "assets/resources_vue_components_Admin_vue.js": "http://localhost:8080/assets/resources_vue_components_Admin_vue.js",
   "assets/resources_vue_components_Devis_vue.js": "http://localhost:8080/assets/resources_vue_components_Devis_vue.js",
   "assets/resources_vue_components_entreprise_Entreprise_vue.js": "http://localhost:8080/assets/resources_vue_components_entreprise_Entreprise_vue.js",
-  "assets/resources_vue_components_entreprise_List_vue.js": "http://localhost:8080/assets/resources_vue_components_entreprise_List_vue.js",
-  "assets/resources_vue_components_entreprise_Message_vue.js": "http://localhost:8080/assets/resources_vue_components_entreprise_Message_vue.js",
+  "assets/resources_vue_components_entreprise_EntrepriseList_vue.js": "http://localhost:8080/assets/resources_vue_components_entreprise_EntrepriseList_vue.js",
+  "assets/resources_vue_components_entreprise_EntrepriseMessage_vue.js": "http://localhost:8080/assets/resources_vue_components_entreprise_EntrepriseMessage_vue.js",
   "assets/resources_vue_components_Temoignage_vue.js": "http://localhost:8080/assets/resources_vue_components_Temoignage_vue.js",
   "assets/fonts/fa-solid-900.ttf": "http://localhost:8080/assets/fonts/fa-solid-900.be9ee23c.ttf",
   "assets/fonts/fa-brands-400.ttf": "http://localhost:8080/assets/fonts/fa-brands-400.527940b1.ttf",
   "assets/images/default.jpeg": "http://localhost:8080/assets/images/default.01ac1981.jpeg",
-  "assets/fonts/fa-regular-400.ttf": "http://localhost:8080/assets/fonts/fa-regular-400.491974d1.ttf",
-  "assets/resources_vue_components_entreprise_EntrepriseList_vue.js": "http://localhost:8080/assets/resources_vue_components_entreprise_EntrepriseList_vue.js",
-  "assets/resources_vue_components_entreprise_EntrepriseMessage_vue.js": "http://localhost:8080/assets/resources_vue_components_entreprise_EntrepriseMessage_vue.js",
-  "assets/images/default.01ac1981.jpeg": "http://localhost:8080/assets/images/default.01ac1981.jpeg"
+  "assets/fonts/fa-regular-400.ttf": "http://localhost:8080/assets/fonts/fa-regular-400.491974d1.ttf"
 }
