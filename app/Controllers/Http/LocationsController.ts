@@ -6,7 +6,7 @@ import Quater from 'App/Models/Quater'
 
 
 export default class LocationsController {
-  private LIMIT = 20
+  private LIMIT = 15
   private VALIDATION = {
     NAME: schema.create({
       name: schema.string({ trim: true}, 
