@@ -9,6 +9,16 @@
       </template>
       <input type="submit" :value="submitMessage">
     </form>
+    <div v-if="locations.pagination ? locations.pagination.length > 1 : false">
+      <template v-for="pagination in locations.pagination" :key="pagination.page">
+          <button 
+            :href="pagination.url" 
+            :class="{active:pagination.isActive}"
+            @click.prevent=" pagination.isActive || $emit('pageChange', pagination.page)"
+          >
+          {{pagination.page}}</button>
+      </template>
+    </div>
     <!-- <slot name="location-title"></slot> -->
     <ul v-if="locations.elements.length > 0">
       <li v-for="location in locations.elements" 
@@ -20,16 +30,6 @@
         <button @click="$emit('delete', location.id)">Sup</button>
       </li>
     </ul>
-    <div v-if="locations.pagination ? locations.pagination.length > 1 : false">
-      <template v-for="pagination in locations.pagination" :key="pagination.page">
-          <button 
-            :href="pagination.url" 
-            :class="{active:pagination.isActive}"
-            @click.prevent=" pagination.isActive || $emit('pageChange', pagination.page)"
-          >
-          {{pagination.page}}</button>
-      </template>
-    </div>
   </div>
 </template>
 
@@ -64,7 +64,6 @@ button {
   .location-layout {
     border: 2px solid v-bind(borderColor);
     // padding: 1rem;
-    overflow-y: scroll;
     height: 90vh;
     position: relative;
 
