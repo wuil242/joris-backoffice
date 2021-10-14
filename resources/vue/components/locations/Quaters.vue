@@ -6,6 +6,7 @@
       :locations="data.quaters"
       :current="data.currentQuater"
       border-color="gold"
+      @page-change="goto"
       @add="add_quater"
       @select="data.currentQuater = $event"
       @delete="remove_quater"
@@ -30,11 +31,12 @@ const $props = defineProps({
 })
 
 
-const $emit = defineEmits(['add', 'select', 'delete'])
+defineEmits(['add', 'select', 'delete'])
 
 const data = reactive({
   quaters: {
     elements: [],
+    pagination: []
   },
   errors: [],
   lastCity: 0,
@@ -44,24 +46,49 @@ const data = reactive({
 
 onUpdated(() => {
   if(data.lastArrondissement !== $props.arrondissementId) {
-    if($props.arrondissementId === 0) {
-      data.quaters.elements = []
-      data.lastArrondissement = 0
-      return
-    }
-
     console.log($props.arrondissementId, $props.cityId)
     data.lastArrondissement = $props.arrondissementId
     data.lastCity = $props.cityId
-    get_quaters(data.lastArrondissement)
+    get_quaters(data.lastCity, data.lastArrondissement)
   }
 })
+
+
+//TODO: aller vers la bonne page apres une seupression ou un ajout
+/**
+ * @param {number} limit
+ * @param {{elements:any[], pagination:any[]}} options
+ * @param {boolean} invert
+ * @returns {number}
+ */
+function goto_current_page(limit, {elements, pagination}, invert=false) {
+   const lastPage = pagination[pagination.length - 1]
+   const currentPage = pagination.filter(p => p.isActive)[0]
+   const page  = elements.length === limit ? lastPage.page + 1 : currentPage.page
+
+  goto(page === lastPage ? page : page - 1)
+}
+
+/**
+ * @param {number} page
+ */
+function goto(page) {
+  get_quaters(data.lastCity, data.lastArrondissement, null, page)
+}
 
 /**
  * @param {string} id
  */
 function remove_quater(id) {
-  console.log('REMOVE QUATER [%d]', id)
+  FetchApi(
+    `/cities/${data.lastCity}/arrondissements/${data.lastArrondissement}/quaters`, 
+    'DELETE',
+    {id}
+  ).then(res => {
+    if(res.typeCode === 1) {
+      goto_current_page(res.limit, data.quaters)
+    }
+  })
 }
 
 
@@ -75,24 +102,26 @@ function add_quater(name) {
     {name},
     false
   ).then(res => {
-    if(res.quaters) {
-      data.quaters.elements = res.quaters
-      data.currentQuater = res.quaters[0].id
-      // get_quaters(data.lastArrondissement, data.currentQuater)
+    if(res.quater) {
+      data.currentQuater = res.quater.id
+      goto_current_page(res.limit, data.quaters)
     }
   })
 }
 
 /**
+ * @param {number} cityId
  * @param {number} arrondissementId
  * @param {null|number} id
  */
-function get_quaters(arrondissementId, id = null) {
-   FetchApi(`/cities/${data.lastCity}/arrondissements/${arrondissementId}/quaters`)
+function get_quaters(cityId, arrondissementId, id = null, page=null) {
+   FetchApi(`/cities/${cityId}/arrondissements/${arrondissementId}/quaters`,
+   'GET', null, page ? {page} : page)
     .then(res => {
-      data.quaters.elements = res
-       if(res.length > 0) {
-         data.currentQuater = id || res[0].id
+      data.quaters.elements = res.quaters || []
+      data.quaters.pagination = res.pagination || []
+       if(data.quaters.elements.length > 0) {
+         data.currentQuater = id || res.quaters[0].id
        }
     })
 }
