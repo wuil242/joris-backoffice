@@ -10,7 +10,7 @@ import { csrf, appStore } from "../main"
  * 
  * @returns {Promise<any>}
  */
-export default function (route, method = 'GET', body = null, alert = true, headers = {}) {
+export default function (route, method = 'GET', body = null, query = null, alert = true, headers = {}) {
   headers['X-XSRF-TOKEN'] = csrf
   
   if(body) {
@@ -18,11 +18,20 @@ export default function (route, method = 'GET', body = null, alert = true, heade
     headers['Content-Type'] = 'application/json'
   }
 
+  if(query) {
+    const qs = new  URLSearchParams()
+    for (const key in query) {
+      qs.append(key, query[key])
+    }
+
+    query = '?' + qs.toString()
+  }
+
   if(appStore.state.user) {
     headers['Authorization'] = 'Bearer ' + appStore.state.user.token
   }
 
-  return fetch('/api' + route, {
+  return fetch('/api' + route + (query || ''), {
     method,
     body,
     headers
