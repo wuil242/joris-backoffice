@@ -13,58 +13,15 @@ Route.group(() => {
   
   Route.delete('/', 'LocationsController.destroyCity')
 
-  Route.get('/:id/arrondissements', async ({params}) => {
-    const city = await City.findOrFail(params.id)
-    return await city.related('arrondissents').query().orderBy('name', 'asc')
-  }).where('id', Route.matchers.number())
+  Route.get('/:id/arrondissements', 'LocationsController.getArrondissements')
+    .where('id', Route.matchers.number())
 
-  Route.post('/:id/arrondissements', async ({params, request}) => {
-    const validation = schema.create({
-      name: schema.string({ trim: true })
-    })
-
-    
-    const payload = await request.validate({schema: validation})
-    const arrYet  = await Arrondissement.query().where('city_id', params.id).where('name', payload.name)
-
-    if(arrYet.length > 0 && arrYet[0]?.name === payload.name) {
-      return {
-        type: 'error',
-        message: 'Cet arrondissement existe deja'
-      }
-    } 
-    
-    const city = await City.findOrFail(params.id)
-    return await city.related('arrondissents').create(payload)
-  }).where('id', Route.matchers.number())
+  Route.post('/:id/arrondissements', 'LocationsController.storeArrondissement')
+    .where('id', Route.matchers.number())
 
 
-  Route.delete('/:cityId/arrondissements', async ({params, request}) => {
-    const validation = schema.create({
-      arrondissementId: schema.number()
-    })
-    
-    const payload = await request.validate({schema: validation})
-    
-    const city = await City.query().where('id', params.cityId)
-      .preload('arrondissents', q => q.where('id', payload.arrondissementId))
-
-      
-      const arr = city[0]?.arrondissents[0]
-      if(!arr) {
-        return {
-          type: 'error',
-          message: `Aucun Arrondissement correspend a cette enregistrement`
-        }
-      }
-      
-    await arr?.delete()
-
-    return {
-      type: 'success',
-      message: `l'arrodissement ${arr.name} a bien ete suprimer`
-    }
-  }).where('cityId', Route.matchers.number())
+  Route.delete('/:cityId/arrondissements', 'LocationsController.destroyArrondissement')
+    .where('cityId', Route.matchers.number())
 
   Route.get('/:cityId/arrondissements/:arrondissementId/quaters', async ({params}) => {
    try {

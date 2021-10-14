@@ -20,6 +20,16 @@
         <button @click="$emit('delete', location.id)">Sup</button>
       </li>
     </ul>
+    <div v-if="locations.pagination ? locations.pagination.length > 1 : false">
+      <template v-for="pagination in locations.pagination" :key="pagination.page">
+          <button 
+            :href="pagination.url" 
+            :class="{active:pagination.isActive}"
+            @click.prevent=" pagination.isActive || $emit('pageChange', pagination.page)"
+          >
+          {{pagination.page}}</button>
+      </template>
+    </div>
   </div>
 </template>
 
@@ -36,7 +46,7 @@ defineProps({
   errors: {type: Array, default: []}
 })
 
-defineEmits(['add', 'select', 'delete'])
+defineEmits(['add', 'select', 'delete', 'pageChange'])
 
 
 const data = reactive({
@@ -47,6 +57,10 @@ const data = reactive({
 </script>
 
 <style lang="scss" scoped>
+
+button {
+  padding: .25rem;
+}
   .location-layout {
     border: 2px solid v-bind(borderColor);
     // padding: 1rem;

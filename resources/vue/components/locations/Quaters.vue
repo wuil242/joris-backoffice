@@ -44,6 +44,12 @@ const data = reactive({
 
 onUpdated(() => {
   if(data.lastArrondissement !== $props.arrondissementId) {
+    if($props.arrondissementId === 0) {
+      data.quaters.elements = []
+      data.lastArrondissement = 0
+      return
+    }
+
     console.log($props.arrondissementId, $props.cityId)
     data.lastArrondissement = $props.arrondissementId
     data.lastCity = $props.cityId
