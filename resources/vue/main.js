@@ -9,12 +9,9 @@ import '../scss/fonts/all.css'
 
 const app = createApp(App)
 
-
 app.use(appStore)
 
 app.use(Router)
-
-
 
 app.mount('#app')
 

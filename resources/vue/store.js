@@ -5,7 +5,8 @@ import Router from './router'
 const state = () => {
   return {
     user: null,
-    alerts: []
+    alerts: [],
+    mode: 'dark'
   }
 }
 
@@ -32,6 +33,10 @@ const mutations = {
 
   ALERT_CLEAN(state, key) {
     state.alerts = state.alerts.filter((v, k) => k !== key)
+  },
+
+  TOGGLE_MODE(state) {
+    state.mode = state.mode === 'dark' ? '' : 'dark'
   }
 }
 
@@ -57,7 +62,9 @@ const actions = {
    * 
    * @param {number} key 
    */
-   alert_clean({commit}, key) { commit('ALERT_CLEAN', key)}
+   alert_clean({commit}, key) { commit('ALERT_CLEAN', key)},
+
+   toggle({commit}) { commit('TOGGLE_MODE') }
 }
 
 // Create a new store instance.

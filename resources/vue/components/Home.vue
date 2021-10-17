@@ -1,9 +1,13 @@
 <template>
-  <div class="home">
+  <div class="home" :class="{dark: store.state.mode !== ''}">
     <header class="home-header">
+      <h1 class="home-header-title">Page<span>Name</span></h1>
+      <button @click="store.dispatch('toggle')">Dark Mode <i :class="store.state.mode === '' ? 'fa' : 'far' " class="fa-moon"></i></button>
+    </header>
+    <aside class="home-sidebar">
       <h1>Joris <br> Backoffice</h1>
-      <!-- <div class="home-header-profil"> -->
-        <router-link to="/" class="home-header-image">
+      <!-- <div class="home-sidebar-profil"> -->
+        <router-link to="/" class="home-sidebar-image">
           <img src="../../images/default.jpeg" alt="photo de profil">
         </router-link>
       <!-- </div> -->
@@ -32,8 +36,8 @@
           <li><router-link :to="{name: 'temoignage'}">Temoignage</router-link></li>
         </ul> -->
       </nav>
-      <button @click="logout" class="button home-header-logout">Logout</button>
-    </header>
+      <button @click="logout" class="button home-sidebar-logout">Logout</button>
+    </aside>
     <section class="home-main">
       <pre>{{store.state}}</pre>
       <router-view></router-view>
@@ -80,12 +84,41 @@ function format_route(path) {
 
 
 <style lang="scss" scoped>
+
+  .home {
+    --home-bg-color: white;
+    --home-text-color: black;
+
+    --sidebar-bg-color: grey;
+
+    transition: background-color .3s;
+
+  }
+
+  .dark {
+    --home-bg-color: grey;
+    --home-text-color: white!important;
+
+
+    --sidebar-bg-color: white;
+  }
+
   .home {
     display: grid;
     position: relative;
     grid-template-columns: 180px 1fr;
+    grid-template-rows: 10vh auto;
+    grid-template-areas: "sidebar header"
+                         "sidebar main";
+
+    background-color: var(--home-bg-color);
+    color: var(--home-text-color)
 
     &-header {
+      grid-area: header;
+    }
+
+    &-sidebar {
       position: sticky;
       top: 0;
       left: 0;
@@ -93,11 +126,12 @@ function format_route(path) {
       display: grid;
       grid-template-columns: 100%;
       grid-template-rows: 15fr 25fr 50fr 10fr;
-      background-color: #DDD;
+      grid-area: sidebar;
 
+      background-color: var(--sidebar-bg-color);
     }
 
-    &-header-logout {
+    &-sidebar-logout {
       // margin-top: 1rem;
       padding: .4em .7em;
       cursor: pointer;
@@ -120,7 +154,7 @@ function format_route(path) {
       }
     }
 
-    &-header-image {
+    &-sidebar-image {
       background-color: gray;
       display: block;
       position: relative;
@@ -142,6 +176,8 @@ function format_route(path) {
 
      &-main {
       padding: 1rem;
+      grid-area: main;
+      color: var(--home-text-color);
     }
 
     .router-link-active {
