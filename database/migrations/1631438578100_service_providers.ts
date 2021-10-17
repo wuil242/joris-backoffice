@@ -12,7 +12,7 @@ export default class ServiceProviders extends BaseSchema {
       table.string('tel', 14).unique().notNullable()
       table.string('secure_tel', 14).unique().notNullable()
       table.string('email', 255).unique().notNullable()
-      table.string('photo', 255).defaultTo('/assets/avatar_service_provider.png').notNullable()
+      table.string('photo', 255).defaultTo('/uploads/service_provider/avatar_service_provider.png').notNullable()
       table.string('description', 255).notNullable()
       table.integer('score').unsigned().defaultTo(10).notNullable()
       table.enum('sexe', ['m', 'f']).notNullable()
