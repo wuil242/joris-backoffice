@@ -2,11 +2,17 @@
   <div class="service-provider">
     <h1>Prestaire de service</h1>
     <div class="content">
-      <my-table :headers="headers" :elements="data.sp" :search-keys="['name']"></my-table>
+      <table-custom>
+        <table-head :headers="['Nom']"></table-head>
+        <table-body :elements="data.sp"></table-body>
+      </table-custom>
       <div>
-        {{form.name}}
-        <form-custom>
+        {{form}}
+        <form-custom @submit="add_sp">
           <input-custom placeholder="name" @keyup="form.name = $event"></input-custom>
+          <input-custom type="textarea" placeholder="introduce" @keyup="form.introduce = $event"></input-custom>
+          <input-custom type="date" @change="form.date = $event"></input-custom>
+          <button type="submit">SEND</button>
         </form-custom>
       </div>
     </div>
@@ -16,13 +22,17 @@
 
 <script setup>
 
-import MyTable from '../MyTable.vue';
+import { reactive, ref } from 'vue';
 import FormCustom from '../form/FormCustom.vue';
 import InputCustom from '../form/InputCustom.vue';
-import { reactive, ref } from 'vue';
+import TableCustom from '../table/TableCustom.vue';
+import TableHead from '../table/TableHead.vue';
+import TableBody from '../table/TableBody.vue';
 
 const form = ref({
-  name: 'ok'
+  name: 'ok',
+  introduce: '',
+  date: ''
 })
 
 const headers = ['Nom', 'Prenom', 'age']
@@ -148,10 +158,10 @@ const data = reactive({
 })
 
 /**
- * @param {} data
+ * ajouter un nouveau presatataire dans la db
  */
-function submit(data) {
-  console.log(data, forms.value[0].fields.sexe.value)
+function add_sp() {
+  console.log('ADD')
 }
   
 </script>
