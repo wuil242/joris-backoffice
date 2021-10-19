@@ -1,5 +1,5 @@
 <template>
-<div class="app" >
+<div class="app" :class="store.state.theme">
   <!-- <login v-if="!store.state.user"></login> -->
   <!-- <home v-else></home> -->
   <alerts 

@@ -4,9 +4,9 @@
     <div class="content">
       <my-table :headers="headers" :elements="data.sp" :search-keys="['name']"></my-table>
       <div>
-        <form-group :forms="forms" @submit="submit">
-          <input type="submit" hidden value="SEND">
-        </form-group>
+        <form-custom>
+          <input type="text" placeholder="cool text">
+        </form-custom>
       </div>
     </div>
   </div>
@@ -16,7 +16,7 @@
 <script setup>
 
 import MyTable from '../MyTable.vue';
-import FormGroup from '../FormGroup.vue';
+import FormCustom from '../form/FormCustom.vue';
 import { reactive, ref } from 'vue';
 
 const headers = ['Nom', 'Prenom', 'age']

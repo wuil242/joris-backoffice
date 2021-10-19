@@ -1,5 +1,5 @@
 <template>
-  <div class="home" :class="{dark: store.state.mode !== ''}">
+  <div class="home">
     <header class="home-header">
       <h1 class="home-header-title">Page<span>Name</span></h1>
       <dark-mode-button></dark-mode-button>
@@ -96,7 +96,7 @@ function format_route(path) {
 
   }
 
-  .dark {
+  .theme-dark .home {
     --home-bg-color: grey;
     --home-text-color: white!important;
 

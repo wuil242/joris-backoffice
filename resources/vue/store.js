@@ -6,7 +6,7 @@ const state = () => {
   return {
     user: null,
     alerts: [],
-    mode: 'dark'
+    theme: 'theme-dark'
   }
 }
 
@@ -35,8 +35,8 @@ const mutations = {
     state.alerts = state.alerts.filter((v, k) => k !== key)
   },
 
-  TOGGLE_MODE(state) {
-    state.mode = state.mode === 'dark' ? '' : 'dark'
+  TOGGLE_THEME(state) {
+    state.theme = state.theme === '' ? 'theme-dark' : ''
   }
 }
 
@@ -64,7 +64,7 @@ const actions = {
    */
    alert_clean({commit}, key) { commit('ALERT_CLEAN', key)},
 
-   toggle({commit}) { commit('TOGGLE_MODE') }
+   toggle({commit}) { commit('TOGGLE_THEME') }
 }
 
 // Create a new store instance.
