@@ -2,7 +2,7 @@
   <div class="home" :class="{dark: store.state.mode !== ''}">
     <header class="home-header">
       <h1 class="home-header-title">Page<span>Name</span></h1>
-      <button @click="store.dispatch('toggle')">Dark Mode <i :class="store.state.mode === '' ? 'fa' : 'far' " class="fa-moon"></i></button>
+      <dark-mode-button></dark-mode-button>
     </header>
     <aside class="home-sidebar">
       <h1>Joris <br> Backoffice</h1>
@@ -50,6 +50,7 @@
 import { useStore } from 'vuex';
 import FetchApi from '../utils/FetchApi';
 import { onBeforeRouteUpdate } from 'vue-router';
+import DarkModeButton from './DarkModeButton.vue'
 
 const store = useStore()
 
