@@ -52,7 +52,7 @@ function close(key) {
   .app {
     background: linear-gradient(-30deg, red 25%, yellow, green 50%)
   }
-
+  
   // .app {
   //   padding: 1rem;
   // }

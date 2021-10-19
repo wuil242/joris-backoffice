@@ -4,8 +4,9 @@
     <div class="content">
       <my-table :headers="headers" :elements="data.sp" :search-keys="['name']"></my-table>
       <div>
+        {{form.name}}
         <form-custom>
-          <input type="text" placeholder="cool text">
+          <input-custom placeholder="name" @keyup="form.name = $event"></input-custom>
         </form-custom>
       </div>
     </div>
@@ -17,7 +18,12 @@
 
 import MyTable from '../MyTable.vue';
 import FormCustom from '../form/FormCustom.vue';
+import InputCustom from '../form/InputCustom.vue';
 import { reactive, ref } from 'vue';
+
+const form = ref({
+  name: 'ok'
+})
 
 const headers = ['Nom', 'Prenom', 'age']
 // const keys = ['name']
@@ -138,6 +144,7 @@ const sp = []
 
 const data = reactive({
   sp: [{name: 'test'}, {name: 'roas'}],
+  test: 'ok'
 })
 
 /**
