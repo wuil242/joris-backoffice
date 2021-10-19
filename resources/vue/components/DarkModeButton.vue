@@ -1,6 +1,6 @@
 <template>
   <button @click="store.dispatch('toggle')">
-    Dark Mode <i :class="store.state.mode === '' ? 'fa' : 'far' " class="fa-moon"></i>
+    Dark Mode <i :class="store.state.theme === '' ? 'fa' : 'far' " class="fa-moon"></i>
   </button>
 </template>
 
