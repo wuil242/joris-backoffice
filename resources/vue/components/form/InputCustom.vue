@@ -4,6 +4,7 @@
     <textarea 
       @keyup="$emit('keyup', value)" 
       :placeholder="placeholder"
+      :required="required"
       v-model="value"
     ></textarea>
   </template>
@@ -11,8 +12,10 @@
     <label>{{label}}</label>
     <input 
     :type="type" 
-    :placeholder="placeholder" 
+    :placeholder="placeholder"
+    :required="required"
     @keyup="$emit('keyup', value)"
+    @change="$emit('change', value)"
     v-model="value"
     />
   </template>
@@ -25,9 +28,10 @@ defineProps({
   type: {type:String, default: 'text'},
   label: {type:String, default: ''},
   placeholder: {type:String, default: ''},
+  required: {default: null}
 })
 
-defineEmits(['keyup'])
+defineEmits(['keyup', 'change'])
 
 const value = ''
   
