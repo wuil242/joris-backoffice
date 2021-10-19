@@ -12,7 +12,7 @@
 
 
 <script setup>
-import FormCustom from './FormCustom.vue';
+import FormCustom from '../proto/FormCustom.vue';
 
 defineProps({
   forms: {type:Array, required: true}

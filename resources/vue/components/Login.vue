@@ -9,7 +9,7 @@
   import {reactive, ref, onMounted} from 'vue'
   import {useStore} from 'vuex'
   import FetchApi from '../utils/FetchApi';
-  import FormCustom from './FormCustom.vue'
+  import FormCustom from './proto/FormCustom.vue'
 
   const loading = ref(false)
 
