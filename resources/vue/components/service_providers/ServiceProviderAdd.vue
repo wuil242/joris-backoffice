@@ -1,16 +1,13 @@
 <template>
-  <div>
-    <h1>Test</h1>
-    <router-view></router-view>
-  </div>
+  <h1>ADD -SP</h1>
 </template>
 
 
 <script setup>
+
   
 </script>
 
 <style lang="scss" scoped>
-
   
 </style>

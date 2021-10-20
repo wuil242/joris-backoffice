@@ -12,20 +12,32 @@
         </router-link>
       <!-- </div> -->
       <nav>
-        <ul>
-          <li v-for="route in $route.matched[0].children">
-            <i v-if="route.icon" :class="route.icon"></i>
-            <router-link :to="{name: route.name}">{{route.text || format_route(route.path)}}</router-link>
-            <ul v-if="route.children && route.children.length > 0">
+        <!-- <pre>{{$router.getRoutes()}}</pre> -->
+        
+        <template v-for="route in $router.getRoutes()">
+          <ul v-if="route.name === 'home'">
+             <li v-for="childRoute in route.children">
+              <i v-if="childRoute.icon" :class="childRoute.icon"></i>
+              <router-link :to="childRoute.path">{{childRoute.text || format_route(childRoute.path)}}</router-link>
+                <ul v-if="childRoute.children && childRoute.children.length > 0">
+                  <template v-for="subRoute in childRoute.children" >
+                    <li v-if="subRoute.path !== ''">
+                      <i v-if="subRoute.icon" :class="subRoute.icon"></i>
+                      <router-link :to="subRoute.path">{{subRoute.text || format_route(subRoute.path)}}</router-link>
+                    </li>
+                  </template>
+                </ul>
+             </li>
+          </ul> 
+        </template>
+            <!-- <ul v-if="route.children && route.children.length > 0">
               <template v-for="subRoute in route.children" >
                 <li v-if="subRoute.name !== ''">
                   <i v-if="subRoute.icon" :class="subRoute.icon"></i>
                   <router-link :to="{name: subRoute.name}">{{subRoute.text || format_route(subRoute.path)}}</router-link>
                 </li>
               </template>
-            </ul>
-          </li>
-        </ul>
+            </ul> -->
         <!-- <ul>
           <li><router-link :to="{name: 'stat'}">Statistique</router-link></li>
           <li><router-link :to="{name: 'admin'}">Administration</router-link></li>

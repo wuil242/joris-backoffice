@@ -1,7 +1,8 @@
 <template>
   <div class="service-provider">
     <h1>Prestaire de service</h1>
-    <div class="content">
+    <router-view></router-view>
+    <!-- <div class="content">
       <table-custom>
         <table-head :headers="['Nom']"></table-head>
         <table-body :elements="data.sp"></table-body>
@@ -14,8 +15,8 @@
           <input-custom type="date" @change="form.date = $event"></input-custom>
           <button type="submit">SEND</button>
         </form-custom>
-      </div>
-    </div>
+      </div> 
+    </div> -->
   </div>
 </template>
 
