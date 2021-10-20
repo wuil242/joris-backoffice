@@ -2,10 +2,10 @@
 <div class="alerts" v-if="alerts.length > 0">
   <button class="alerts-close" @click="$emit('closeAll')">Close All</button>
   <alert-vue 
-    v-for="(alert, key) in alerts" 
-    :key="key"
+    v-for="alert in alerts" 
+    :key="alert.id"
     :alert="alert"
-    @close="$emit('closeOne', key)"
+    @close="$emit('closeOne', alert.id)"
   ></alert-vue>
 </div>
 </template>

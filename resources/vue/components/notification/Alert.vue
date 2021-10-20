@@ -1,7 +1,7 @@
 <template>
   <div class="alert" :class="alert.type" v-if="alert.message">
    <p>{{alert.message}}</p>
-   <button class="alert-close" @click="$emit('close')">X</button>
+   <button class="alert-close" @click="$emit('close')">X{{alert.hit >= 0 ? `(${alert.hit}s)`: '' }}</button>
  </div>
 </template>
 

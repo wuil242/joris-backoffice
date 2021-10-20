@@ -38,7 +38,7 @@ export default function (route, method = 'GET', body = null, query = null, alert
   }).then(r => r.json())
     .then(data => {
       if(data.type && alert) {
-        appStore.dispatch('alert', {
+        appStore.dispatch('alert_then_clean', {
           type: data.type,
           message: data.message
         })

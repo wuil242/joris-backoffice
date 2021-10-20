@@ -1,21 +1,24 @@
 <template>
-<div class="app" :class="store.state.theme">
+<div class="app" :class="store.getters.theme_class">
   <!-- <login v-if="!store.state.user"></login> -->
   <!-- <home v-else></home> -->
   <alerts 
-    :alerts="store.state.alerts" 
+    :alerts="store.getters.alerts" 
     @close-one="close"
     @close-all="close"
   ></alerts>
+  <button @click="alert_then">ALERT</button>
   <router-view></router-view>
 </div>
 </template>
 
 <script setup>
+import { } from 'vue';
 import { useStore } from 'vuex';
 import Alerts from './components/notification/Alerts.vue'
 
 const store = useStore()
+
 
 /**
  * @param {number[]} tab
@@ -35,6 +38,7 @@ function deleteMAny(tab) {
 function close(key) {
   if(typeof key === 'undefined' ) {
     store.dispatch('alert_clean_all')
+    // store.dispatch('alert_delete_many')
   }
   else if(typeof key === 'number') {
     store.dispatch('alert_clean', key)
