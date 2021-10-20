@@ -1,4 +1,4 @@
-import {appStore} from '../main'
+import Store from '../store'
 
 
 /**
@@ -8,7 +8,7 @@ import {appStore} from '../main'
  * @param {import('vue-router').NavigationGuardNext} next 
  */
 export const loginGuard = (to, from, next) => {
-  const user = appStore.state.user
+  const user = Store.state.user
   if(user?.email && user?.token && user?.email !== '' && user?.token !== '') {
     next()
   }
@@ -24,7 +24,7 @@ export const loginGuard = (to, from, next) => {
  * @param {import('vue-router').NavigationGuardNext} next 
  */
 export const logoutGuard = (to, from, next) => {
-  const user = appStore.state.user
+  const user = Store.state.user
   if(user?.email && user?.token && user?.email !== '' && user?.token !== '') {
     next('/')
   }

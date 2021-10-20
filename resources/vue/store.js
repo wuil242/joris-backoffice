@@ -5,7 +5,7 @@ import UserStore from './modules/UserStore'
 
 
 // Create a new store instance.
-export const appStore = createStore({
+export default createStore({
   devtools: true,
   strict: true,
   modules: {

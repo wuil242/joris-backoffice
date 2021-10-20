@@ -1,4 +1,5 @@
-import { csrf, appStore } from "../main"
+import { CSRF } from "../main"
+import Store from '../store'
 
 /**
  * 
@@ -11,7 +12,7 @@ import { csrf, appStore } from "../main"
  * @returns {Promise<any>}
  */
 export default function (route, method = 'GET', body = null, query = null, alert = true, headers = {}) {
-  headers['X-XSRF-TOKEN'] = csrf
+  headers['X-XSRF-TOKEN'] = CSRF
   
   if(body) {
     body = JSON.stringify(body)
@@ -27,8 +28,8 @@ export default function (route, method = 'GET', body = null, query = null, alert
     query = '?' + qs.toString()
   }
 
-  if(appStore.state.user) {
-    headers['Authorization'] = 'Bearer ' + appStore.state.user.token
+  if(Store.getters.isLoggedIn) {
+    headers['Authorization'] = 'Bearer ' + Store.getters.token
   }
 
   return fetch('/api' + route + (query || ''), {
@@ -38,7 +39,7 @@ export default function (route, method = 'GET', body = null, query = null, alert
   }).then(r => r.json())
     .then(data => {
       if(data.type && alert) {
-        appStore.dispatch('alert_then_clean', {
+        Store.dispatch('alert_then_clean', {
           type: data.type,
           message: data.message
         })

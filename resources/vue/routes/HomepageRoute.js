@@ -4,7 +4,7 @@ import EntrepriseRoute from './EntrepriseRoute'
 
 const Home = () => import('../components/Home.vue')
 const HomeStat = () => import('../components/Stat.vue')
-const HomeLocation = () => import('../components/locations/Location.vue')
+const HomeLocation = () => import('../components/location/Location.vue')
 const HomeAdmin = () => import('../components/Admin.vue')
 const HomeDevis = () => import('../components/Devis.vue')
 const HomeTemoignage = () => import('../components/Temoignage.vue')

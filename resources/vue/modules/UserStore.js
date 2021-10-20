@@ -1,20 +1,20 @@
 import Router from '../router'
 
 /**
- * representation de l'utilisateur
- * @property {{
- * name:string,
- * token:string,
- * isAdmin:boolean
- * }} user 
+ * modèle du state
+ * 
+ *@type {{
+ *  user:{name:string,token:string,isAdmin:boolean}
+ *}} 
  */
 const state = {
     user: null
 }
 
 const getters = {
-  isLoggedIn(state){ return state.user !== null},
-  username(state) {return state.user.name}
+  isLoggedIn(state){ return state.user !== null && state.user.token !== ''},
+  username(state) {return state.user.name},
+  token(state){ return state.user.token}
 }
 
 const mutations = {

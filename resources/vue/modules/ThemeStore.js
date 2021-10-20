@@ -1,3 +1,8 @@
+/**
+ * modèle du state
+ * 
+ * @type {{theme:string}}
+ */
 const state = {
     theme: 'dark'
 }

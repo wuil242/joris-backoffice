@@ -1,8 +1,19 @@
+/**
+ * modèle du state
+ * 
+ * 
+ * @type {{
+ * id: number, 
+ * alerts: Array<{id:number, type:string, message:string, hit:number}>,
+ * timers: Map<number, number>
+ * }}
+ */
 const state = {
     id: 0,
     alerts: [],
     timers: new Map()
 }
+
 
 const getters = {
   alerts(state) {return state.alerts}
