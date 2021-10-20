@@ -7,47 +7,11 @@
     <aside class="home-sidebar">
       <h1>Joris <br> Backoffice</h1>
       <!-- <div class="home-sidebar-profil"> -->
-        <router-link to="/" class="home-sidebar-image">
-          <img src="../../images/default.jpeg" alt="photo de profil">
+        <router-link to="/profil" class="home-sidebar-image">
+          <img src="../../../images/default.jpeg" alt="photo de profil">
         </router-link>
       <!-- </div> -->
-      <nav>
-        <!-- <pre>{{$router.getRoutes()}}</pre> -->
-        
-        <template v-for="route in $router.getRoutes()">
-          <ul v-if="route.name === 'home'">
-             <li v-for="childRoute in route.children">
-              <i v-if="childRoute.icon" :class="childRoute.icon"></i>
-              <router-link :to="childRoute.path">{{childRoute.text || format_route(childRoute.path)}}</router-link>
-                <ul v-if="childRoute.children && childRoute.children.length > 0">
-                  <template v-for="subRoute in childRoute.children" >
-                    <li v-if="subRoute.path !== ''">
-                      <i v-if="subRoute.icon" :class="subRoute.icon"></i>
-                      <router-link :to="subRoute.path">{{subRoute.text || format_route(subRoute.path)}}</router-link>
-                    </li>
-                  </template>
-                </ul>
-             </li>
-          </ul> 
-        </template>
-            <!-- <ul v-if="route.children && route.children.length > 0">
-              <template v-for="subRoute in route.children" >
-                <li v-if="subRoute.name !== ''">
-                  <i v-if="subRoute.icon" :class="subRoute.icon"></i>
-                  <router-link :to="{name: subRoute.name}">{{subRoute.text || format_route(subRoute.path)}}</router-link>
-                </li>
-              </template>
-            </ul> -->
-        <!-- <ul>
-          <li><router-link :to="{name: 'stat'}">Statistique</router-link></li>
-          <li><router-link :to="{name: 'admin'}">Administration</router-link></li>
-          <li><router-link :to="{name: 'service_provider'}">Prestataire</router-link></li>
-          <li><router-link :to="{name: 'location'}">Locations</router-link></li>
-          <li><router-link :to="{name: 'entreprise'}">Entreprise</router-link></li>
-          <li><router-link :to="{name: 'devis'}">Devis</router-link></li>
-          <li><router-link :to="{name: 'temoignage'}">Temoignage</router-link></li>
-        </ul> -->
-      </nav>
+      <home-menu></home-menu>
       <button @click="logout" class="button home-sidebar-logout">Logout</button>
     </aside>
     <section class="home-main">
@@ -60,9 +24,10 @@
 <script setup>
 
 import { useStore } from 'vuex';
-import FetchApi from '../utils/FetchApi';
+import FetchApi from '../../utils/FetchApi';
 import { onBeforeRouteUpdate } from 'vue-router';
-import DarkModeButton from './DarkModeButton.vue'
+import DarkModeButton from '../DarkModeButton.vue'
+import HomeMenu from './HomeMenu.vue';
 
 const store = useStore()
 
@@ -83,14 +48,6 @@ function logout() {
         store.dispatch('logout')
       }
     })
-}
-
-/**
- * @param {string} path
- */
-function format_route(path) {
-  const fristLetter = path.replace('/', '')[0]
-  return path.replace('/' + fristLetter, fristLetter.toUpperCase())
 }
 
 </script>
@@ -202,10 +159,6 @@ function format_route(path) {
       color: rgb(177, 31, 5);
     }
 
-    ul {
-      list-style-type: disc;
-      margin-left: 20px;
-    }
   }
 
 </style>

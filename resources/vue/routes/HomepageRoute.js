@@ -2,12 +2,13 @@ import { loginGuard } from '../middlewares/Auth'
 import ServiceProviderRoute from './ServiceProviderRoute'
 import EntrepriseRoute from './EntrepriseRoute'
 
-const Home = () => import('../components/Home.vue')
+const Home = () => import('../components/home/Home.vue')
 const HomeStat = () => import('../components/Stat.vue')
 const HomeLocation = () => import('../components/location/Location.vue')
 const HomeAdmin = () => import('../components/Admin.vue')
 const HomeDevis = () => import('../components/Devis.vue')
 const HomeTemoignage = () => import('../components/Temoignage.vue')
+const HomeProfil = () => import('../components/Profil.vue')
 
 
 const route = {
@@ -16,6 +17,10 @@ const route = {
     component: Home,
     children: [
       {
+        path: '/profil',
+        component: HomeProfil
+      },
+      {
         path: '/statistique',
         icon: 'fa fa-clipboard-list',
         text: 'Statistique',
@@ -23,21 +28,21 @@ const route = {
       },
       {
         name: 'location',
-        path: 'localisation',
+        path: '/localisation',
         text: 'Localisation',
         icon: 'fa fa-map-marker-alt',
         component: HomeLocation
       },
       {
         name: 'admin',
-        path: 'admin',
+        path: '/administrateurs',
         text: 'Administration',
         icon: 'fa fa-users',
         component: HomeAdmin
       },
       {
         name: 'devis',
-        path: 'devis',
+        path: '/devis',
         text: 'Devis',
         icon: 'fa fa-dollar-sign',
         component: HomeDevis

@@ -1,13 +1,10 @@
 <template>
 <div class="app" :class="store.getters.theme_class">
-  <!-- <login v-if="!store.state.user"></login> -->
-  <!-- <home v-else></home> -->
   <alerts 
     :alerts="store.getters.alerts" 
     @close-one="close"
     @close-all="close"
   ></alerts>
-  <button @click="alert_then">ALERT</button>
   <router-view></router-view>
 </div>
 </template>
@@ -24,12 +21,6 @@ const store = useStore()
  * @param {number[]} tab
  */
 function deleteMAny(tab) {
-  setTimeout(() => {
-    if(tab.length > 0 && store.state.alerts.size > 0) {
-      store.state.alerts.delete(tab.pop())
-      deleteMAny(tab)
-    }
-  }, 500)
 }
 
 /**
