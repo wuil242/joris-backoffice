@@ -12,10 +12,10 @@
   "assets/resources_vue_components_Devis_vue.js": "http://localhost:8080/assets/resources_vue_components_Devis_vue.js",
   "assets/resources_vue_components_Temoignage_vue.js": "http://localhost:8080/assets/resources_vue_components_Temoignage_vue.js",
   "assets/resources_vue_components_Profil_vue.js": "http://localhost:8080/assets/resources_vue_components_Profil_vue.js",
-  "assets/resources_vue_components_service_providers_ServiceProvider_vue-resources_vue_components_form_-41175c.css": "http://localhost:8080/assets/resources_vue_components_service_providers_ServiceProvider_vue-resources_vue_components_form_-41175c.css",
-  "assets/resources_vue_components_service_providers_ServiceProvider_vue-resources_vue_components_form_-41175c.js": "http://localhost:8080/assets/resources_vue_components_service_providers_ServiceProvider_vue-resources_vue_components_form_-41175c.js",
-  "assets/resources_vue_components_service_providers_ServiceProviderAdd_vue-resources_vue_components_fo-ce05c2.css": "http://localhost:8080/assets/resources_vue_components_service_providers_ServiceProviderAdd_vue-resources_vue_components_fo-ce05c2.css",
-  "assets/resources_vue_components_service_providers_ServiceProviderAdd_vue-resources_vue_components_fo-ce05c2.js": "http://localhost:8080/assets/resources_vue_components_service_providers_ServiceProviderAdd_vue-resources_vue_components_fo-ce05c2.js",
+  "assets/resources_vue_components_service_providers_ServiceProvider_vue.css": "http://localhost:8080/assets/resources_vue_components_service_providers_ServiceProvider_vue.css",
+  "assets/resources_vue_components_service_providers_ServiceProvider_vue.js": "http://localhost:8080/assets/resources_vue_components_service_providers_ServiceProvider_vue.js",
+  "assets/resources_vue_components_service_providers_ServiceProviderAdd_vue.css": "http://localhost:8080/assets/resources_vue_components_service_providers_ServiceProviderAdd_vue.css",
+  "assets/resources_vue_components_service_providers_ServiceProviderAdd_vue.js": "http://localhost:8080/assets/resources_vue_components_service_providers_ServiceProviderAdd_vue.js",
   "assets/resources_vue_components_service_providers_ServiceProviderList_vue.js": "http://localhost:8080/assets/resources_vue_components_service_providers_ServiceProviderList_vue.js",
   "assets/resources_vue_components_entreprise_Entreprise_vue.js": "http://localhost:8080/assets/resources_vue_components_entreprise_Entreprise_vue.js",
   "assets/resources_vue_components_entreprise_EntrepriseList_vue.js": "http://localhost:8080/assets/resources_vue_components_entreprise_EntrepriseList_vue.js",
@@ -25,5 +25,9 @@
   "assets/fonts/fa-brands-400.ttf": "http://localhost:8080/assets/fonts/fa-brands-400.527940b1.ttf",
   "assets/images/default.jpeg": "http://localhost:8080/assets/images/default.01ac1981.jpeg",
   "assets/fonts/fa-regular-400.ttf": "http://localhost:8080/assets/fonts/fa-regular-400.491974d1.ttf",
-  "assets/resources_vue_components_service_providers_ServiceProviderAdd_vue.css": "http://localhost:8080/assets/resources_vue_components_service_providers_ServiceProviderAdd_vue.css"
+  "assets/resources_vue_components_service_providers_ServiceProvider_vue-resources_vue_components_form_-41175c.css": "http://localhost:8080/assets/resources_vue_components_service_providers_ServiceProvider_vue-resources_vue_components_form_-41175c.css",
+  "assets/resources_vue_components_service_providers_ServiceProvider_vue-resources_vue_components_form_-41175c.js": "http://localhost:8080/assets/resources_vue_components_service_providers_ServiceProvider_vue-resources_vue_components_form_-41175c.js",
+  "assets/resources_vue_components_service_providers_ServiceProviderAdd_vue-resources_vue_components_fo-ce05c2.css": "http://localhost:8080/assets/resources_vue_components_service_providers_ServiceProviderAdd_vue-resources_vue_components_fo-ce05c2.css",
+  "assets/resources_vue_components_service_providers_ServiceProviderAdd_vue-resources_vue_components_fo-ce05c2.js": "http://localhost:8080/assets/resources_vue_components_service_providers_ServiceProviderAdd_vue-resources_vue_components_fo-ce05c2.js",
+  "assets/resources_vue_components_form_FormCustom_vue-resources_vue_components_form_InputCustom_vue.js": "http://localhost:8080/assets/resources_vue_components_form_FormCustom_vue-resources_vue_components_form_InputCustom_vue.js"
 }
