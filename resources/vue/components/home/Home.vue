@@ -1,9 +1,9 @@
 <template>
   <div class="home">
-    <header class="home-header">
+    <!-- <header class="home-header">
       <h1 class="home-header-title">Page<span>Name</span></h1>
       <dark-mode-button></dark-mode-button>
-    </header>
+    </header> -->
     <aside class="home-sidebar">
       <h1>Joris <br> Backoffice</h1>
       <!-- <div class="home-sidebar-profil"> -->
@@ -77,9 +77,8 @@ function logout() {
     display: grid;
     position: relative;
     grid-template-columns: 180px 1fr;
-    grid-template-rows: 10vh auto;
-    grid-template-areas: "sidebar header"
-                         "sidebar main";
+    // grid-template-rows: 10vh auto;
+    grid-template-areas: "sidebar main";
 
     background-color: var(--home-bg-color);
     color: var(--home-text-color)

@@ -1,6 +1,6 @@
 <template>
   <h1>ADD -SP</h1>
-  <form-custom @submit="log">
+  <form-custom @submit="add_sp">
     <form-group legend="personal infos">
       <input-custom type="radio" label="Sexe" :value="{Homme: 'm', Femme: 'f'}" @change="log"></input-custom>
       <select-custom
@@ -8,7 +8,6 @@
         :options="options" 
         key-option="name"
         key-value="value"
-        @change="log"
       ></select-custom>
        <select-custom
         label="Quartiers"
@@ -16,7 +15,6 @@
         :options="options" 
         key-option="name"
         key-value="value"
-        @change="log"
       ></select-custom>
     </form-group>
     <fom-submit-button value="Ajouter"></fom-submit-button>
@@ -31,13 +29,44 @@ import InputCustom from '../form/InputCustom.vue';
 import SelectCustom from '../form/SelectCustom.vue';
 import FomSubmitButton from '../form/FomSubmitButton.vue';
 
-function log(data) {
-  console.log(data)
+import {reactive} from 'vue'
+import FormCustom from '../proto/FormCustom.vue';
+import InputCustom from '../form/InputCustom.vue';
+
+const form = reactive({
+  personal : {
+    lastname: '',
+    firstname: '',
+    date: '',
+    sexe: '',
+    introduce: '',
+    arrcroch_sentence: '',
+    job: 0
+  }
+})
+
+
+/**
+ * ajouter un nouveau presatataire dans la db
+ */
+function add_sp() {
+  console.log('ADD')
 }
   
-const options = [{name: 'Bz', value: 10}, {name: 'Pn', value: 5}]
+  
 </script>
 
 <style lang="scss" scoped>
-  
+  form {
+    width: 50%;
+  }
+
+  fieldset {
+    display: flex;
+    flex-direction: column;
+    gap: .25em;
+
+    padding: .5em;
+
+  }
 </style>

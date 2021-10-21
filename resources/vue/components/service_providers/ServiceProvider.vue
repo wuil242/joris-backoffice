@@ -7,15 +7,6 @@
         <table-head :headers="['Nom']"></table-head>
         <table-body :elements="data.sp"></table-body>
       </table-custom>
-      <div>
-        {{form}}
-        <form-custom @submit="add_sp">
-          <input-custom placeholder="name" @keyup="form.name = $event"></input-custom>
-          <input-custom type="textarea" placeholder="introduce" @keyup="form.introduce = $event"></input-custom>
-          <input-custom type="date" @change="form.date = $event"></input-custom>
-          <button type="submit">SEND</button>
-        </form-custom>
-      </div> 
     </div> -->
   </div>
 </template>
@@ -159,13 +150,6 @@ const data = reactive({
   test: 'ok'
 })
 
-/**
- * ajouter un nouveau presatataire dans la db
- */
-function add_sp() {
-  console.log('ADD')
-}
-  
 </script>
 
 <style lang="scss" scoped>
