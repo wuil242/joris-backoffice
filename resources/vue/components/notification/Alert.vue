@@ -18,21 +18,8 @@ const props = defineProps({
 
 let timer = null
 
-const emit = defineEmits(['close'])
+defineEmits(['close'])
 
-// function close() {
-//   clearInterval(timer)
-
-//   emit('close')
-// }
-
-//FIXME: ajouter un timer pour fermer automatiquement l'alert
-// onMounted(() => {
-//   timer = setTimeout(() => {
-//     emit('close')
-//     console.log('IN')
-//   }, props.time)
-// })
 
 </script>
 
