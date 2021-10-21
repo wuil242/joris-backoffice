@@ -1,6 +1,6 @@
 <template>
   <form class="form-custom" @submit.prevent="submit">
-    <slot />
+    <slot></slot>
   </form>
 </template>
 
