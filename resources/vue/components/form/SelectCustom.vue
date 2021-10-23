@@ -1,4 +1,5 @@
 <template>
+ <label>{{label}}</label>
  <select @change="$emit('change', value)" v-model="value">
     <option 
     v-if="optionDefault" 
@@ -21,7 +22,8 @@ const props = defineProps({
   optionDefault: { type: Object, default: null },
   keyOption: { type: String, required: true },
   keyValue: { type: String, required: true },
-  options: { type: Array, required: true }
+  options: { type: Array, required: true },
+  label:String
 })
 
 const emit = defineEmits(['change'])
@@ -32,5 +34,8 @@ onMounted(() => emit('change', value))
 
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
+  label {
+    display: block;
+  }
 </style>
