@@ -8,21 +8,15 @@
 <script setup>
 
 const emit = defineEmits(['submit'])
-  
+
 /**
  * vide tout les champs non vide avant la soumition du formulaire
  * 
  * @param {SubmitEvent} e
  */
 function submit(e) {
-  const fields = Array.from(e.target.children)
-  const inputs = fields.filter(field => (field.nodeName === 'INPUT' || field.nodeName === 'TEXTAREA') && field.value !== '')
-  inputs.forEach((input, index) => {
-    input.value = ''
-    if(inputs.length - 1 === index) {
-      emit('submit')
-    }
-  })
+  e.target.reset()
+  emit('submit')
 }
 </script>
 
