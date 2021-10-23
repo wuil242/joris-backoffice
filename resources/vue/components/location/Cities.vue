@@ -24,7 +24,7 @@
 <script setup>
 import LocationLayout from './LocationLayout.vue';
 import {reactive, onMounted} from 'vue'
-import FetchApi from '../../utils/FetchApi';
+import FetchApi, {fetchApiWithOptions} from '../../utils/FetchApi';
 
 const $props = defineProps({
   current: {type:Number, required: true}
@@ -48,7 +48,11 @@ onMounted(() => {
  * @param {number} cityId
  */
 function remove_city(cityId) {
-  FetchApi('/cities', 'DELETE', {cityId})
+  fetchApiWithOptions({
+    route: '/cities', 
+    method: 'DELETE', 
+    body: {cityId}
+  })
     .then(res => {
       // store.commit('alert', res)
       if(res.type === 'success') {
@@ -65,7 +69,7 @@ function remove_city(cityId) {
  * @param {null|number} id
  */
 function get_cities(id = null) {
-  FetchApi('/cities')
+  fetchApiWithOptions({route: '/cities'})
     .then(res => {
       data.cities.elements = res    
       if(res.length > 0) {
@@ -78,7 +82,11 @@ function get_cities(id = null) {
 
 function add_city(name) {
   data.errors = []
-  FetchApi('/cities', 'POST', {name})
+  fetchApiWithOptions({
+    route: '/cities', 
+    method: 'POST', 
+    body: {name},
+  })
     .then(res => {
       if(!res.type && res.typeCode === 0) {
         data.errors = res.errors
