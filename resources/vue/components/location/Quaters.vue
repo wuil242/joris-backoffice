@@ -22,7 +22,7 @@
 <script setup>
 import LocationLayout from './LocationLayout.vue';
 import {reactive, onUpdated} from 'vue'
-import FetchApi from '../../utils/FetchApi';
+import fetchApi  from '../../utils/FetchApi';
 
 
 const $props = defineProps({
@@ -80,10 +80,12 @@ function goto(page) {
  * @param {string} id
  */
 function remove_quater(id) {
-  FetchApi(
-    `/cities/${data.lastCity}/arrondissements/${data.lastArrondissement}/quaters`, 
-    'DELETE',
-    {id}
+  const route = `/cities/${data.lastCity}/arrondissements/${data.lastArrondissement}/quaters`
+  fetchApi({
+    route, 
+    method: 'DELETE',
+    body: {id}
+  }
   ).then(res => {
     if(res.typeCode === 1) {
       goto_current_page(res.limit, data.quaters)
@@ -96,11 +98,13 @@ function remove_quater(id) {
  * @param {string} name
  */
 function add_quater(name) {
-  FetchApi(
-    `/cities/${data.lastCity}/arrondissements/${data.lastArrondissement}/quaters`, 
-    'POST',
-    {name},
-    false
+  const route = `/cities/${data.lastCity}/arrondissements/${data.lastArrondissement}/quaters`
+  fetchApi({
+    route, 
+    method: 'POST',
+    body: {name},
+    alert: false
+  }
   ).then(res => {
     if(res.quater) {
       data.currentQuater = res.quater.id
@@ -115,8 +119,12 @@ function add_quater(name) {
  * @param {null|number} id
  */
 function get_quaters(cityId, arrondissementId, id = null, page=null) {
-   FetchApi(`/cities/${cityId}/arrondissements/${arrondissementId}/quaters`,
-   'GET', null, page ? {page} : page)
+  const route = `/cities/${cityId}/arrondissements/${arrondissementId}/quaters`
+   fetchApi({
+     route,
+     method: 'GET',
+     query:  {page: page}  
+   })
     .then(res => {
       data.quaters.elements = res.quaters || []
       data.quaters.pagination = res.pagination || []

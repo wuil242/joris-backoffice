@@ -23,7 +23,7 @@
 <script setup>
 import LocationLayout from './LocationLayout.vue';
 import {reactive, onUpdated} from 'vue'
-import FetchApi from '../../utils/FetchApi';
+import fetchApi  from '../../utils/FetchApi';
 
 
 const $props = defineProps({
@@ -63,7 +63,11 @@ function goto(page) {
  * @param {number} id identifiant de l'arrondissement
  */
 function remove_arrondissement(id) {
-  FetchApi(`/cities/${data.lastCity}/arrondissements`, 'DELETE', {id})
+  fetchApi({
+    route: `/cities/${data.lastCity}/arrondissements`, 
+    method: 'DELETE', 
+    body: {id}
+  })
     .then(res => {
 
      if(res.type === 'success') {
@@ -81,7 +85,11 @@ function remove_arrondissement(id) {
  */
 function add_arrondissement(name) {
   data.errors = []
-  FetchApi(`/cities/${data.lastCity}/arrondissements`, 'POST', {name})
+  fetchApi({
+    route: `/cities/${data.lastCity}/arrondissements`, 
+    method: 'POST', 
+    query: {name}
+  })
     .then(res => {
       // data.arrondissements.elements = res
       if(res.errors && res.typeCode === 0) {
@@ -99,7 +107,10 @@ function add_arrondissement(name) {
  * @param {null|number} id
  */
 function get_arrondissements(cityId, id = null, page = null) {
-  FetchApi(`/cities/${cityId}/arrondissements`, 'GET', null, page !== null ? {page} : page )
+  fetchApi({
+    route: `/cities/${cityId}/arrondissements`,
+    query: {page} 
+  })
     .then(res => {
       data.arrondissements.elements = res.arrondissements || []
       data.arrondissements.pagination = res.pagination || []
