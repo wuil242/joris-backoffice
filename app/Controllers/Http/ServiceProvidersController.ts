@@ -6,11 +6,32 @@ import ServiceProviderStoreValidator from 'App/Validators/ServiceProviderStoreVa
 import { DateTime } from 'luxon'
 import Database from '@ioc:Adonis/Lucid/Database'
 import Adress from 'App/Models/Adress'
+import ServiceProvider from 'App/Models/ServiceProvider'
 
 export default class ServiceProvidersController {
+  private SERIALISE_FIELDS = [
+    'firstname',
+    'lastname',
+    'email',
+    'tel',
+    'tel2',
+    'birthday',
+  ]
 
-  async index({}) {
+  async index({params, response}:HttpContextContract) {
+    const page = params.page || 1
 
+    const serviceProvidersData = await ServiceProvider.query().paginate(page, 10)
+
+    if(serviceProvidersData.isEmpty) {
+      return response.badRequest({
+        type: 'infos',
+        message: 'Aucun SP',
+        serviceProvidersData
+      })
+    }
+
+    return serviceProvidersData.serialize({fields: this.SERIALISE_FIELDS})
   }
 
   async store({request, response}:HttpContextContract) {

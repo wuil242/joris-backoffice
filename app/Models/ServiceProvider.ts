@@ -1,4 +1,4 @@
-import { DateTime, DateInput } from 'luxon'
+import { DateTime,  } from 'luxon'
 import {
   BaseModel,
   column,
@@ -24,8 +24,10 @@ export default class ServiceProvider extends BaseModel {
   @column()
   public firstname: string
 
-  @column()
-  public birthday: DateInput
+  @column.date({serialize(value:DateTime) {
+    return value.toFormat("dd LLLL yyyy", {locale: 'fr'})
+  }})
+  public birthday: DateTime
 
   @column()
   public tel: String

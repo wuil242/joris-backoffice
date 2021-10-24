@@ -75,7 +75,7 @@ const form = reactive({
   personal: {
     lastname: 'bouss',
     firstname: 'wuil',
-    birthday: '12/10/1999',
+    birthday: '01/01/2000',
     sexe: 'f',
     email: 'test@test.test',
     tel: '066252963',
@@ -120,7 +120,7 @@ function add_sp() {
   form.coord.quaterId = 2
   form.coord.number_adress = 2
   // form.personal.email = 'test@.test'
-  console.log('ADD')
+  console.log('ADD', form.personal.birthday)
   FetchApi('/service-provider', 'POST', {...form.personal, ...form.coord})
     .then(res => console.log(res))
 }
