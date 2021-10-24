@@ -22,6 +22,7 @@ import Route from '@ioc:Adonis/Core/Route'
 
 import 'App/routes/Users'
 import 'App/routes/Locations'
+import 'App/routes/ServiceProviders'
 
 
 //SPA render

@@ -37,23 +37,23 @@
       <select-custom
         label="Villes"
         :options="data.cities"
-        key-option="city"
+        key-option="name"
         key-value="id"
-        @change="form.coord.city = $event"
+        @change="form.coord.cityId = $event"
       ></select-custom>
       <select-custom
         label="Arrondissements"
         :options="data.arrondissements"
         key-option="arrondissement"
         key-value="id"
-        @change="form.coord.arrondissement = $event"
+        @change="form.coord.arrondissementId = $event"
       ></select-custom>
       <select-custom
         label="Quartiers"
         :options="data.quaters"
         key-option="quater"
         key-value="id"
-        @change="form.coord.quater = $event"
+        @change="form.coord.quaterId = $event"
       ></select-custom>
     </form-group>
     <form-submit-button value="ajouter"></form-submit-button>
@@ -75,21 +75,21 @@ const form = reactive({
   personal: {
     lastname: 'bouss',
     firstname: 'wuil',
-    date: '12/10/1999',
-    sexe: 'm',
+    birthday: '12/10/1999',
+    sexe: 'f',
+    email: 'test@test.test',
+    tel: '066252963',
+    tel2: '066252962',
     introduce: 'the introduce',
-    arrcroch_sentence: 'the accroch',
+    accroch_sentence: 'the accroch',
     job: 0
   },
   coord: {
-    email: 'test@test.test',
-    tel: '066252963',
-    tel2: '066252963',
-    city: 0,
-    arrondissement: 0,
-    quater: 0,
+    cityId: 31,
+    arrondissementId: 4,
+    quaterId: 1,
     street: 'street',
-    number: 0,
+    number_adress: 98,
   }
 })
 
@@ -101,14 +101,12 @@ const data = reactive({
 })
 
 onBeforeMount(() => {
-  const limit = 10
-  for (let i = 0; i < limit; i++) {
-    const id = i + 1
-    data.jobs.push({ job: 'job-' + id, id })
-    data.cities.push({ city: 'city-' + id, id })
-    data.arrondissements.push({ arrondissement: 'arrondissement-' + id, id })
-    data.quaters.push({ quater: 'quater-' + id, id })
-  }
+
+  // FetchApi('/cities')
+  //   .then(res => {
+  //     data.cities = res
+  //   })
+
 })
 
 
@@ -116,7 +114,13 @@ onBeforeMount(() => {
  * ajouter un nouveau presatataire dans la db
  */
 function add_sp() {
-  console.log('ADD', )
+  form.personal.job = 1
+  form.coord.cityId = 31
+  form.coord.arrondissementId = 5
+  form.coord.quaterId = 2
+  form.coord.number_adress = 2
+  // form.personal.email = 'test@.test'
+  console.log('ADD')
   FetchApi('/service-provider', 'POST', {...form.personal, ...form.coord})
     .then(res => console.log(res))
 }

@@ -28,7 +28,10 @@ const props = defineProps({
 
 const emit = defineEmits(['change'])
 
-const value = props?.optionDefault !== null ? props.optionDefault[props.keyValue] : props.options[0][props.keyValue]
+let value = ''
+if(props.options.length > 0) {
+  value = props?.optionDefault !== null ? props.optionDefault[props.keyValue] : props.options[0][props.keyValue]
+}
 
 onMounted(() => emit('change', value))
 

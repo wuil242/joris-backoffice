@@ -1,4 +1,4 @@
-import { DateTime } from 'luxon'
+import { DateTime, DateInput } from 'luxon'
 import {
   BaseModel,
   column,
@@ -12,6 +12,7 @@ import {
 import Adress from './Adress'
 import Job from './Job'
 import ServiceProviderRealisation from './ServiceProviderRealisation'
+import { SEXE } from 'App/Types/enums'
 
 export default class ServiceProvider extends BaseModel {
   @column({ isPrimary: true })
@@ -24,13 +25,13 @@ export default class ServiceProvider extends BaseModel {
   public firstname: string
 
   @column()
-  public age: number
+  public birthday: DateInput
 
   @column()
   public tel: String
 
   @column()
-  public secureTel: string
+  public tel2: string
 
   @column()
   public email: string
@@ -39,16 +40,13 @@ export default class ServiceProvider extends BaseModel {
   public photo?: string
 
   @column()
-  public description: string
-
-  @column()
   public accrochSentence?: string
 
   @column()
-  public introduceVideo?: string
+  public introduce?: string
 
   @column()
-  public sexe: SEXE
+  public sexe: string
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
