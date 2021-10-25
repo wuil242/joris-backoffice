@@ -15,7 +15,15 @@ const emit = defineEmits(['submit'])
  * @param {SubmitEvent} e
  */
 function submit(e) {
-  e.target.reset()
+  /**
+   * @type {HTMLInputElement[]}
+   */
+  const inputs = Array.from(e.target.elements)
+  inputs.forEach(input => {
+    if(input.type !== 'color') {
+      input.value = ''
+    }
+  })
   emit('submit')
 }
 </script>
