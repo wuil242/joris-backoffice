@@ -9,12 +9,14 @@ const HomeAdmin = () => import('../components/Admin.vue')
 const HomeDevis = () => import('../components/Devis.vue')
 const HomeTemoignage = () => import('../components/Temoignage.vue')
 const HomeProfil = () => import('../components/Profil.vue')
+const HomeJob = () => import('../components/jobs/Job.vue')
 
 
 const route = {
     name: 'home',
     path: '/',
     component: Home,
+    redirect: '/statistique',
     children: [
       {
         path: '/profil',
@@ -25,6 +27,12 @@ const route = {
         icon: 'fa fa-clipboard-list',
         text: 'Statistique',
         component: HomeStat
+      },
+      {
+        path: '/metier',
+        icon: 'fa fa-suitcase',
+        text: 'Metiers',
+        component: HomeJob
       },
       {
         name: 'location',
@@ -46,22 +54,8 @@ const route = {
         text: 'Devis',
         icon: 'fa fa-dollar-sign',
         component: HomeDevis
-      },
-      // ServiceProviderRoute,
-      // EntrepriseRoute
-    ]
-    // beforeEnter: loginGuard,
-  /*
-    children: [
-      {
-        name: 'temoignage',
-        path: 'temoignage',
-        text: 'Temoignage',
-        icon: 'fa fa-user',
-        component: HomeTemoignage
       }
     ]
-  */
 }
 
 route.children.push(ServiceProviderRoute)

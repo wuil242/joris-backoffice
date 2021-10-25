@@ -32,15 +32,6 @@ import HomeMenu from './HomeMenu.vue';
 const store = useStore()
 
 
-onBeforeRouteUpdate((to, from, next) => {
-  if(to.name === 'home') {
-    next('/statistique')
-  }
-  else {
-    next()
-  }
-})
-
 function logout() {
   FetchApi('/users/logout', 'POST')
     .then(res => {
