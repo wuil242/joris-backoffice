@@ -1,6 +1,7 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, ManyToMany, manyToMany } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, beforeSave, column, ManyToMany, manyToMany } from '@ioc:Adonis/Lucid/Orm'
 import ServiceProvider from './ServiceProvider'
+import {string} from '@ioc:Adonis/Core/Helpers'
 
 export default class Job extends BaseModel {
   @column({ isPrimary: true })
@@ -25,4 +26,12 @@ export default class Job extends BaseModel {
     pivotTable: 'service_provider_jobs',
   })
   public serviceProviders: ManyToMany<typeof ServiceProvider>
+
+ 
+  @beforeSave()
+  public static async hashPassword (job: Job) {
+    if (job.$dirty.name) {
+      job.name = string.capitalCase(job.name)
+    }
+  }
 }

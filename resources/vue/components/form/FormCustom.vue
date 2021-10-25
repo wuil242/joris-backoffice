@@ -20,7 +20,7 @@ function submit(e) {
    */
   const inputs = Array.from(e.target.elements)
   inputs.forEach(input => {
-    if(input.type !== 'color') {
+    if(input.type !== 'color' && input.type !== 'submit') {
       input.value = ''
     }
   })

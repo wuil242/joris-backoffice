@@ -1,6 +1,18 @@
 import { CSRF } from "../main"
 import Store from '../store'
 
+/**
+ * 
+ * @param {{
+ * route:string,
+ * method?:'GET'|'POST'|'DELETE'|'PUT',
+ * body:object,
+ * query:object,
+ * alert:boolean,
+ * headers:object
+ * }} param0 
+ * @returns 
+ */
 export default function ({ 
   route, 
   method = 'GET', 
