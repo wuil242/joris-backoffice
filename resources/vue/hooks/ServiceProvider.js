@@ -1,7 +1,7 @@
 import FetchApi from "../utils/FetchApi"
 
 function useGetAllProvider() {
-  return FetchApi('/service-provider', 'GET')
+  return FetchApi({route: '/service-provider'})
 }
 
 export {useGetAllProvider}

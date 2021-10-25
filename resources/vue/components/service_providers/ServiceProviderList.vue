@@ -24,7 +24,7 @@ const sp = ref([])
 onMounted(() => {
   useGetAllProvider().then(res => {
     sp.value = res.data
-  })
+  }).catch(err => console.log(err))
 })
   
 </script>
