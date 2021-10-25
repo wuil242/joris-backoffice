@@ -47,13 +47,18 @@ export default function ({
     headers
   }).then(r => r.json())
     .then(data => {
-      if (data.type && alert) {
-        Store.dispatch('alert_then_clean', {
-          type: data.type,
-          message: data.message
-        })
-      }
+      try {
+        if (data.type && alert) {
+          Store.dispatch('alert_then_clean', {
+            type: data.type,
+            message: data.message
+          })
+        }
 
-      return Promise.resolve(data)
+        return Promise.resolve(data)
+      }
+      catch(error) {
+        return Promise.reject(error)
+      }
     })
 }
