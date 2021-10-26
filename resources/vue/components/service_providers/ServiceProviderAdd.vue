@@ -3,58 +3,59 @@
   {{ form }}
   <form-custom @submit="add_sp">
     <form-group legend="Infos Personnel">
-      <input-custom placeholder="Nom" @keyup="form.personal.lastname = $event"></input-custom>
-      <input-custom placeholder="Prenom" @keyup="form.personal.firstname = $event"></input-custom>
-      <input-custom type="date" label="date de naissance" @change="form.personal.date = $event"></input-custom>
-      <input-custom
+      <form-input placeholder="Nom" @keyup="form.personal.lastname = $event"></form-input>
+      <form-input placeholder="Prenom" @keyup="form.personal.firstname = $event"></form-input>
+      <form-input type="date" label="date de naissance" @change="form.personal.date = $event"></form-input>
+      <form-input
         type="radio"
         label="sexe"
         :value="{ Homme: 'm', Femme: 'f' }"
         @change="form.personal.sexe = $event"
-      ></input-custom>
-      <select-custom
+      ></form-input>
+      <form-select
         label="Jobs"
         :options="data.jobs"
-        key-option="job"
+        key-option="name"
         key-value="id"
         @change="form.personal.job = $event"
-      ></select-custom>
-      <input-custom
+      ></form-select>
+      <form-input
         type="textarea"
         placeholder="introduction"
         @keyup="form.personal.introduce = $event"
-      ></input-custom>
-      <input-custom
+      ></form-input>
+      <form-input
         type="textarea"
         placeholder="phrase d'accroche"
         @keyup="form.personal.arrcroch_sentence = $event"
-      ></input-custom>
+      ></form-input>
     </form-group>
     <form-group legend="Coord Infos">
-      <input-custom type="email" label="Email" @keyup="form.coord.email = $event"></input-custom>
-      <input-custom type="tel" label="Telephone N*1" @keyup="form.coord.tel = $event"></input-custom>
-      <input-custom type="tel" label="Telephone N*2" @keyup="form.coord.tel2 = $event"></input-custom>
-      <select-custom
+      <form-input type="email" label="Email" @keyup="form.coord.email = $event"></form-input>
+      <form-input type="tel" label="Telephone N*1" @keyup="form.coord.tel = $event"></form-input>
+      <form-input type="tel" label="Telephone N*2" @keyup="form.coord.tel2 = $event"></form-input>
+      <form-select
         label="Villes"
+        :option-default="defaultOption"
         :options="data.cities"
         key-option="name"
         key-value="id"
         @change="form.coord.cityId = $event"
-      ></select-custom>
-      <select-custom
+      ></form-select>
+      <form-select
         label="Arrondissements"
         :options="data.arrondissements"
         key-option="arrondissement"
         key-value="id"
         @change="form.coord.arrondissementId = $event"
-      ></select-custom>
-      <select-custom
+      ></form-select>
+      <form-select
         label="Quartiers"
         :options="data.quaters"
         key-option="quater"
         key-value="id"
         @change="form.coord.quaterId = $event"
-      ></select-custom>
+      ></form-select>
     </form-group>
     <form-submit-button value="ajouter"></form-submit-button>
   </form-custom>
@@ -66,10 +67,12 @@
 import { reactive, onBeforeMount } from 'vue'
 import FormCustom from '../form/FormCustom.vue';
 import FormGroup from '../form/FormGroup.vue';
-import InputCustom from '../form/InputCustom.vue';
-import SelectCustom from '../form/SelectCustom.vue';
+import FormInput from '../form/FormInput.vue';
+import FormSelect from '../form/FormSelect.vue';
 import FormSubmitButton from '../form/FomSubmitButton.vue';
 import FetchApi from '../../utils/FetchApi';
+
+const defaultOption = {name: 'Aucun', id: 0}
 
 const form = reactive({
   personal: {
@@ -102,10 +105,18 @@ const data = reactive({
 
 onBeforeMount(() => {
 
-  // FetchApi('/cities')
-  //   .then(res => {
-  //     data.cities = res
-  //   })
+  FetchApi({route: '/jobs'})
+    .then(res => {
+      data.jobs = res.data
+    })
+    .then(() => {
+      return FetchApi({route: '/cities'})
+        .then(res => {
+          data.cities = res
+        })
+    }).then(() => {
+    })
+
 
 })
 

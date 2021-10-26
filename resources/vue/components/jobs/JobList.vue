@@ -1,6 +1,6 @@
 <template>
   <h2>List Job</h2>
-  <input-custom type="search" @keyup="filtering"></input-custom>
+  <form-input type="search" @keyup="filtering"></form-input>
   <ol>
     <li
       v-for="job in jobs"
@@ -14,7 +14,7 @@
 <script setup>
 import { ref, onMounted, watch, onBeforeUpdate } from 'vue'
 import FetchApi from '../../utils/FetchApi';
-import InputCustom from '../form/InputCustom.vue';
+import FormInput from '../form/FormInput.vue';
 
 const props = defineProps({
   refresh:{type:Number, default: 0}

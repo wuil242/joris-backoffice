@@ -17,7 +17,7 @@
 
 import { reactive, ref } from 'vue';
 import FormCustom from '../form/FormCustom.vue';
-import InputCustom from '../form/InputCustom.vue';
+import FormInput from '../form/FormInput.vue';
 import TableCustom from '../table/TableCustom.vue';
 import TableHead from '../table/TableHead.vue';
 import TableBody from '../table/TableBody.vue';

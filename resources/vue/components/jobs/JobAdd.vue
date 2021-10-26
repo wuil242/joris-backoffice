@@ -1,9 +1,9 @@
 <template>
   <h2>Add Job</h2>
   <form-custom @submit="create_job">
-    <input-custom label="Nom du Job" @keyup="form.name = $event"></input-custom>
-    <input-custom type="color" label="Color" @change="form.color = $event"></input-custom>
-    <input-custom type="color" label="Background Color" @change="form.bg_color = $event"></input-custom>
+    <form-input label="Nom du Job" @keyup="form.name = $event"></form-input>
+    <form-input type="color" label="Color" @change="form.color = $event"></form-input>
+    <form-input type="color" label="Background Color" @change="form.bg_color = $event"></form-input>
     <form-submit-button value="Creer"></form-submit-button>
   </form-custom>
   <section>
@@ -17,7 +17,7 @@
 
 <script setup>
 import FormCustom from '../form/FormCustom.vue'
-import InputCustom from '../form/InputCustom.vue';
+import FormInput from '../form/FormInput.vue';
 import FormSubmitButton from '../form/FomSubmitButton.vue';
 import {reactive, computed, watch} from 'vue'
 import FetchApi from '../../utils/FetchApi';

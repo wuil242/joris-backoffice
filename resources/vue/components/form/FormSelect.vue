@@ -1,6 +1,6 @@
 <template>
  <label>{{label}}</label>
- <select @change="$emit('change', value)" v-model="value">
+ <select @change="$emit('change', inputValue)" v-model="inputValue">
     <option 
     v-if="optionDefault" 
     :value="optionDefault[keyValue]"
@@ -16,7 +16,7 @@
 
 <script setup>
 
-import {onMounted} from 'vue'
+import {onBeforeUpdate, ref} from 'vue'
 
 const props = defineProps({
   optionDefault: { type: Object, default: null },
@@ -26,14 +26,15 @@ const props = defineProps({
   label:String
 })
 
-const emit = defineEmits(['change'])
+defineEmits(['change'])
 
-let value = ''
-if(props.options.length > 0) {
-  value = props?.optionDefault !== null ? props.optionDefault[props.keyValue] : props.options[0][props.keyValue]
-}
+const inputValue = ref('')
 
-onMounted(() => emit('change', value))
+onBeforeUpdate(() => {
+  if(props.options.length > 0 && inputValue.value === '') {
+    inputValue.value = props.optionDefault !== null ? props.optionDefault[props.keyValue] : props.options[0][props.keyValue]
+  }
+})
 
 </script>
 

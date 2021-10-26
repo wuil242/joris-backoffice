@@ -10,7 +10,7 @@
 const emit = defineEmits(['submit'])
 
 /**
- * vide tout les champs non vide avant la soumition du formulaire
+ * vide tout les champs avant la soumition du formulaire
  * 
  * @param {SubmitEvent} e
  */
