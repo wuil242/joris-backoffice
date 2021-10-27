@@ -55,7 +55,7 @@ export default class ServiceProvidersController {
 
       }
 
-      const jobId = +request.input('job')
+      const jobId = +request.input('jobId')
       const job = await Job.findOrFail(jobId)
       const serviceProvider = await job.useTransaction(transaction).related('serviceProviders').create(serviceProviderPayload)
       
