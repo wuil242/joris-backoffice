@@ -1,10 +1,5 @@
 <template>
   <h1>ADD -SP</h1>
-  {{color}}
-  <form-custom>
-    <form-input type="color" v-model:value="color"></form-input>
-    <button type="reset">RR</button>
-  </form-custom>
   {{ form }}
   <form-custom :onSubmit="create_service_provider" :reset="data.reset">
     <form-group legend="Infos Personnel">
@@ -75,8 +70,6 @@ import FormSubmitButton from '../form/FomSubmitButton.vue';
 import FetchApi from '../../utils/FetchApi';
 import { useGetArrondissements, useGetCities, useGetQuaters } from '../../hooks/Location';
 import { useCreateProvider } from '../../hooks/ServiceProvider';
-
-const color = ref('#000000')
 
 const form = reactive({
   personal: {

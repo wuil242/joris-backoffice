@@ -1,5 +1,5 @@
 <template>
-  <form class="form-custom" @submit.prevent="submition($event, onSubmit)">
+  <form class="form-custom" @submit.prevent="submit($event, onSubmit)">
     <slot></slot>
   </form>
 </template>
@@ -18,37 +18,54 @@ const props = defineProps({
  * @param {SubmitEvent} e
  * @param {Function} cb
  */
-function submition(e, cb) {
-  /**
-   * @type {HTMLInputElement[]}
-   */
-  // const inputs = Array.from(e.target.elements)
-  // inputs.forEach(input => {
-  //   if(input.type !== 'color' && input.type !== 'submit') {
-  //     input.value = ''
-  //   }
-  // })
-  // emit('submit')
-  const isPromise = cb.then !== null
-
-  if(!isPromise) {
+function submit(e, cb) {
+  const isPromise = cb.toString().includes('.then(')
+  
+  if(isPromise) {
+    cb().then(() => form_reset(e.target))
+  }
+  else {
     cb()
-    if(props.reset) {
-     e.target.reset()
-    }
+    form_reset(e.target)
+  }
+}
 
+
+/**
+ * 
+ * @param {HTMLFormElement} form
+ */
+function form_reset(form) {
+  if(!props.reset) {
     return
   }
 
-  cb().then(() => {
-     if(props.reset) {
-     e.target.reset()
-    }
-  })
-
-
- 
+  if(!form_reset_manual(form.elements)) {
+    form.reset()
+  }
 }
+
+
+/**
+ * 
+ * @param {HTMLInputElement[]} elements
+ */
+function form_reset_manual(elements) {
+  const inputs = Array.from(elements)
+  const inputColors = inputs.filter(input => input.type === 'color')
+  if(inputColors.length > 0) {
+    inputColors.forEach(inputColor => {
+      inputColor.value = '#000000'
+    })
+    
+    inputs.filter(input => !(input.type === 'color' || input.type === 'submit'))
+      .forEach(input => input.value = '')
+    return true
+  }
+
+  return false
+}
+
 </script>
 
 <style lang="scss" scoped>
