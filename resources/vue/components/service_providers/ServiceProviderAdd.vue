@@ -1,7 +1,12 @@
 <template>
   <h1>ADD -SP</h1>
+  {{color}}
+  <form-custom>
+    <form-input type="color" v-model:value="color"></form-input>
+    <button type="reset">RR</button>
+  </form-custom>
   {{ form }}
-  <form-custom @submit="add_sp">
+  <form-custom :onSubmit="create_service_provider" :reset="data.reset">
     <form-group legend="Infos Personnel">
       <form-input placeholder="Nom" v-model:value="form.personal.lastname"></form-input>
       <form-input placeholder="Prenom" v-model:value="form.personal.firstname"></form-input>
@@ -60,7 +65,7 @@
 
 <script setup>
 
-import { reactive, onBeforeMount } from 'vue'
+import { reactive, onBeforeMount, ref } from 'vue'
 import FormCustom from '../form/FormCustom.vue';
 import FormGroup from '../form/FormGroup.vue';
 import FormInput from '../form/FormInput.vue';
@@ -70,6 +75,8 @@ import FormSubmitButton from '../form/FomSubmitButton.vue';
 import FetchApi from '../../utils/FetchApi';
 import { useGetArrondissements, useGetCities, useGetQuaters } from '../../hooks/Location';
 import { useCreateProvider } from '../../hooks/ServiceProvider';
+
+const color = ref('#000000')
 
 const form = reactive({
   personal: {
@@ -97,7 +104,8 @@ const data = reactive({
   jobs: [],
   cities: [],
   arrondissements: [],
-  quaters: []
+  quaters: [],
+  reset: true
 })
 
 onBeforeMount(() => {
@@ -141,14 +149,14 @@ function get_arrondissements(cityId) {
 function get_quaters(cityId, arrondissementId) {
   useGetQuaters(cityId, arrondissementId)
     .then(({ quaters }) => {
-      fill_location('quaters', 'qauterId', quaters || [])
+      fill_location('quaters', 'quaterId', quaters || [])
     })
 }
 
 
 /**
- * @param {string} dataType
- * @param {string} coordType
+ * @param {'cities'|'arrondissements'|'quaters'} dataType
+ * @param {'citiId'|'arrondissementId'|'quaterId'} coordType
  * @param {object} value
  * @returns {number} id du premeier element
  */
@@ -162,17 +170,18 @@ function fill_location(dataType, coordType, value) {
 
 /**
  * ajouter un nouveau presatataire dans la db
+ * @returns {Promsise<void>}
  */
-function add_sp() {
-  form.personal.jobId = 1
-  form.coord.cityId = 31
-  form.coord.arrondissementId = 5
-  form.coord.quaterId = 2
-  form.coord.number_adress = 2
-  // form.personal.email = 'test@.test'
-  console.log('ADD', form.personal.birthday)
-  useCreateProvider({ ...form.personal, ...form.coord })
-    .then(res => console.log(res))
+function create_service_provider() {
+  return useCreateProvider({ ...form.personal, ...form.coord })
+    .then(res => {
+      if(res.type === 'error') {
+        data.reset = false
+      }
+      else if(res.type === 'success') {
+        data.reset = true
+      }
+    })
 }
 
 </script>
