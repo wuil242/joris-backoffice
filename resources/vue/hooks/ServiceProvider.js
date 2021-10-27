@@ -1,7 +1,18 @@
 import FetchApi from "../utils/FetchApi"
 
-function useGetAllProvider() {
+export function useGetAllProvider() {
   return FetchApi({route: '/service-provider'})
 }
 
-export {useGetAllProvider}
+/**
+ * 
+ * @param {{
+ * firstname:string,
+ * lastname:string,
+ * sexe:'m'|'f',
+ * email:string
+ * }} data 
+ */
+export function useCreateProvider(data) {
+  return FetchApi({route: '/service-provider', method: 'POST', body: data})
+}

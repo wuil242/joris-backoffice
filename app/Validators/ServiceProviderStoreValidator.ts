@@ -32,7 +32,7 @@ export default class ServiceProviderStoreValidator {
 		//information personnel du perstataire
 		lastname: schema.string({ trim: true}, [rules.regex(nameRegex)]),
 		firstname: schema.string({trim: true}, [rules.regex(nameRegex)]),
-		birthday: schema.date({format: 'mm/dd/yyyy'}),
+		birthday: schema.date({format: 'yyyy-mm-dd'}),
 		email: schema.string.optional({trim: true}, [rules.email()]),
 		tel: schema.string({trim: true}, [rules.regex(numberPhoneRegex)]),
 		tel2: schema.string({trim: true}, [rules.regex(numberPhoneRegex)]),

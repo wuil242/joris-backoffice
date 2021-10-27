@@ -2,14 +2,15 @@
   <h1>ADD -SP</h1>
   {{ form }}
   <form-custom @submit="add_sp">
-     <form-group legend="Infos Personnel">
-       <form-input placeholder="Nom" v-model:value="form.personal.lastname"></form-input>
+    <form-group legend="Infos Personnel">
+      <form-input placeholder="Nom" v-model:value="form.personal.lastname"></form-input>
       <form-input placeholder="Prenom" v-model:value="form.personal.firstname"></form-input>
-      <form-input type="date" label="date de naissance" v-model:value="form.personal.date"></form-input>
-      <form-select label="Sexe"
-        :options="[{option: 'Femme', value:'f'}, {option: 'Homme', value: 'm'}, ]"
+      <form-input type="date" label="date de naissance" v-model:value="form.personal.birthday"></form-input>
+      <form-select
+        label="Sexe"
+        :options="[{ option: 'Femme', value: 'f' }, { option: 'Homme', value: 'm' },]"
         v-model:value="form.personal.sexe"
-        ></form-select>
+      ></form-select>
       <form-select
         label="Jobs"
         :options="data.jobs"
@@ -17,40 +18,37 @@
         key-value="id"
         v-model:value="form.personal.jobId"
       ></form-select>
+      <form-textarea placeholder="introduction" v-model:value="form.personal.introduce"></form-textarea>
       <form-textarea
-        placeholder="introduction"
-        v-model:value="form.personal.introduce"
-      ></form-textarea>
-      <form-input
-        type="textarea"
         placeholder="phrase d'accroche"
-        v-model:value="form.personal.arrcroch_sentence"
-      ></form-input>
+        v-model:value="form.personal.accroch_sentence"
+      ></form-textarea>
     </form-group>
-    
-     <form-group legend="Coord Infos">
+
+    <form-group legend="Coord Infos">
       <form-input type="email" label="Email" v-model:value="form.coord.email"></form-input>
       <form-input type="tel" label="Telephone N*1" v-model:value="form.coord.tel"></form-input>
       <form-input type="tel" label="Telephone N*2" v-model:value="form.coord.tel2"></form-input>
       <form-select
         label="Villes"
-        :option-default="defaultOption"
         :options="data.cities"
         key-option="name"
         key-value="id"
         v-model:value="form.coord.cityId"
+        @update:value="get_arrondissements(form.coord.cityId)"
       ></form-select>
       <form-select
         label="Arrondissements"
         :options="data.arrondissements"
-        key-option="arrondissement"
+        key-option="name"
         key-value="id"
         v-model:value="form.coord.arrondissementId"
+        @update:value="get_quaters(form.coord.cityId, form.coord.arrondissementId)"
       ></form-select>
       <form-select
         label="Quartiers"
         :options="data.quaters"
-        key-option="quater"
+        key-option="name"
         key-value="id"
         v-model:value="form.coord.quaterId"
       ></form-select>
@@ -70,23 +68,23 @@ import FormTextarea from '../form/FormTextarea.vue';
 import FormSelect from '../form/FormSelect.vue';
 import FormSubmitButton from '../form/FomSubmitButton.vue';
 import FetchApi from '../../utils/FetchApi';
-
-const defaultOption = {name: 'Aucun', id: 0}
+import { useGetArrondissements, useGetCities, useGetQuaters } from '../../hooks/Location';
+import { useCreateProvider } from '../../hooks/ServiceProvider';
 
 const form = reactive({
   personal: {
     lastname: 'bouss',
     firstname: 'wuil',
-    birthday: '5/01/2000',
-    sexe: 'f',
-    email: 'test@test.test',
-    tel: '066252963',
-    tel2: '066252962',
+    sexe: 'f',  
+    birthday: '2000-5-21',
     introduce: 'the introduce',
     accroch_sentence: 'the accroch',
     jobId: 0
   },
   coord: {
+    email: 'test@test.test',
+    tel: '066252963',
+    tel2: '066252962',
     cityId: 31,
     arrondissementId: 4,
     quaterId: 1,
@@ -103,31 +101,64 @@ const data = reactive({
 })
 
 onBeforeMount(() => {
+  get_jobs().then(() => get_cities())
+})
 
-  FetchApi({route: '/jobs'})
+function get_jobs() {
+  return FetchApi({ route: '/jobs' })
     .then(res => {
       data.jobs = res.data
-      if(data.jobs.length > 0) {
+      if (data.jobs.length > 0) {
         form.personal.jobId = data.jobs[0].id
       }
     })
-    .then(() => {
-      return FetchApi({route: '/cities'})
-        .then(res => {
-          data.cities = res
-          form.personal.cityId = data.cities[0].id
-        })
-    }).then(() => {
-      get_arrondissements(form.coord.cityId)
-    })
-
-
-})
-
-function get_arrondissements() {
-  
 }
 
+function get_cities() {
+  useGetCities()
+    .then(res => {
+      const cityId = fill_location('cities', 'cityId', res || [])
+      return Promise.resolve(cityId)
+    })
+    .then(cityId =>  get_arrondissements(cityId))
+}
+
+/**
+ * @param {number} cityId
+ */
+function get_arrondissements(cityId) {
+  return useGetArrondissements(cityId)
+    .then(({ arrondissements }) => {
+      const arrondissementId = fill_location('arrondissements', 'arrondissementId', arrondissements || [])
+      return Promise.resolve(arrondissementId)
+    }).then(arrondissementId => get_quaters(cityId, arrondissementId))
+}
+
+/**
+ * @param {number} cityId
+ * @param {number} arrondissementId
+ */
+function get_quaters(cityId, arrondissementId) {
+  useGetQuaters(cityId, arrondissementId)
+    .then(({ quaters }) => {
+      fill_location('quaters', 'qauterId', quaters || [])
+    })
+}
+
+
+/**
+ * @param {string} dataType
+ * @param {string} coordType
+ * @param {object} value
+ * @returns {number} id du premeier element
+ */
+function fill_location(dataType, coordType, value) {
+  data[dataType] = value
+  if (data[dataType].length <= 0) {
+    data[dataType] = [{ name: dataType === 'cities' ? 'Aucune' : 'Aucnun', id: 0 }]
+  }
+  return form.coord[coordType] = data[dataType][0].id
+}
 
 /**
  * ajouter un nouveau presatataire dans la db
@@ -140,10 +171,10 @@ function add_sp() {
   form.coord.number_adress = 2
   // form.personal.email = 'test@.test'
   console.log('ADD', form.personal.birthday)
-  FetchApi('/service-provider', 'POST', {...form.personal, ...form.coord})
+  useCreateProvider({ ...form.personal, ...form.coord })
     .then(res => console.log(res))
 }
-  
+
 </script>
 
 <style lang="scss" scoped>

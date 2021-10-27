@@ -31,5 +31,6 @@
   "assets/fonts/fa-regular-400.ttf": "http://localhost:8080/assets/fonts/fa-regular-400.491974d1.ttf",
   "assets/resources_vue_components_jobs_Job_vue.css": "http://localhost:8080/assets/resources_vue_components_jobs_Job_vue.css",
   "assets/resources_vue_components_jobs_Job_vue.js": "http://localhost:8080/assets/resources_vue_components_jobs_Job_vue.js",
-  "assets/resources_vue_components_service_providers_ServiceProviderAdd_vue.js": "http://localhost:8080/assets/resources_vue_components_service_providers_ServiceProviderAdd_vue.js"
+  "assets/resources_vue_components_service_providers_ServiceProviderAdd_vue.js": "http://localhost:8080/assets/resources_vue_components_service_providers_ServiceProviderAdd_vue.js",
+  "assets/resources_vue_components_service_providers_ServiceProviderAdd_vue.css": "http://localhost:8080/assets/resources_vue_components_service_providers_ServiceProviderAdd_vue.css"
 }
