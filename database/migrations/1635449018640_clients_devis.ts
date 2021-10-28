@@ -10,7 +10,7 @@ export default class Devis extends BaseSchema {
       table.string('lastname', 255).nullable()
       table.string('firstname', 255).nullable()
       table.integer('service_provider_id').references('service_providers.id').unsigned().notNullable()
-      table.string('description', 255).notNullable()
+      table.string('message', 255).notNullable()
       // table.date('due_date').notNullable()
       table.string('email').nullable()
       table.string('tel').notNullable()

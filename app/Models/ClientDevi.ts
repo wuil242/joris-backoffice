@@ -19,7 +19,7 @@ export default class Devi extends BaseModel {
   public serviceProviderId: number
 
   @column()
-  public description: string
+  public message: string
 
   @column()
   public email?: string
