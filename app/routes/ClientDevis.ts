@@ -2,6 +2,6 @@ import Route from '@ioc:Adonis/Core/Route'
 
 Route.group(() => {
 
-  Route.get('/', 'DevisController.index')
+  Route.get('/', 'ClientDevisController.index')
 
 }).prefix('/api/devis')

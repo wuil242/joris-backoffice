@@ -1,5 +1,5 @@
 import Factory from '@ioc:Adonis/Lucid/Factory'
-import Devi from 'App/Models/Devi'
+import Devi from 'App/Models/ClientDevi'
 import ServiceProvider from 'App/Models/ServiceProvider'
 
 export const DevisFactory = Factory.define(Devi, async ({faker}) => {
