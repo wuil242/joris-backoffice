@@ -30,6 +30,11 @@
   "assets/fonts/fa-brands-400.ttf": "http://localhost:8080/assets/fonts/fa-brands-400.527940b1.ttf",
   "assets/images/default.jpeg": "http://localhost:8080/assets/images/default.01ac1981.jpeg",
   "assets/fonts/fa-regular-400.ttf": "http://localhost:8080/assets/fonts/fa-regular-400.491974d1.ttf",
+<<<<<<< develop
   "assets/resources_vue_components_Login_vue.css": "http://localhost:8080/assets/resources_vue_components_Login_vue.css",
   "assets/resources_vue_components_Login_vue.js": "http://localhost:8080/assets/resources_vue_components_Login_vue.js"
+=======
+  "assets/resources_vue_components_Devis_vue-resources_vue_components_table_TableBody_vue-resources_vue-db07ac.css": "http://localhost:8080/assets/resources_vue_components_Devis_vue-resources_vue_components_table_TableBody_vue-resources_vue-db07ac.css",
+  "assets/resources_vue_components_Devis_vue-resources_vue_components_table_TableBody_vue-resources_vue-db07ac.js": "http://localhost:8080/assets/resources_vue_components_Devis_vue-resources_vue_components_table_TableBody_vue-resources_vue-db07ac.js"
+>>>>>>> (add) listing des devis par date de creation
 }

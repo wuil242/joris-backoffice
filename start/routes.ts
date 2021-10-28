@@ -24,6 +24,7 @@ import 'App/routes/Users'
 import 'App/routes/Locations'
 import 'App/routes/ServiceProviders'
 import 'App/routes/Jobs'
+import 'App/routes/Devis'
 
 
 //SPA render
