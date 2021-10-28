@@ -4,7 +4,6 @@
   </form>
 </template>
 
-
 <script setup>
 
 const props = defineProps({
@@ -19,17 +18,13 @@ const props = defineProps({
  * @param {Function} cb
  */
 function submit(e, cb) {
-  const isPromise = cb.toString().includes('.then(')
-  
-  if(isPromise) {
+  try {
     cb().then(() => form_reset(e.target))
   }
-  else {
-    cb()
+  catch(error) {
     form_reset(e.target)
   }
 }
-
 
 /**
  * 
@@ -44,7 +39,6 @@ function form_reset(form) {
     form.reset()
   }
 }
-
 
 /**
  * 
