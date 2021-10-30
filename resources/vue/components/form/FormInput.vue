@@ -1,4 +1,5 @@
 <template>
+  <div>
     <label>{{ label }}</label>
     <input
       :type="type"
@@ -7,6 +8,7 @@
       :value="value"
       @input="$emit('update:value', $event.target.value)"
     />
+  </div>
 </template>
 
 
@@ -33,5 +35,7 @@ defineEmits(['update:value'])
 input,
 textarea {
   padding: 0.25em;
+  width: 100%;
+  height: 100%;
 }
 </style>
