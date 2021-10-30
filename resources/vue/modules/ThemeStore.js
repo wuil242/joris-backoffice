@@ -4,7 +4,7 @@
  * @type {{theme:string}}
  */
 const state = {
-    theme: 'dark'
+    theme: 'default'
 }
 
 const getters = {
