@@ -13,8 +13,8 @@ import FontAwesome from '../FontAwesome.vue';
 import FormInput from './FormInput.vue';
 
 defineProps({
-  label: { type: String, default: '' },
-  placeholder: { type: String, default: '' },
+  label: String,
+  placeholder: String,
   value: String
 })
 
