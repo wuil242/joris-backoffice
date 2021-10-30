@@ -63,16 +63,9 @@ function form_reset_manual(elements) {
 </script>
 
 <style lang="scss" scoped>
-  form {
-    --form-bg-color: red;
-  }
 
-  .theme-dark form {
-    --form-bg-color: blue;
-  }
-
-  form {
-    background-color: var(--form-bg-color);
+  .form-custom {
+    background-color: var(--form-bg, #FFFFFF);
   }
 
 </style>

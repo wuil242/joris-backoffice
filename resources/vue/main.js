@@ -5,7 +5,10 @@ import App from './App.vue'
 
 //import du css de fontawesome
 import '../scss/fonts/all.css'
+//themes
 import '../css/themes/all.css'
+//app style
+import '../css/app.css'
 
 const app = createApp(App)
 
