@@ -1,126 +1,25 @@
 <template>
   <h1>Stat</h1>
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab accusamus consequatur, repellendus maiores,
-     laudantium maxime fugiat nihil non quae odit provident vel aliquam enim! Delectus
-      consequatur tenetur veniam corrupti maxime!
-  </p>  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab accusamus consequatur, repellendus maiores,
-     laudantium maxime fugiat nihil non quae odit provident vel aliquam enim! Delectus
-      consequatur tenetur veniam corrupti maxime!
-  </p>  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab accusamus consequatur, repellendus maiores,
-     laudantium maxime fugiat nihil non quae odit provident vel aliquam enim! Delectus
-      consequatur tenetur veniam corrupti maxime!
-  </p>  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab accusamus consequatur, repellendus maiores,
-     laudantium maxime fugiat nihil non quae odit provident vel aliquam enim! Delectus
-      consequatur tenetur veniam corrupti maxime!
-  </p>  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab accusamus consequatur, repellendus maiores,
-     laudantium maxime fugiat nihil non quae odit provident vel aliquam enim! Delectus
-      consequatur tenetur veniam corrupti maxime!
-  </p>  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab accusamus consequatur, repellendus maiores,
-     laudantium maxime fugiat nihil non quae odit provident vel aliquam enim! Delectus
-      consequatur tenetur veniam corrupti maxime!
-  </p>  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab accusamus consequatur, repellendus maiores,
-     laudantium maxime fugiat nihil non quae odit provident vel aliquam enim! Delectus
-      consequatur tenetur veniam corrupti maxime!
-  </p>  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab accusamus consequatur, repellendus maiores,
-     laudantium maxime fugiat nihil non quae odit provident vel aliquam enim! Delectus
-      consequatur tenetur veniam corrupti maxime!
-  </p>  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab accusamus consequatur, repellendus maiores,
-     laudantium maxime fugiat nihil non quae odit provident vel aliquam enim! Delectus
-      consequatur tenetur veniam corrupti maxime!
-  </p>  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab accusamus consequatur, repellendus maiores,
-     laudantium maxime fugiat nihil non quae odit provident vel aliquam enim! Delectus
-      consequatur tenetur veniam corrupti maxime!
-  </p>  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab accusamus consequatur, repellendus maiores,
-     laudantium maxime fugiat nihil non quae odit provident vel aliquam enim! Delectus
-      consequatur tenetur veniam corrupti maxime!
-  </p>  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab accusamus consequatur, repellendus maiores,
-     laudantium maxime fugiat nihil non quae odit provident vel aliquam enim! Delectus
-      consequatur tenetur veniam corrupti maxime!
-  </p>  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab accusamus consequatur, repellendus maiores,
-     laudantium maxime fugiat nihil non quae odit provident vel aliquam enim! Delectus
-      consequatur tenetur veniam corrupti maxime!
-  </p>  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab accusamus consequatur, repellendus maiores,
-     laudantium maxime fugiat nihil non quae odit provident vel aliquam enim! Delectus
-      consequatur tenetur veniam corrupti maxime!
-  </p>  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab accusamus consequatur, repellendus maiores,
-     laudantium maxime fugiat nihil non quae odit provident vel aliquam enim! Delectus
-      consequatur tenetur veniam corrupti maxime!
-  </p>  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab accusamus consequatur, repellendus maiores,
-     laudantium maxime fugiat nihil non quae odit provident vel aliquam enim! Delectus
-      consequatur tenetur veniam corrupti maxime!
-  </p>  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab accusamus consequatur, repellendus maiores,
-     laudantium maxime fugiat nihil non quae odit provident vel aliquam enim! Delectus
-      consequatur tenetur veniam corrupti maxime!
-  </p>  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab accusamus consequatur, repellendus maiores,
-     laudantium maxime fugiat nihil non quae odit provident vel aliquam enim! Delectus
-      consequatur tenetur veniam corrupti maxime!
-  </p>  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab accusamus consequatur, repellendus maiores,
-     laudantium maxime fugiat nihil non quae odit provident vel aliquam enim! Delectus
-      consequatur tenetur veniam corrupti maxime!
-  </p>  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab accusamus consequatur, repellendus maiores,
-     laudantium maxime fugiat nihil non quae odit provident vel aliquam enim! Delectus
-      consequatur tenetur veniam corrupti maxime!
-  </p>  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab accusamus consequatur, repellendus maiores,
-     laudantium maxime fugiat nihil non quae odit provident vel aliquam enim! Delectus
-      consequatur tenetur veniam corrupti maxime!
-  </p>  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab accusamus consequatur, repellendus maiores,
-     laudantium maxime fugiat nihil non quae odit provident vel aliquam enim! Delectus
-      consequatur tenetur veniam corrupti maxime!
-  </p>  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab accusamus consequatur, repellendus maiores,
-     laudantium maxime fugiat nihil non quae odit provident vel aliquam enim! Delectus
-      consequatur tenetur veniam corrupti maxime!
-  </p>  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab accusamus consequatur, repellendus maiores,
-     laudantium maxime fugiat nihil non quae odit provident vel aliquam enim! Delectus
-      consequatur tenetur veniam corrupti maxime!
-  </p>  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab accusamus consequatur, repellendus maiores,
-     laudantium maxime fugiat nihil non quae odit provident vel aliquam enim! Delectus
-      consequatur tenetur veniam corrupti maxime!
-  </p>  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab accusamus consequatur, repellendus maiores,
-     laudantium maxime fugiat nihil non quae odit provident vel aliquam enim! Delectus
-      consequatur tenetur veniam corrupti maxime!
-  </p>  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab accusamus consequatur, repellendus maiores,
-     laudantium maxime fugiat nihil non quae odit provident vel aliquam enim! Delectus
-      consequatur tenetur veniam corrupti maxime!
-  </p>  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab accusamus consequatur, repellendus maiores,
-     laudantium maxime fugiat nihil non quae odit provident vel aliquam enim! Delectus
-      consequatur tenetur veniam corrupti maxime!
-  </p>
+  <div>
+    <!-- icon="ellipsis-v" -->
+    <button @click="toggle">
+      <icon color="#0303a7" size="2em" :icon="'toggle-'+ icon" ></icon>
+    </button>
+  </div>
 </template>
 
 
 <script setup>
+import {ref} from 'vue'
+import Icon from './FontAwesome.vue';
 
+const icon = ref('off')
+
+function toggle() {
+  icon.value = icon.value === 'on' ? 'off' : 'on'
+}
   
 </script>
 
-<style lang="scss" scoped>
-  
+<style scoped>
 </style>
