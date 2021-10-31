@@ -1,5 +1,9 @@
 :root {
+  /* variables */
+  --primary: #3751FF;
+
   /* Global */
+  --color-white: #FFFFFF;
   --color-grey: #9FA2B4;
   --color-grey-dark: #4B506D;
 
@@ -12,10 +16,16 @@
   --form-input: var(--color-grey-dark);
   --form-input-border: #F0F1F7;
   --form-input-bg: #FCFDFE;
+  --form-disabled: var(--color-grey);
 
   /* Form-password */
   --form-forogot-link: var(--color-grey);
-  --form-password-icon: var(--color-grey)
+  --form-password-icon: var(--color-grey);
+
+  /* Form-Submit */
+  --form-submit: var(--color-white);
+  --form-submit-bg: var(--primary);
+  --form-submit-hover: #0021f7;
   
   /* Login Page */
   --login-bg: #363740;

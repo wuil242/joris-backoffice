@@ -1,6 +1,6 @@
 <template>
   <main class="login">
-    <form-custom class="login-form" @submit="login">
+    <form-custom class="login-form" @submit="login" :reset="false">
       <img class="login-logo" src="../../images/default.jpeg" />
       <h1 class="login-subtitle">Joris-Admin</h1>
       <h2 class="login-title">Connexion</h2>
@@ -8,9 +8,12 @@
         Entrer votre email et votre mot de passe en dessous
       </small>
       <div class="login-inputs">
-        <form-input class="login-input" label="Email" placeholder="example@email.cg" v-model:value="data.email" ></form-input>
-      <form-password class="login-input" forgot-link="/reset/password" label="Mot de passe" placeholder="********" v-model:value='data.password'></form-password>
+        <form-input class="login-input" type="email" label="Email" placeholder="example@email.cg" :disabled="data.loading" v-model:value="data.email" ></form-input>
+        <form-errors class="login-error" :messages="['error 1', 'error 2']"></form-errors>
+        <form-password class="login-input" forgot-link="/reset/password" label="Mot de passe" placeholder="********" :disabled="data.loading" v-model:value='data.password'></form-password>
+        <form-errors class="login-error" :messages="['error 1', 'error 2']"></form-errors>
       </div>
+    <form-submit-button class="login-submit" :loading="data.loading">Se connecter</form-submit-button>
     </form-custom>
 
   </main>
@@ -23,16 +26,21 @@
   import FormCustom from './form/FormCustom.vue'
   import FormInput from './form/FormInput.vue'
   import FormPassword from './form/FormPassword.vue'
-
-  const loading = ref(false)
+  import FormSubmitButton from './form/FomSubmitButton.vue'
+  import FormErrors from './form/FormErrors.vue';
 
   const data = reactive({
     email: '',
-    password: ''
+    password: '',
+    loading: false
   }) 
 
   function login() {
     console.log('LOGIN')
+    data.loading = true
+    const time = Math.round(Math.random() * 10000) 
+    console.log(time)
+    setTimeout(() => data.loading = false, Math.max(1000, time))
   }
 </script>
 
@@ -52,7 +60,7 @@
 }
 
 .login-form {
-  width: 50vw;
+  width: 35vw;
   /* height: 50vh; */
   display: flex;
   flex-direction: column;
@@ -89,16 +97,21 @@
   margin-top: 12px;
 }
 .login-inputs {
-  margin-top: 48px;
+  margin-top: 24px;
   width: 70%;
 }
 
 .login-input {
-}
-
-.login-input:last-child {
   margin-top: 24px;
 }
 
+.login-error {
+  text-align: start;
+}
+
+.login-submit {
+  width: 70%;
+  margin-top: 24px;
+}
 
 </style>

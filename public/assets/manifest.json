@@ -1,8 +1,8 @@
 {
   "assets/app.css": "http://localhost:8080/assets/app.css",
   "assets/app.js": "http://localhost:8080/assets/app.js",
-  "assets/resources_vue_components_Login_vue.css": "http://localhost:8080/assets/resources_vue_components_Login_vue.css",
-  "assets/resources_vue_components_Login_vue.js": "http://localhost:8080/assets/resources_vue_components_Login_vue.js",
+  "assets/resources_vue_components_Login_vue-resources_vue_components_form_FormCustom_vue-resources_vue-663b47.css": "http://localhost:8080/assets/resources_vue_components_Login_vue-resources_vue_components_form_FormCustom_vue-resources_vue-663b47.css",
+  "assets/resources_vue_components_Login_vue-resources_vue_components_form_FormCustom_vue-resources_vue-663b47.js": "http://localhost:8080/assets/resources_vue_components_Login_vue-resources_vue_components_form_FormCustom_vue-resources_vue-663b47.js",
   "assets/resources_vue_components_home_Home_vue.css": "http://localhost:8080/assets/resources_vue_components_home_Home_vue.css",
   "assets/resources_vue_components_home_Home_vue.js": "http://localhost:8080/assets/resources_vue_components_home_Home_vue.js",
   "assets/resources_vue_components_Stat_vue.css": "http://localhost:8080/assets/resources_vue_components_Stat_vue.css",
@@ -13,12 +13,12 @@
   "assets/resources_vue_components_Devis_vue.js": "http://localhost:8080/assets/resources_vue_components_Devis_vue.js",
   "assets/resources_vue_components_Temoignage_vue.js": "http://localhost:8080/assets/resources_vue_components_Temoignage_vue.js",
   "assets/resources_vue_components_Profil_vue.js": "http://localhost:8080/assets/resources_vue_components_Profil_vue.js",
-  "assets/resources_vue_components_jobs_Job_vue-resources_vue_components_form_FormCustom_vue-resources_-12db03.css": "http://localhost:8080/assets/resources_vue_components_jobs_Job_vue-resources_vue_components_form_FormCustom_vue-resources_-12db03.css",
-  "assets/resources_vue_components_jobs_Job_vue-resources_vue_components_form_FormCustom_vue-resources_-12db03.js": "http://localhost:8080/assets/resources_vue_components_jobs_Job_vue-resources_vue_components_form_FormCustom_vue-resources_-12db03.js",
+  "assets/resources_vue_components_jobs_Job_vue-resources_vue_components_form_FormCustom_vue-resources_-2f8b72.css": "http://localhost:8080/assets/resources_vue_components_jobs_Job_vue-resources_vue_components_form_FormCustom_vue-resources_-2f8b72.css",
+  "assets/resources_vue_components_jobs_Job_vue-resources_vue_components_form_FormCustom_vue-resources_-2f8b72.js": "http://localhost:8080/assets/resources_vue_components_jobs_Job_vue-resources_vue_components_form_FormCustom_vue-resources_-2f8b72.js",
   "assets/resources_vue_components_service_providers_ServiceProvider_vue-resources_vue_components_table-46c17a.css": "http://localhost:8080/assets/resources_vue_components_service_providers_ServiceProvider_vue-resources_vue_components_table-46c17a.css",
   "assets/resources_vue_components_service_providers_ServiceProvider_vue-resources_vue_components_table-46c17a.js": "http://localhost:8080/assets/resources_vue_components_service_providers_ServiceProvider_vue-resources_vue_components_table-46c17a.js",
-  "assets/resources_vue_components_service_providers_ServiceProviderAdd_vue-resources_vue_components_fo-375e55.css": "http://localhost:8080/assets/resources_vue_components_service_providers_ServiceProviderAdd_vue-resources_vue_components_fo-375e55.css",
-  "assets/resources_vue_components_service_providers_ServiceProviderAdd_vue-resources_vue_components_fo-375e55.js": "http://localhost:8080/assets/resources_vue_components_service_providers_ServiceProviderAdd_vue-resources_vue_components_fo-375e55.js",
+  "assets/resources_vue_components_service_providers_ServiceProviderAdd_vue-resources_vue_components_fo-21f648.css": "http://localhost:8080/assets/resources_vue_components_service_providers_ServiceProviderAdd_vue-resources_vue_components_fo-21f648.css",
+  "assets/resources_vue_components_service_providers_ServiceProviderAdd_vue-resources_vue_components_fo-21f648.js": "http://localhost:8080/assets/resources_vue_components_service_providers_ServiceProviderAdd_vue-resources_vue_components_fo-21f648.js",
   "assets/resources_vue_components_service_providers_ServiceProviderList_vue-resources_vue_components_t-151d11.css": "http://localhost:8080/assets/resources_vue_components_service_providers_ServiceProviderList_vue-resources_vue_components_t-151d11.css",
   "assets/resources_vue_components_service_providers_ServiceProviderList_vue-resources_vue_components_t-151d11.js": "http://localhost:8080/assets/resources_vue_components_service_providers_ServiceProviderList_vue-resources_vue_components_t-151d11.js",
   "assets/resources_vue_components_entreprise_Entreprise_vue.js": "http://localhost:8080/assets/resources_vue_components_entreprise_Entreprise_vue.js",
@@ -29,6 +29,5 @@
   "assets/fonts/fa-solid-900.ttf": "http://localhost:8080/assets/fonts/fa-solid-900.be9ee23c.ttf",
   "assets/fonts/fa-brands-400.ttf": "http://localhost:8080/assets/fonts/fa-brands-400.527940b1.ttf",
   "assets/images/default.jpeg": "http://localhost:8080/assets/images/default.01ac1981.jpeg",
-  "assets/fonts/fa-regular-400.ttf": "http://localhost:8080/assets/fonts/fa-regular-400.491974d1.ttf",
-  "assets/images/default.01ac1981.jpeg": "http://localhost:8080/assets/images/default.01ac1981.jpeg"
+  "assets/fonts/fa-regular-400.ttf": "http://localhost:8080/assets/fonts/fa-regular-400.491974d1.ttf"
 }

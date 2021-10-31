@@ -8,6 +8,7 @@
       :required="required"
       :value="value"
       :id="label"
+      :disabled="disabled"
       @input="$emit('update:value', $event.target.value)"
     />
   </div>
@@ -27,6 +28,7 @@ defineProps({
   placeholder: { type: String, default: '' },
   required: { default: null },
   value:String,
+  disabled: {type:Boolean, default: false}
 })
 
 defineEmits(['update:value'])
@@ -68,10 +70,16 @@ defineEmits(['update:value'])
   padding: .7em .5em;
 }
 
-
 .form-input input:focus {
   /* color: var(--form-input, #4B506D); */
   outline: none;
   box-shadow: 0px 0px 2px 1px var(--form-input, #4B506D);
 }
+
+
+.form-input input:disabled {
+  /* color: var(--form-input, #4B506D); */
+  background-color: var(--form-disabled, #9FA2B4);
+}
+
 </style>
