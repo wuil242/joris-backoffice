@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="form-input">
     <label>{{ label }}</label>
     <input
       :type="type"
@@ -31,11 +31,43 @@ defineEmits(['update:value'])
 
 </script>
 
-<style lang="scss" scoped>
-input,
-textarea {
-  padding: 0.25em;
-  width: 100%;
-  height: 100%;
+<style scoped>
+.form-input {
+  text-align: start;
+  margin-top: 48px;
+}
+
+.form-input label, .form-input input{
+  display: block;
+}
+
+.form-input label {
+  color: var(--form-label, #9FA2B4);
+  text-transform: capitalize;
+}
+
+.form-input input {
+  margin-top: 6px;
+  padding: .5em;
+
+  background-color: var(--form-input-bg, #FCFDFE);
+
+  border: solid 1px var(--form-input-border, #F0F1F7);
+  border-radius: 8px;
+  
+  color: var(--form-input, #4B506D);
+}
+
+
+.form-input input::placeholder {
+  color: var(--form-input, #4B506D);
+  padding: .7em .5em;
+}
+
+
+.form-input input:focus {
+  /* color: var(--form-input, #4B506D); */
+  outline: none;
+  box-shadow: 0px 0px 2px 1px var(--form-input, #4B506D);
 }
 </style>

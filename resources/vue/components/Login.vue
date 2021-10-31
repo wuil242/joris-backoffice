@@ -7,6 +7,8 @@
       <small class="login-small">
         Entrer votre email et votre mot de passe en dessous
       </small>
+      <form-input class="login-input" label="Email" placeholder="example@email.cg" v-model:value="data.email"></form-input>
+      <form-password label="password" v-model:value='data.password'></form-password>
     </form-custom>
 
   </main>
@@ -17,10 +19,14 @@
   import {useStore} from 'vuex'
   import FetchApi from '../utils/FetchApi';
   import FormCustom from './form/FormCustom.vue'
+  import FormInput from './form/FormInput.vue'
+  import FormPassword from './form/FormPassword.vue'
 
   const loading = ref(false)
 
   const data = reactive({
+    email: '',
+    password: ''
   }) 
 
   function login() {

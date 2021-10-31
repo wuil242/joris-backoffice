@@ -1,13 +1,25 @@
 :root {
+  /* Global */
+  --color-grey: #9FA2B4;
+  --color-grey-dark: #4B506D;
+
   /* Form-Custom*/
   --form-bg: #FFFFFF;
   --form-color: lime;
 
+  /* Form-Input */
+  --form-label: var(--color-grey);
+  --form-input: var(--color-grey-dark);
+  --form-input-border: #F0F1F7;
+  --form-input-bg: #FCFDFE;
+  
   /* Login Page */
   --login-bg: #363740;
   --login-color: #A4A6B3;
   --login-subtitle: var(--login-color);
   --login-title: #252733;
-  --login-small: #9FA2B4;
+  --login-small: var(--color-grey);
+  
 
+  
 }
