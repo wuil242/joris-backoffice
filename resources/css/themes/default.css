@@ -12,6 +12,10 @@
   --form-input: var(--color-grey-dark);
   --form-input-border: #F0F1F7;
   --form-input-bg: #FCFDFE;
+
+  /* Form-password */
+  --form-forogot-link: var(--color-grey);
+  --form-password-icon: var(--color-grey)
   
   /* Login Page */
   --login-bg: #363740;

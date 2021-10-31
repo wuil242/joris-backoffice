@@ -1,11 +1,13 @@
 <template>
   <div class="form-input">
-    <label>{{ label }}</label>
+    <label :for="label">{{ label }}</label>
     <input
+      autocomplete="current-password"
       :type="type"
       :placeholder="placeholder"
       :required="required"
       :value="value"
+      :id="label"
       @input="$emit('update:value', $event.target.value)"
     />
   </div>
@@ -34,7 +36,7 @@ defineEmits(['update:value'])
 <style scoped>
 .form-input {
   text-align: start;
-  margin-top: 48px;
+  width: 100%;
 }
 
 .form-input label, .form-input input{
@@ -42,13 +44,15 @@ defineEmits(['update:value'])
 }
 
 .form-input label {
+  
   color: var(--form-label, #9FA2B4);
   text-transform: capitalize;
 }
 
 .form-input input {
+  width: 100%;
   margin-top: 6px;
-  padding: .5em;
+  padding: .5em .69em;
 
   background-color: var(--form-input-bg, #FCFDFE);
 

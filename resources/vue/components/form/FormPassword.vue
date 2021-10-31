@@ -1,5 +1,6 @@
 <template>
   <div class="form-password">
+    <router-link :to="forgotLink" class="forgot-link"  v-if="forgotLink !== ''">Mot de passe oublier ?</router-link>
     <form-input :value="value" :type="data.type" :label="label" :placeholder="placeholder" @update:value="$emit('update:value', $event)">
     </form-input>
       <font-awesome class="form-password-icon" type="far" cursor="pointer" :icon="data.icon" @click="show_or_hide_password"></font-awesome>
@@ -15,7 +16,8 @@ import FormInput from './FormInput.vue';
 defineProps({
   label: String,
   placeholder: String,
-  value: String
+  value: String,
+  forgotLink:{type:String, default: ''},
 })
 
 defineEmits(['update:value'])
@@ -35,13 +37,22 @@ function show_or_hide_password() {
 <style scoped>
 .form-password {
   position: relative;
-  width: 50%;
+  width: 100%;
 }
 
 .form-password-icon {
   position: absolute;
-  top: 25%;
-  right: 1%;
-  color: grey;
+  bottom: 15%;
+  right: 5%;
+  color: var(--form-password-icon, #9FA2B4);
+}
+
+.forgot-link {
+  position: absolute;
+  top: 5%;
+  right: 0;
+
+  font-size: .65rem;
+  color: var(--form-forgot-link, #9FA2B4);
 }
 </style>

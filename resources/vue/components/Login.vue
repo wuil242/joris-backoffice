@@ -7,8 +7,10 @@
       <small class="login-small">
         Entrer votre email et votre mot de passe en dessous
       </small>
-      <form-input class="login-input" label="Email" placeholder="example@email.cg" v-model:value="data.email"></form-input>
-      <form-password label="password" v-model:value='data.password'></form-password>
+      <div class="login-inputs">
+        <form-input class="login-input" label="Email" placeholder="example@email.cg" v-model:value="data.email" ></form-input>
+      <form-password class="login-input" forgot-link="/reset/password" label="Mot de passe" placeholder="********" v-model:value='data.password'></form-password>
+      </div>
     </form-custom>
 
   </main>
@@ -85,7 +87,17 @@
   font-size: .9rem;
   font-weight: lighter;
   margin-top: 12px;
+}
+.login-inputs {
+  margin-top: 48px;
+  width: 70%;
+}
 
+.login-input {
+}
+
+.login-input:last-child {
+  margin-top: 24px;
 }
 
 
