@@ -42,6 +42,7 @@
   const store = useStore()
 
   function login() {
+    console.log('IN')
     for (const name in data.errors) {
       data.errors[name] = []
     }

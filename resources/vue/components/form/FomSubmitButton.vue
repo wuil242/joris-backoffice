@@ -1,5 +1,5 @@
 <template>
-  <button class="form-submit" type="submit" :class="{'is-loading': loading}">
+  <button class="form-submit" type="submit" :class="{'is-loading': loading}" :disabled="loading">
     <slot></slot>
   </button>  
 </template>
@@ -50,11 +50,15 @@ defineProps({
 
     border-top: solid .25em var(--form-submit);
     border-bottom: solid .25em transparent;
-    border-right: solid .25em transparent;
+    border-right: solid .25em var(--form-submit);
     border-left: solid .25em transparent;
 
     transform: translate(-50%, -50%) rotate(0);
 
+  }
+
+  .form-submit:disabled, .form-submit:disabled:after {
+    background-color: var(--form-disabled, #9FA2B4);
   }
 
   .is-loading.form-submit {
