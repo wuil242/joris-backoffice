@@ -42,23 +42,24 @@
   const store = useStore()
 
   function login() {
-    console.log('IN')
-    for (const name in data.errors) {
-      data.errors[name] = []
-    }
     
     data.loading = true
     const body = {email: data.email, password: data.password} 
+    
+    for (const name in data.errors) {
+      data.errors[name] = []
+    }
     
     FetchApi({
       route: '/users/login',
       method: 'POST',
       body
     }).then(res => {
+
      
       if('errors' in res) {
         res.errors.forEach(error => {
-          data.errors[error.field] = error.message.split('|')
+          data.errors[error.field] = error.message.split('|') || []
         })
       }
 
