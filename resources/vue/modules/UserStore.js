@@ -14,7 +14,8 @@ const state = {
 const getters = {
   isLoggedIn(state){ return state.user !== null && state.user.token !== ''},
   username(state) {return state.user.name},
-  token(state){ return state.user.token}
+  token(state){ return state.user.token},
+  user(state) {return { ...state.user }}
 }
 
 const mutations = {

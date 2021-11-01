@@ -1,6 +1,8 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import {schema, rules} from '@ioc:Adonis/Core/Validator'
 import Database from '@ioc:Adonis/Lucid/Database'
+import User from 'App/Models/User'
+import UserValidator from 'App/Validators/UserValidator'
 
 
 export default class UsersController {
@@ -9,12 +11,8 @@ export default class UsersController {
   //TODO: conexion sans regeneration de token
   async login({request, auth, response}:HttpContextContract) {
     try {
-      const validation = await schema.create({
-        email: schema.string({ trim: true }, [rules.email()]),
-        password: schema.string({ trim: true })
-      })
-  
-      const payload = await request.validate({schema: validation})
+      const payload = await request.validate(UserValidator)
+      
       const user = await auth.verifyCredentials(payload.email, payload.password)
       const {token} = await Database.query().from(this.TOKEN_TABLE).where('user_id', user.id).firstOrFail()
       
@@ -36,9 +34,19 @@ export default class UsersController {
     }
   }
 
-  async logout({auth}:HttpContextContract) {
+  async logout({auth, request}:HttpContextContract) {
     try {
-      await auth.use('api').revoke()
+      const validation = await schema.create({
+        email: schema.string({trim: true}, [rules.email()]),
+        token: schema.string()
+      })
+      
+      const payload = await request.validate({schema: validation})
+      const user = await User.findByOrFail('email', payload.email)
+      const {token} = await Database.query().from(this.TOKEN_TABLE).where('user_id', user.id).firstOrFail()
+      if(token !== payload.token) {
+        throw 'invalid token'
+      }
       return {
         type: 'success',
         typeCode: 1,

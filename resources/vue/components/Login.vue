@@ -19,7 +19,7 @@
 </template>
 
 <script setup>
-  import {reactive} from 'vue'
+  import {reactive, onMounted} from 'vue'
   import {useRouter} from 'vue-router'
   import {useStore} from 'vuex'
   import FetchApi from '../utils/FetchApi';
@@ -29,8 +29,8 @@
   import FormSubmitButton from './form/FomSubmitButton.vue'
 
   const data = reactive({
-    email: '',
-    password: '',
+    email: 'admin@admin.com',
+    password: 'admin',
     loading: false,
     errors: {
       email: [],
@@ -49,7 +49,7 @@
     for (const name in data.errors) {
       data.errors[name] = []
     }
-    
+
     FetchApi({
       route: '/users/login',
       method: 'POST',
@@ -70,6 +70,8 @@
      
     }).finally(() => data.loading = false)
   }
+
+  onMounted(() => login())
 </script>
 
 

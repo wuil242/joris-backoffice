@@ -12,10 +12,10 @@
         </router-link>
       <!-- </div> -->
       <home-menu></home-menu>
-      <button @click="logout" class="button home-sidebar-logout">Logout</button>
+      <logout-button class="button home-sidebar-logout"></logout-button>
     </aside>
     <section class="home-main">
-      <pre>{{store.state}}</pre>
+      <pre>{{$store.state}}</pre>
       <router-view></router-view>
     </section>
   </div>
@@ -23,23 +23,9 @@
 
 <script setup>
 
-import { useStore } from 'vuex';
-import FetchApi from '../../utils/FetchApi';
-import { onBeforeRouteUpdate } from 'vue-router';
 import DarkModeButton from '../DarkModeButton.vue'
 import HomeMenu from './HomeMenu.vue';
-
-const store = useStore()
-
-
-function logout() {
-  FetchApi('/users/logout', 'POST')
-    .then(res => {
-      if(res.typeCode === 1) {
-        store.dispatch('logout')
-      }
-    })
-}
+import LogoutButton from '../LogoutButton.vue';
 
 </script>
 
@@ -93,13 +79,6 @@ function logout() {
 
     &-sidebar-logout {
       // margin-top: 1rem;
-      padding: .4em .7em;
-      cursor: pointer;
-      background-color: rgb(243, 39, 39);
-      color: white;
-      border: none;
-      box-shadow: 0 0 1px 0 black;
-      border-radius: 4px;
 
       place-self: center;
       // flex: none;
