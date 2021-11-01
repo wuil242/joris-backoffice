@@ -11,11 +11,14 @@
       :disabled="disabled"
       @input="$emit('update:value', $event.target.value)"
     />
+    <form-errors :messages="errors" :color="errorsColor"></form-errors>
   </div>
 </template>
 
 
 <script setup>
+import FormErrors from './FormErrors.vue';
+
 /**
  *----
  * Pour les input de type "radio" la proprité value est de type
@@ -28,7 +31,9 @@ defineProps({
   placeholder: { type: String, default: '' },
   required: { default: null },
   value:String,
-  disabled: {type:Boolean, default: false}
+  disabled: {type:Boolean, default: false},
+  errors: Array,
+  errorsColor: {type:String, default: '#F32727'}
 })
 
 defineEmits(['update:value'])

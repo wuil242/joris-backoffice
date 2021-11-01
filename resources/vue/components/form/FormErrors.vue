@@ -10,7 +10,7 @@
 <script setup>
 defineProps({
   messages: Array,
-  color: {type: String, default: '#F32727'}
+  color: String
 })
   
 </script>
@@ -20,6 +20,8 @@ defineProps({
     color: v-bind(color);
     display: block;
     margin-left: 5%;
+
+    text-align: start;
   }
 
 </style>

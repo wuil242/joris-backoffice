@@ -18,8 +18,8 @@ const getters = {
 }
 
 const mutations = {
-  USER_LOGIN (state, user) {
-    state.user = user
+  USER_LOGIN (state, {name, email, token}) {
+    state.user = {name, email, token}
   },
 
   USER_LOGOUT(state) {

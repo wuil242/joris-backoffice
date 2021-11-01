@@ -1,7 +1,7 @@
 <template>
   <div class="form-password">
     <router-link :to="forgotLink" class="forgot-link"  v-if="forgotLink !== ''">Mot de passe oublier ?</router-link>
-    <form-input :value="value" :type="data.type" :label="label" :placeholder="placeholder" :disabled="disabled" @update:value="$emit('update:value', $event)">
+    <form-input :value="value" :type="data.type" :label="label" :placeholder="placeholder" :errors="errors" :errors-color="errorsColor" :disabled="disabled" @update:value="$emit('update:value', $event)">
     </form-input>
       <font-awesome class="form-password-icon" type="far" cursor="pointer" :icon="data.icon" @click="show_or_hide_password"></font-awesome>
   </div>
@@ -18,7 +18,9 @@ defineProps({
   placeholder: String,
   value: String,
   forgotLink:{type:String, default: ''},
-  disabled: {type:Boolean, default: false}
+  disabled: {type:Boolean, default: false},
+  errors: Array,
+  errorsColor: {type:String, default: '#F32727'}
 })
 
 defineEmits(['update:value'])

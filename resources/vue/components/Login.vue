@@ -8,39 +8,65 @@
         Entrer votre email et votre mot de passe en dessous
       </small>
       <div class="login-inputs">
-        <form-input class="login-input" type="email" label="Email" placeholder="example@email.cg" :disabled="data.loading" v-model:value="data.email" ></form-input>
-        <form-errors class="login-error" :messages="['error 1', 'error 2']"></form-errors>
-        <form-password class="login-input" forgot-link="/reset/password" label="Mot de passe" placeholder="********" :disabled="data.loading" v-model:value='data.password'></form-password>
-        <form-errors class="login-error" :messages="['error 1', 'error 2']"></form-errors>
+        <form-input class="login-input" type="email" label="Email" placeholder="example@email.cg" :errors="data.errors.email" :disabled="data.loading" v-model:value="data.email" ></form-input>
+        <!-- <form-errors class="login-error" :messages="data.errors.email"></form-errors> -->
+        <form-password class="login-input" forgot-link="/reset/password" label="Mot de passe" placeholder="********" :errors="data.errors.password" :disabled="data.loading" v-model:value='data.password'></form-password>
+        <!-- <form-errors class="login-error" :messages="data.errors.password"></form-errors> -->
       </div>
     <form-submit-button class="login-submit" :loading="data.loading">Se connecter</form-submit-button>
     </form-custom>
-
   </main>
 </template>
 
 <script setup>
-  import {reactive, ref, onMounted} from 'vue'
+  import {reactive} from 'vue'
+  import {useRouter} from 'vue-router'
   import {useStore} from 'vuex'
   import FetchApi from '../utils/FetchApi';
   import FormCustom from './form/FormCustom.vue'
   import FormInput from './form/FormInput.vue'
   import FormPassword from './form/FormPassword.vue'
   import FormSubmitButton from './form/FomSubmitButton.vue'
-  import FormErrors from './form/FormErrors.vue';
 
   const data = reactive({
     email: '',
     password: '',
-    loading: false
+    loading: false,
+    errors: {
+      email: [],
+      password: []
+    } 
   }) 
 
+  const router = useRouter()
+  const store = useStore()
+
   function login() {
-    console.log('LOGIN')
+    for (const name in data.errors) {
+      data.errors[name] = []
+    }
+    
     data.loading = true
-    const time = Math.round(Math.random() * 10000) 
-    console.log(time)
-    setTimeout(() => data.loading = false, Math.max(1000, time))
+    const body = {email: data.email, password: data.password} 
+    
+    FetchApi({
+      route: '/users/login',
+      method: 'POST',
+      body
+    }).then(res => {
+     
+      if('errors' in res) {
+        res.errors.forEach(error => {
+          data.errors[error.field] = error.message.split('|')
+        })
+      }
+
+      if(res.typeCode === 1) {
+        console.log(res)
+        store.dispatch('login', res.user)
+      }
+     
+    }).finally(() => data.loading = false)
   }
 </script>
 
@@ -105,13 +131,15 @@
   margin-top: 24px;
 }
 
-.login-error {
-  text-align: start;
-}
-
 .login-submit {
   width: 70%;
-  margin-top: 24px;
+  margin: 24px 0;
+}
+
+@media only screen and (max-width: 900px) {
+  .login-form {
+    width: 50vw;
+  }
 }
 
 </style>
