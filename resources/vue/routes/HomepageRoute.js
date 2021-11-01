@@ -17,6 +17,7 @@ const route = {
     path: '/',
     component: Home,
     redirect: '/statistique',
+    beforeEnter: loginGuard,
     children: [
       {
         path: '/profil',

@@ -57,6 +57,6 @@ Route.group(() => {
      }
     })
     
-  }).middleware('auth')
+  })
 
 }).prefix('/api/users')

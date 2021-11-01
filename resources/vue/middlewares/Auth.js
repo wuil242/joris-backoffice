@@ -8,7 +8,7 @@ import Store from '../store'
  * @param {import('vue-router').NavigationGuardNext} next 
  */
 export const loginGuard = (to, from, next) => {
-  const user = Store.state.user
+  const user = Store.getters.user
   if(user?.email && user?.token && user?.email !== '' && user?.token !== '') {
     next()
   }
@@ -24,7 +24,8 @@ export const loginGuard = (to, from, next) => {
  * @param {import('vue-router').NavigationGuardNext} next 
  */
 export const logoutGuard = (to, from, next) => {
-  const user = Store.state.user
+  const user = Store.getters.user
+  console.log('LOGOUT', user)
   if(user?.email && user?.token && user?.email !== '' && user?.token !== '') {
     next('/')
   }

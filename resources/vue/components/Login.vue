@@ -64,7 +64,6 @@
       }
 
       if(res.typeCode === 1) {
-        console.log(res)
         store.dispatch('login', res.user)
       }
      
