@@ -10,7 +10,8 @@
   "assets/resources_vue_components_location_Location_vue.css": "http://localhost:8080/assets/resources_vue_components_location_Location_vue.css",
   "assets/resources_vue_components_location_Location_vue.js": "http://localhost:8080/assets/resources_vue_components_location_Location_vue.js",
   "assets/resources_vue_components_Admin_vue.js": "http://localhost:8080/assets/resources_vue_components_Admin_vue.js",
-  "assets/resources_vue_components_Devis_vue.js": "http://localhost:8080/assets/resources_vue_components_Devis_vue.js",
+  "assets/resources_vue_components_Devis_vue-resources_vue_components_table_TableBody_vue-resources_vue-db07ac.css": "http://localhost:8080/assets/resources_vue_components_Devis_vue-resources_vue_components_table_TableBody_vue-resources_vue-db07ac.css",
+  "assets/resources_vue_components_Devis_vue-resources_vue_components_table_TableBody_vue-resources_vue-db07ac.js": "http://localhost:8080/assets/resources_vue_components_Devis_vue-resources_vue_components_table_TableBody_vue-resources_vue-db07ac.js",
   "assets/resources_vue_components_Temoignage_vue.js": "http://localhost:8080/assets/resources_vue_components_Temoignage_vue.js",
   "assets/resources_vue_components_Profil_vue.js": "http://localhost:8080/assets/resources_vue_components_Profil_vue.js",
   "assets/resources_vue_components_jobs_Job_vue-resources_vue_components_form_FormCustom_vue-resources_-02a03d.css": "http://localhost:8080/assets/resources_vue_components_jobs_Job_vue-resources_vue_components_form_FormCustom_vue-resources_-02a03d.css",
@@ -18,36 +19,11 @@
   "assets/resources_vue_components_service_providers_ServiceProvider_vue-resources_vue_components_form_-bc5a23.css": "http://localhost:8080/assets/resources_vue_components_service_providers_ServiceProvider_vue-resources_vue_components_form_-bc5a23.css",
   "assets/resources_vue_components_service_providers_ServiceProvider_vue-resources_vue_components_form_-bc5a23.js": "http://localhost:8080/assets/resources_vue_components_service_providers_ServiceProvider_vue-resources_vue_components_form_-bc5a23.js",
   "assets/resources_vue_components_entreprise_Entreprise_vue.js": "http://localhost:8080/assets/resources_vue_components_entreprise_Entreprise_vue.js",
-  "assets/resources_vue_components_service_providers_ServiceProviderAdd_vue-resources_vue_components_fo-b56fed.css": "http://localhost:8080/assets/resources_vue_components_service_providers_ServiceProviderAdd_vue-resources_vue_components_fo-b56fed.css",
-  "assets/resources_vue_components_service_providers_ServiceProviderAdd_vue-resources_vue_components_fo-b56fed.js": "http://localhost:8080/assets/resources_vue_components_service_providers_ServiceProviderAdd_vue-resources_vue_components_fo-b56fed.js",
-  "assets/resources_vue_components_service_providers_ServiceProviderList_vue-resources_vue_components_t-151d11.css": "http://localhost:8080/assets/resources_vue_components_service_providers_ServiceProviderList_vue-resources_vue_components_t-151d11.css",
-  "assets/resources_vue_components_service_providers_ServiceProviderList_vue-resources_vue_components_t-151d11.js": "http://localhost:8080/assets/resources_vue_components_service_providers_ServiceProviderList_vue-resources_vue_components_t-151d11.js",
-  "assets/resources_vue_components_entreprise_EntrepriseList_vue.js": "http://localhost:8080/assets/resources_vue_components_entreprise_EntrepriseList_vue.js",
-  "assets/resources_vue_components_entreprise_EntrepriseMessage_vue.js": "http://localhost:8080/assets/resources_vue_components_entreprise_EntrepriseMessage_vue.js",
+  "assets/resources_vue_components_Client_vue.js": "http://localhost:8080/assets/resources_vue_components_Client_vue.js",
   "assets/resources_vue_components_form_FormCustom_vue-resources_vue_components_form_FormInput_vue.js": "http://localhost:8080/assets/resources_vue_components_form_FormCustom_vue-resources_vue_components_form_FormInput_vue.js",
   "assets/resources_vue_components_table_TableBody_vue-resources_vue_components_table_TableCustom_vue-r-08b58d.js": "http://localhost:8080/assets/resources_vue_components_table_TableBody_vue-resources_vue_components_table_TableCustom_vue-r-08b58d.js",
   "assets/fonts/fa-solid-900.ttf": "http://localhost:8080/assets/fonts/fa-solid-900.be9ee23c.ttf",
   "assets/fonts/fa-brands-400.ttf": "http://localhost:8080/assets/fonts/fa-brands-400.527940b1.ttf",
   "assets/images/default.jpeg": "http://localhost:8080/assets/images/default.01ac1981.jpeg",
-<<<<<<< develop
-<<<<<<< develop
-  "assets/fonts/fa-regular-400.ttf": "http://localhost:8080/assets/fonts/fa-regular-400.491974d1.ttf",
-<<<<<<< develop
-  "assets/resources_vue_components_Login_vue.css": "http://localhost:8080/assets/resources_vue_components_Login_vue.css",
-  "assets/resources_vue_components_Login_vue.js": "http://localhost:8080/assets/resources_vue_components_Login_vue.js"
-=======
-  "assets/resources_vue_components_Devis_vue-resources_vue_components_table_TableBody_vue-resources_vue-db07ac.css": "http://localhost:8080/assets/resources_vue_components_Devis_vue-resources_vue_components_table_TableBody_vue-resources_vue-db07ac.css",
-  "assets/resources_vue_components_Devis_vue-resources_vue_components_table_TableBody_vue-resources_vue-db07ac.js": "http://localhost:8080/assets/resources_vue_components_Devis_vue-resources_vue_components_table_TableBody_vue-resources_vue-db07ac.js"
->>>>>>> (add) listing des devis par date de creation
-=======
   "assets/fonts/fa-regular-400.ttf": "http://localhost:8080/assets/fonts/fa-regular-400.491974d1.ttf"
->>>>>>> (update) stilisation des lien de la sidebar
-=======
-  "assets/fonts/fa-regular-400.ttf": "http://localhost:8080/assets/fonts/fa-regular-400.491974d1.ttf",
-  "assets/images/default.01ac1981.jpeg": "http://localhost:8080/assets/images/default.01ac1981.jpeg",
-  "assets/resources_vue_components_Login_vue.css": "http://localhost:8080/assets/resources_vue_components_Login_vue.css",
-  "assets/resources_vue_components_Login_vue.js": "http://localhost:8080/assets/resources_vue_components_Login_vue.js",
-  "assets/resources_vue_components_service_providers_ServiceProvider_vue-resources_vue_components_form_-29165b.css": "http://localhost:8080/assets/resources_vue_components_service_providers_ServiceProvider_vue-resources_vue_components_form_-29165b.css",
-  "assets/resources_vue_components_service_providers_ServiceProvider_vue-resources_vue_components_form_-29165b.js": "http://localhost:8080/assets/resources_vue_components_service_providers_ServiceProvider_vue-resources_vue_components_form_-29165b.js"
->>>>>>> (add) lien pour afficher le profil de l'admin
 }

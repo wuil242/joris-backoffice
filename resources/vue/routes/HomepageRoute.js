@@ -10,6 +10,7 @@ const HomeProfil = () => import('../components/Profil.vue')
 const HomeJob = () => import('../components/jobs/Job.vue')
 const HomeServiceProvider = () => import('../components/service_providers/ServiceProvider.vue')
 const HomeEntreprise = () => import('../components/entreprise/Entreprise.vue')
+const HomeClient = () => import('../components/Client.vue')
 
 
 const route = {
@@ -64,6 +65,13 @@ const route = {
         text: 'Localisation',
         icon: 'fa fa-map-marker-alt',
         component: HomeLocation
+      },
+      {
+        name: 'client',
+        path: 'customer',
+        text: 'Clients',
+        icon: 'fa fa-house-user',
+        component: HomeClient
       },
       {
         name: 'admin',

@@ -49,6 +49,22 @@ const databaseConfig: DatabaseConfig = {
       debug: false,
     },
 
+    pg_client: {
+      client: 'pg',
+      connection: {
+        host: Env.get('PG_CLIENT_HOST'),
+        port: Env.get('PG_CLIENT_PORT'),
+        user: Env.get('PG_CLIENT_USER'),
+        password: Env.get('PG_CLIENT_PASSWORD', ''),
+        database: Env.get('PG_CLIENT_DB_NAME'),
+      },
+      migrations: {
+        naturalSort: true,
+      },
+      healthCheck: false,
+      debug: false,
+    },
+
   }
 }
 
