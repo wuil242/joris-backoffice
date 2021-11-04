@@ -1,46 +1,50 @@
 <template>
   <nav>
-    <template v-for="route in $router.getRoutes()">
-      <ul v-if="route.name === 'home'">
-        <template v-for="childRoute in route.children">
-          <li v-if="childRoute?.name || childRoute?.icon || childRoute?.text">
-            <i v-if="childRoute.icon" :class="childRoute.icon"></i>
-            <router-link
-              :to="childRoute.path"
-            >{{ childRoute.text || format_route(childRoute.path) }}</router-link>
-            <ul v-if="childRoute.children && childRoute.children.length > 0">
-              <template v-for="subRoute in childRoute.children">
-                <li v-if="subRoute.path !== ''">
-                  <i v-if="subRoute.icon" :class="subRoute.icon"></i>
-                  <router-link
-                    :to="subRoute.path"
-                  >{{ subRoute.text || format_route(subRoute.path) }}</router-link>
-                </li>
-              </template>
-            </ul>
-          </li>
+    <ul class="home-menu-items">
+        <template v-for="route in $route.matched[0].children">
+          <li class="home-menu-item" v-if="route.text !== undefined && route.text !== null && route.text !== ''">
+            <router-link :to="{name: route.name }" class="home-menu-link">
+              <font-awesome :icon="route.icon"></font-awesome>
+              {{route.text}}
+            </router-link>
+          </li>       
         </template>
-      </ul>
-    </template>
+    </ul>
   </nav>
 </template>
 
 
 <script setup>
-
-/**
- * @param {string} path
- */
-function format_route(path) {
-  const fristLetter = path.replace('/', '')[0]
-  return path.replace('/' + fristLetter, fristLetter.toUpperCase())
-}
+import FontAwesome from '../FontAwesome.vue';
 
 </script>
 
-<style lang="scss" scoped>
-  ul {
-      list-style-type: disc;
-      margin-left: 20px;
-    }
+<style scoped>
+.home-menu-items {
+  width: 100%;
+  height: 100%;
+
+  list-style-type: none;
+}
+
+.home-menu-item {
+  width: 100%;
+  display: block;
+  margin-top: .5em;
+}
+
+.home-menu-item .home-menu-link {
+  display: inline-block;
+  width: 100%;
+  padding: .5em;
+
+  text-align: center;
+  text-decoration: none;
+  color: var(--color-grey, #9FA2B4);
+}
+
+.home-menu-link.router-link-active {
+  width: 100%;
+  background-color: var(--color-grey-dark, #4B506D);
+}
 </style>

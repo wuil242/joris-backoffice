@@ -31,25 +31,6 @@ import LogoutButton from '../LogoutButton.vue';
 
 
 <style lang="scss" scoped>
-
-  .home {
-    --home-bg-color: white;
-    --home-text-color: black;
-
-    --sidebar-bg-color: grey;
-
-    transition: background-color .3s;
-
-  }
-
-  .theme-dark .home {
-    --home-bg-color: grey;
-    --home-text-color: white!important;
-
-
-    --sidebar-bg-color: white;
-  }
-
   .home {
     display: grid;
     position: relative;
@@ -57,8 +38,7 @@ import LogoutButton from '../LogoutButton.vue';
     // grid-template-rows: 10vh auto;
     grid-template-areas: "sidebar main";
 
-    background-color: var(--home-bg-color);
-    color: var(--home-text-color)
+    background-color: white;
 
     &-header {
       grid-area: header;
@@ -74,7 +54,9 @@ import LogoutButton from '../LogoutButton.vue';
       grid-template-rows: 15fr 25fr 50fr 10fr;
       grid-area: sidebar;
 
-      background-color: var(--sidebar-bg-color);
+      background-color: var(--home-sidebar, #363740);
+
+      color: white;
     }
 
     &-sidebar-logout {

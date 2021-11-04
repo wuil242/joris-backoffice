@@ -8,18 +8,12 @@
 
 <script setup>
 
-import { onMounted } from 'vue';
-
-
-const props = defineProps({
+defineProps({
   alert: {type: Object, required: true},
   time: {type: Number, default: 1000}
 })
 
-let timer = null
-
 defineEmits(['close'])
-
 
 </script>
 

@@ -10,6 +10,8 @@ const HomeDevis = () => import('../components/Devis.vue')
 const HomeTemoignage = () => import('../components/Temoignage.vue')
 const HomeProfil = () => import('../components/Profil.vue')
 const HomeJob = () => import('../components/jobs/Job.vue')
+const HomeServiceProvider = () => import('../components/service_providers/ServiceProvider.vue')
+const HomeEntreprise = () => import('../components/entreprise/Entreprise.vue')
 
 
 const route = {
@@ -17,50 +19,61 @@ const route = {
     path: '/',
     component: Home,
     redirect: '/statistique',
-    beforeEnter: loginGuard,
+    // beforeEnter: loginGuard,
     children: [
       {
-        path: '/profil',
+        path: 'profil',
         component: HomeProfil
       },
       {
-        path: '/statistique',
+        name: 'statistique',
+        path: 'statistique',
         icon: 'fa fa-clipboard-list',
         text: 'Statistique',
         component: HomeStat
       },
       {
-        path: '/metier',
+        name: 'service_provider',
+        path: 'prestataires',
+        icon: 'user',
+        text: 'Prestataires',
+        component: HomeServiceProvider
+      }, {
+        name: 'entreprise',
+        path: 'entreprises',
+        icon: 'building',
+        text: 'Entreprise',
+        component: HomeEntreprise
+      },
+      {
+        name: 'job',
+        path: 'metiers',
         icon: 'fa fa-suitcase',
         text: 'Metiers',
         component: HomeJob
       },
       {
         name: 'location',
-        path: '/localisation',
+        path: 'localisation',
         text: 'Localisation',
         icon: 'fa fa-map-marker-alt',
         component: HomeLocation
       },
       {
         name: 'admin',
-        path: '/administrateurs',
-        text: 'Administration',
+        path: 'adminsistrateurs',
+        text: 'Adminsistrateurs',
         icon: 'fa fa-users',
         component: HomeAdmin
       },
       {
         name: 'devis',
-        path: '/devis',
+        path: 'devis',
         text: 'Devis',
         icon: 'fa fa-dollar-sign',
         component: HomeDevis
       }
     ]
 }
-
-route.children.push(ServiceProviderRoute)
-route.children.push(EntrepriseRoute)
-
 
 export default route

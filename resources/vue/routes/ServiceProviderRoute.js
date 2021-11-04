@@ -8,15 +8,16 @@ const ServiceProviderList = () => import('../components/service_providers/Servic
 
 const route = {
   name: 'service_provider.list',
-  path: '/prestataire',
+  path: 'prestataire',
   text: 'Prestataire',
   icon: 'fa fa-clipboard',
   component: ServiceProvider,
+  redirect: '/prestataire/list',
   // beforeEnter: loginGuard,
   children: [
     {
       name: 'service_provider.list',
-      path: '',
+      path: 'list',
       text: 'list',
       icon: 'fa fa-list',
       component: ServiceProviderList

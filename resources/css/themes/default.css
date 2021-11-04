@@ -34,6 +34,7 @@
   --login-title: #252733;
   --login-small: var(--color-grey);
   
-
+  /* Home Sidebar */
+  --home-sidebar: #363740;
   
 }
