@@ -1,4 +1,6 @@
+import { useStartLoading } from '../hooks/Loader'
 import { loginGuard } from '../middlewares/Auth'
+import Store from '../store'
 
 const Home = () => import('../components/home/Home.vue')
 const HomeStat = () => import('../components/Stat.vue')
@@ -13,12 +15,18 @@ const HomeEntreprise = () => import('../components/entreprise/Entreprise.vue')
 const HomeClient = () => import('../components/Client.vue')
 
 
+const loading = (to, from, next) => {
+  useStartLoading()
+  next()
+}
+
 const route = {
     name: 'home',
     path: '/',
     component: Home,
     redirect: '/statistique',
     // beforeEnter: loginGuard,
+    beforeEnter: [loading],
     children: [
       {
         path: 'profil',
@@ -68,7 +76,7 @@ const route = {
       },
       {
         name: 'client',
-        path: 'customer',
+        path: 'clients',
         text: 'Clients',
         icon: 'fa fa-house-user',
         component: HomeClient

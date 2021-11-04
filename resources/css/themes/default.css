@@ -36,5 +36,14 @@
   
   /* Home Sidebar */
   --home-sidebar: #363740;
+
+  /* layer (z-indexes */
+  --layer-bottom: 20;
+  --layer-middle: 40;
+  --layer-top: 50;
+
+  --layer-extra-botton: 60;
+  --layer-extra-middle: 80;
+  --layer-extra-top: 100;
   
 }

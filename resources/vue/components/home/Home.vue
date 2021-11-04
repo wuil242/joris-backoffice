@@ -7,6 +7,7 @@
       <logout-button class="button home-sidebar-logout"></logout-button>
     </aside>
     <section class="home-main">
+      <home-loader v-if="$store.getters.isLoading"></home-loader>
       <pre>{{$store.state}}</pre>
       <router-view></router-view>
     </section>
@@ -19,6 +20,8 @@ import DarkModeButton from '../DarkModeButton.vue'
 import HomeMenu from './HomeMenu.vue';
 import LogoutButton from '../LogoutButton.vue';
 import HomeProfil from './HomeProfil.vue'
+import HomeLoader from './HomeLoader.vue'
+
 
 </script>
 
@@ -72,6 +75,7 @@ import HomeProfil from './HomeProfil.vue'
       padding: 1rem;
       grid-area: main;
       color: var(--home-text-color);
+      position: relative;
     }
 
     .router-link-active {

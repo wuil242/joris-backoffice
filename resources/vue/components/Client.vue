@@ -9,6 +9,7 @@
 
 <script setup>
 import {onMounted, reactive} from 'vue'
+import { useStopLoading } from '../hooks/Loader';
 import FetchApi from '../utils/FetchApi';
 
 const data = reactive({
@@ -25,7 +26,7 @@ function reload() {
    FetchApi({route: '/clients'})
     .then(res => {
       data.clients = res
-      
+      useStopLoading()
     })
 }
   

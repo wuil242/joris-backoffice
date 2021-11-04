@@ -1,7 +1,9 @@
 import { createStore } from 'vuex'
 import AlertStore from './modules/AlertStore'
+import LoaderStore from './modules/LoaderStore'
 import ThemeStore from './modules/ThemeStore'
 import UserStore from './modules/UserStore'
+
 
 
 // Create a new store instance.
@@ -11,6 +13,7 @@ export default createStore({
   modules: {
     alert: AlertStore,
     user: UserStore,
-    theme: ThemeStore
+    theme: ThemeStore,
+    loader: LoaderStore
   }
 })
