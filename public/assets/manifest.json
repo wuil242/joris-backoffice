@@ -30,6 +30,7 @@
   "assets/fonts/fa-brands-400.ttf": "http://localhost:8080/assets/fonts/fa-brands-400.527940b1.ttf",
   "assets/images/default.jpeg": "http://localhost:8080/assets/images/default.01ac1981.jpeg",
 <<<<<<< develop
+<<<<<<< develop
   "assets/fonts/fa-regular-400.ttf": "http://localhost:8080/assets/fonts/fa-regular-400.491974d1.ttf",
 <<<<<<< develop
   "assets/resources_vue_components_Login_vue.css": "http://localhost:8080/assets/resources_vue_components_Login_vue.css",
@@ -41,4 +42,12 @@
 =======
   "assets/fonts/fa-regular-400.ttf": "http://localhost:8080/assets/fonts/fa-regular-400.491974d1.ttf"
 >>>>>>> (update) stilisation des lien de la sidebar
+=======
+  "assets/fonts/fa-regular-400.ttf": "http://localhost:8080/assets/fonts/fa-regular-400.491974d1.ttf",
+  "assets/images/default.01ac1981.jpeg": "http://localhost:8080/assets/images/default.01ac1981.jpeg",
+  "assets/resources_vue_components_Login_vue.css": "http://localhost:8080/assets/resources_vue_components_Login_vue.css",
+  "assets/resources_vue_components_Login_vue.js": "http://localhost:8080/assets/resources_vue_components_Login_vue.js",
+  "assets/resources_vue_components_service_providers_ServiceProvider_vue-resources_vue_components_form_-29165b.css": "http://localhost:8080/assets/resources_vue_components_service_providers_ServiceProvider_vue-resources_vue_components_form_-29165b.css",
+  "assets/resources_vue_components_service_providers_ServiceProvider_vue-resources_vue_components_form_-29165b.js": "http://localhost:8080/assets/resources_vue_components_service_providers_ServiceProvider_vue-resources_vue_components_form_-29165b.js"
+>>>>>>> (add) lien pour afficher le profil de l'admin
 }

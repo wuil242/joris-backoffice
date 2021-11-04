@@ -1,16 +1,8 @@
 <template>
   <div class="home">
-    <!-- <header class="home-header">
-      <h1 class="home-header-title">Page<span>Name</span></h1>
-      <dark-mode-button></dark-mode-button>
-    </header> -->
     <aside class="home-sidebar">
-      <h1>Joris <br> Backoffice</h1>
-      <!-- <div class="home-sidebar-profil"> -->
-        <router-link to="/profil" class="home-sidebar-image">
-          <img src="../../../images/default.jpeg" alt="photo de profil">
-        </router-link>
-      <!-- </div> -->
+      <h1>Joris <span>Backoffice</span></h1>
+      <home-profil></home-profil>
       <home-menu></home-menu>
       <logout-button class="button home-sidebar-logout"></logout-button>
     </aside>
@@ -26,6 +18,7 @@
 import DarkModeButton from '../DarkModeButton.vue'
 import HomeMenu from './HomeMenu.vue';
 import LogoutButton from '../LogoutButton.vue';
+import HomeProfil from './HomeProfil.vue'
 
 </script>
 
@@ -51,7 +44,7 @@ import LogoutButton from '../LogoutButton.vue';
       height: 100vh;
       display: grid;
       grid-template-columns: 100%;
-      grid-template-rows: 15fr 25fr 50fr 10fr;
+      grid-template-rows: 10fr 20fr 60fr 15fr;
       grid-area: sidebar;
 
       background-color: var(--home-sidebar, #363740);
@@ -72,26 +65,6 @@ import LogoutButton from '../LogoutButton.vue';
 
       &:focus {
         box-shadow: 0 0 2px 4px black;
-      }
-    }
-
-    &-sidebar-image {
-      background-color: gray;
-      display: block;
-      position: relative;
-      
-      img {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        border-radius: 50%;
-        object-fit: cover;
-        text-align: center;
-        width: 80%;
-        height: 80%;
-        margin: auto;
-
-        transform: translate(-50%, -50%);
       }
     }
 

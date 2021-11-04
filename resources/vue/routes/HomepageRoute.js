@@ -1,6 +1,4 @@
 import { loginGuard } from '../middlewares/Auth'
-import ServiceProviderRoute from './ServiceProviderRoute'
-import EntrepriseRoute from './EntrepriseRoute'
 
 const Home = () => import('../components/home/Home.vue')
 const HomeStat = () => import('../components/Stat.vue')
@@ -38,7 +36,15 @@ const route = {
         icon: 'user',
         text: 'Prestataires',
         component: HomeServiceProvider
-      }, {
+      },
+      {
+        name: 'devis',
+        path: 'devis',
+        text: 'Devis Des Clients',
+        icon: 'fa fa-dollar-sign',
+        component: HomeDevis
+      },
+      {
         name: 'entreprise',
         path: 'entreprises',
         icon: 'building',
@@ -65,13 +71,6 @@ const route = {
         text: 'Adminsistrateurs',
         icon: 'fa fa-users',
         component: HomeAdmin
-      },
-      {
-        name: 'devis',
-        path: 'devis',
-        text: 'Devis',
-        icon: 'fa fa-dollar-sign',
-        component: HomeDevis
       }
     ]
 }

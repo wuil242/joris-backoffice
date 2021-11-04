@@ -20,9 +20,12 @@ import FontAwesome from '../FontAwesome.vue';
 </script>
 
 <style scoped>
+
+
 .home-menu-items {
   width: 100%;
   height: 100%;
+  padding: 15% 0;
 
   list-style-type: none;
 }
