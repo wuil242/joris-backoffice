@@ -18,7 +18,7 @@
 <script setup>
 import FormCustom from '../form/FormCustom.vue'
 import FormInput from '../form/FormInput.vue';
-import FormSubmitButton from '../form/FomSubmitButton.vue';
+import FormSubmitButton from '../form/FormSubmitButton.vue';
 import {reactive, computed, watch} from 'vue'
 import FetchApi from '../../utils/FetchApi';
 

@@ -66,7 +66,7 @@ import FormGroup from '../form/FormGroup.vue';
 import FormInput from '../form/FormInput.vue';
 import FormTextarea from '../form/FormTextarea.vue';
 import FormSelect from '../form/FormSelect.vue';
-import FormSubmitButton from '../form/FomSubmitButton.vue';
+import FormSubmitButton from '../form/FormSubmitButton.vue';
 import FetchApi from '../../utils/FetchApi';
 import { useGetArrondissements, useGetCities, useGetQuaters } from '../../hooks/Location';
 import { useCreateProvider } from '../../hooks/ServiceProvider';
