@@ -19,7 +19,8 @@ defineProps({
   .form-error {
     color: v-bind(color);
     display: block;
-    margin-left: 5%;
+    margin-left: 6px;
+    margin-top: 2px;
 
     text-align: start;
   }

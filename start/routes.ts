@@ -26,7 +26,7 @@ import 'App/routes/ServiceProviders'
 import 'App/routes/Jobs'
 import 'App/routes/ClientDevis'
 import 'App/routes/Clients'
-
+import 'App/routes/Temoignages'
 
 //SPA render
 Route.on('/').render('index')

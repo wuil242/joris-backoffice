@@ -26,7 +26,7 @@
   import FormCustom from './form/FormCustom.vue'
   import FormInput from './form/FormInput.vue'
   import FormPassword from './form/FormPassword.vue'
-  import FormSubmitButton from './form/FomSubmitButton.vue'
+  import FormSubmitButton from './form/FormSubmitButton.vue'
 
   const data = reactive({
     email: 'admin@admin.com',

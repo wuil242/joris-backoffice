@@ -87,6 +87,13 @@ const route = {
         text: 'Adminsistrateurs',
         icon: 'fa fa-users',
         component: HomeAdmin
+      },
+      {
+        name: 'temoignage',
+        path: 'temoignages',
+        text: 'Temoignages',
+        icon: 'fa fa-book',
+        component: HomeTemoignage
       }
     ]
 }
