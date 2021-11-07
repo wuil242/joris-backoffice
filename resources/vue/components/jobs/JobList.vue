@@ -1,6 +1,6 @@
 <template>
   <h2>List Job</h2>
-  <form-input type="search" @keyup="filtering"></form-input>
+  <form-input type="search" :errors="[]" @keyup="filtering"></form-input>
   <ol>
     <li
       v-for="job in jobs"

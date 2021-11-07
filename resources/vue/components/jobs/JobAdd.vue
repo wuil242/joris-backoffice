@@ -1,9 +1,9 @@
 <template>
   <h2>Add Job</h2>
   <form-custom @submit="create_job">
-    <form-input label="Nom du Job" @keyup="form.name = $event"></form-input>
-    <form-input type="color" label="Color" @change="form.color = $event"></form-input>
-    <form-input type="color" label="Background Color" @change="form.bg_color = $event"></form-input>
+    <form-input label="Nom du Job" :errors="[]" @keyup="form.name = $event"></form-input>
+    <form-input type="color" label="Color" :errors="[]" @change="form.color = $event"></form-input>
+    <form-input type="color" label="Background Color" :errors="[]" @change="form.bg_color = $event"></form-input>
     <form-submit-button value="Creer"></form-submit-button>
   </form-custom>
   <section>
