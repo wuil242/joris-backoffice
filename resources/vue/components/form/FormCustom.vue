@@ -1,6 +1,5 @@
 <template>
   <form class="form-custom" @submit.prevent="submit($event, onSubmit)">
-  <p>Reset : {{reset}}</p>
     <slot></slot>
   </form>
 </template>

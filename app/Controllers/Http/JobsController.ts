@@ -15,7 +15,7 @@ export default class JobsController {
   public async store({request, response}:HttpContextContract) {
     const regexColor = /^#[0-9abcdefABCDEF]+$/
     const validation = schema.create({
-      name: schema.string({ trim : true}),
+      name: schema.string({ trim : true}, [rules.unique({table: 'jobs', column: 'name'})]),
       color: schema.string({}, [rules.regex(regexColor)]),
       bg_color: schema.string({}, [rules.regex(regexColor)]),
     })

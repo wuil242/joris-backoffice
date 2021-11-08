@@ -1,6 +1,7 @@
 import { useStartLoading } from '../hooks/Loader'
 import { loginGuard } from '../middlewares/Auth'
 import Store from '../store'
+import JobRoute from './JobsRoute'
 
 const Home = () => import('../components/home/Home.vue')
 const HomeStat = () => import('../components/Stat.vue')
@@ -9,7 +10,6 @@ const HomeAdmin = () => import('../components/Admin.vue')
 const HomeDevis = () => import('../components/Devis.vue')
 const HomeTemoignage = () => import('../components/Temoignage.vue')
 const HomeProfil = () => import('../components/Profil.vue')
-const HomeJob = () => import('../components/jobs/Job.vue')
 const HomeServiceProvider = () => import('../components/service_providers/ServiceProvider.vue')
 const HomeEntreprise = () => import('../components/entreprise/Entreprise.vue')
 const HomeClient = () => import('../components/Client.vue')
@@ -59,14 +59,13 @@ const route = {
         icon: 'building',
         text: 'Entreprise',
         component: HomeEntreprise
-      },
-      {
-        name: 'job',
-        path: 'metiers',
-        icon: 'fa fa-suitcase',
-        text: 'Metiers',
-        component: HomeJob
-      },
+      }
+    ]
+  }
+
+route.children.push(JobRoute)
+
+route.children.push(
       {
         name: 'location',
         path: 'localisation',
@@ -95,7 +94,6 @@ const route = {
         icon: 'fa fa-book',
         component: HomeTemoignage
       }
-    ]
-}
+    )
 
 export default route

@@ -1,5 +1,6 @@
 <template>
   <h2>List Job</h2>
+   <router-link :to="{name: 'job_add'}">Add Job</router-link>
   <form-input type="search" :errors="[]" @keyup="filtering"></form-input>
   <ol>
     <li
@@ -13,12 +14,9 @@
 
 <script setup>
 import { ref, onMounted, watch, onBeforeUpdate } from 'vue'
+import { useStopLoading } from '../../hooks/Loader';
 import FetchApi from '../../utils/FetchApi';
 import FormInput from '../form/FormInput.vue';
-
-const props = defineProps({
-  refresh:{type:Number, default: 0}
-})
 
 const jobs = ref([])
 let jobsCache = []
@@ -43,6 +41,7 @@ FetchApi({
   }).then(res => {
     jobsCache = jobs.value = res.data
   })
+  .finally(() => useStopLoading())
 }
 
 /**
